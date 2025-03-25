@@ -1,219 +1,91 @@
-/* Reset and Base Styles */
-* {
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #0a0a0a;
+    color: #ffffff;
+    text-align: center;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
-body {
-    font-family: 'Roboto', Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f4f4f4;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-}
-
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
+/* Encabezado */
+header {
     padding: 20px;
+    background: linear-gradient(90deg, #1a1a1a, #333333);
 }
 
-/* Header and Logo Section */
-.header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    padding: 30px 20px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    margin-bottom: 20px;
-}
-
-.logo-container {
-    width: 200px;
-    height: 200px;
-    background-color: transparent;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto 20px;
-    transition: transform 0.3s ease;
-}
-
-.logo-container img {
-    max-width: 90%;
-    max-height: 90%;
-    object-fit: contain;
-    filter: grayscale(20%) contrast(110%);
-}
-
-.logo-container:hover {
-    transform: scale(1.05) rotate(3deg);
-}
-
-.company-info {
-    text-align: center;
-}
-
-.company-name {
-    font-size: 2.5rem;
-    color: #2c3e50;
-    font-weight: 300;
-    letter-spacing: -1px;
-}
-
-.company-slogan {
-    font-size: 1.2rem;
-    color: #7f8c8d;
-    font-weight: 300;
-    max-width: 600px;
-    margin: 10px auto;
-}
-
-/* Courses Section */
-.courses-section {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    padding: 30px;
-    margin-bottom: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-}
-
-.course-card {
-    display: flex;
-    align-items: center;
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.course-card:hover {
-    transform: translateY(-10px);
-}
-
-.course-image {
-    width: 40%;
-}
-
-.course-image img {
-    width: 100%;
+.logo {
+    width: 120px;
     height: auto;
-    object-fit: cover;
 }
 
-.course-content {
-    width: 60%;
-    padding: 20px;
+h1 {
+    margin: 10px 0;
+    font-size: 2em;
 }
 
-.course-content h3 {
-    color: #2c3e50;
-    margin-bottom: 15px;
-    font-weight: 300;
+.slogan {
+    font-style: italic;
+    color: #aaaaaa;
 }
 
-.course-links {
-    display: flex;
-    gap: 15px;
-    align-items: center;
+/* Menú de navegación */
+nav ul {
+    list-style: none;
+    padding: 0;
 }
 
-.buy-course {
-    display: inline-block;
-    background-color: #3498db;
-    color: white;
-    padding: 10px 15px;
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav a {
+    color: #00aaff;
     text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    font-weight: bold;
 }
 
-.buy-course:hover {
-    background-color: #2980b9;
+nav a:hover {
+    color: #ffaa00;
 }
 
-.youtube-link {
-    display: flex;
-    align-items: center;
-    color: #e74c3c;
-    text-decoration: none;
-    gap: 10px;
+/* Sección de Proyectos */
+#proyectos {
+    margin: 40px 0;
 }
 
-.youtube-link img {
-    width: 30px;
-    height: 30px;
+.video-container video {
+    width: 80%;
+    max-width: 600px;
+    border: 2px solid #00aaff;
+    border-radius: 8px;
 }
 
-/* Social Media Section */
-.social-media {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-bottom: 20px;
+/* Curso en Hotmart */
+#curso img {
+    width: 80%;
+    max-width: 400px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
 }
 
-.social-icon img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.social-icon img:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-}
-
-/* Projects Section */
-.projects-section {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-}
-
-.project-item {
-    width: 45%;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.project-item:hover {
+#curso img:hover {
     transform: scale(1.05);
 }
 
-.project-item img,
-.project-item video {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
+/* Contacto */
+footer {
+    padding: 20px;
+    background: linear-gradient(90deg, #1a1a1a, #333333);
 }
 
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-    .course-card {
-        flex-direction: column;
-    }
+.social-links img {
+    width: 40px;
+    margin: 10px;
+    transition: transform 0.3s;
+}
 
-    .course-image, .course-content {
-        width: 100%;
-    }
-
-    .projects-section {
-        flex-direction: column;
-    }
-
-    .project-item {
-        width: 100%;
-    }
+.social-links img:hover {
+    transform: scale(1.2);
 }
