@@ -1,0 +1,83 @@
+/* Estilos para Automation Insights */
+
+/* Fuente y colores principales */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Encabezado */
+header {
+    background: #222;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 1.5em;
+}
+
+/* Navegación */
+nav {
+    background: #007BFF;
+    padding: 10px 0;
+    text-align: center;
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Secciones */
+section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+section h2 {
+    color: #007BFF;
+    border-bottom: 3px solid #007BFF;
+    padding-bottom: 5px;
+}
+
+/* Lista de servicios */
+section ul {
+    list-style: none;
+    padding: 0;
+}
+section ul li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    font-size: 1.1em;
+}
+
+/* Contacto */
+section#contacto p a {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    background: #222;
+    color: #fff;
+    padding: 15px 0;
+    margin-top: 40px;
+}
