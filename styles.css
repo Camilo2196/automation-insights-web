@@ -6,10 +6,11 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
     line-height: 1.6;
     color: #333;
     background-color: #f4f4f4;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
 
 .container {
@@ -24,204 +25,195 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #fff;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
     padding: 30px 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
 }
 
 .logo-container {
-    width: 250px;
-    height: 250px;
-    background-color: #fff;
+    width: 200px;
+    height: 200px;
+    background-color: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0 auto 20px;
-    border-radius: 10px;
+    transition: transform 0.3s ease;
 }
 
 .logo-container img {
     max-width: 90%;
     max-height: 90%;
     object-fit: contain;
-    transition: transform 0.3s ease;
+    filter: grayscale(20%) contrast(110%);
 }
 
-.logo-container img:hover {
-    transform: scale(1.05);
+.logo-container:hover {
+    transform: scale(1.05) rotate(3deg);
 }
 
 .company-info {
     text-align: center;
-    margin-top: 20px;
 }
 
 .company-name {
     font-size: 2.5rem;
-    color: #000;
-    font-weight: bold;
-    margin-bottom: 10px;
+    color: #2c3e50;
+    font-weight: 300;
     letter-spacing: -1px;
 }
 
 .company-slogan {
     font-size: 1.2rem;
-    color: #666;
-    font-style: italic;
+    color: #7f8c8d;
+    font-weight: 300;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 10px auto;
 }
 
 /* Courses Section */
 .courses-section {
-    background-color: #fff;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
     padding: 30px;
-    margin: 20px 0;
-    text-align: center;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 .course-card {
-    display: inline-block;
-    width: 300px;
-    margin: 15px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
 .course-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transform: translateY(-10px);
 }
 
-.course-card a {
-    display: block;
-    background-color: #000;
-    color: #fff;
-    padding: 10px;
+.course-image {
+    width: 40%;
+}
+
+.course-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.course-content {
+    width: 60%;
+    padding: 20px;
+}
+
+.course-content h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-weight: 300;
+}
+
+.course-links {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.buy-course {
+    display: inline-block;
+    background-color: #3498db;
+    color: white;
+    padding: 10px 15px;
     text-decoration: none;
-    margin-top: 15px;
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
-.course-card a:hover {
-    background-color: #333;
+.buy-course:hover {
+    background-color: #2980b9;
+}
+
+.youtube-link {
+    display: flex;
+    align-items: center;
+    color: #e74c3c;
+    text-decoration: none;
+    gap: 10px;
+}
+
+.youtube-link img {
+    width: 30px;
+    height: 30px;
 }
 
 /* Social Media Section */
 .social-media {
     display: flex;
     justify-content: center;
-    align-items: center;
-    background-color: #f9f9f9;
-    padding: 30px;
-    border-radius: 10px;
-    margin: 20px 0;
-}
-
-.social-icon {
-    margin: 0 20px;
-    text-align: center;
+    gap: 30px;
+    margin-bottom: 20px;
 }
 
 .social-icon img {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
+    object-fit: cover;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .social-icon img:hover {
     transform: scale(1.1);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Projects/Visits Section */
+/* Projects Section */
 .projects-section {
-    background-color: #fff;
-    padding: 30px;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     gap: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    justify-content: center;
 }
 
 .project-item {
-    width: 300px;
-    height: 200px;
-    background-color: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 45%;
+    border-radius: 15px;
     overflow: hidden;
-    border-radius: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
 .project-item:hover {
     transform: scale(1.05);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 .project-item img,
 .project-item video {
-    max-width: 100%;
-    max-height: 100%;
+    width: 100%;
+    height: auto;
     object-fit: cover;
 }
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
-    .header {
-        padding: 10px;
-    }
-
-    .logo-container {
-        width: 200px;
-        height: 200px;
-        margin-bottom: 15px;
-    }
-
-    .company-name {
-        font-size: 2rem;
-    }
-
-    .company-slogan {
-        font-size: 1rem;
-        padding: 0 10px;
-    }
-
-    .social-media {
+    .course-card {
         flex-direction: column;
     }
 
-    .social-icon {
-        margin: 10px 0;
+    .course-image, .course-content {
+        width: 100%;
     }
 
-    .course-card,
+    .projects-section {
+        flex-direction: column;
+    }
+
     .project-item {
         width: 100%;
-        margin: 10px 0;
     }
-}
-
-/* Typography and Additional Styling */
-h2 {
-    color: #000;
-    text-align: center;
-    margin-bottom: 20px;
-    font-weight: 600;
-}
-
-h3 {
-    color: #333;
-    margin-bottom: 15px;
 }
