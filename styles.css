@@ -1,83 +1,82 @@
-/* Estilos para Automation Insights */
+/* Estilos para Automation Insights - Industria 4.0 */
 
-/* Fuente y colores principales */
-body {
-    font-family: 'Arial', sans-serif;
+/* Importar fuente moderna */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+/* Variables de colores */
+:root {
+    --primary-color: #0a192f; /* Azul oscuro industrial */
+    --secondary-color: #64ffda; /* Verde neón */
+    --text-color: #e0e0e0;
+    --accent-color: #ff9f00;
+    --shadow-color: rgba(100, 255, 218, 0.3);
+}
+
+/* Reset básico */
+* {
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    text-align: center;
+    padding: 20px;
 }
 
 /* Encabezado */
 header {
-    background: #222;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-    font-size: 1.5em;
-}
-
-/* Navegación */
-nav {
-    background: #007BFF;
-    padding: 10px 0;
-    text-align: center;
-}
-nav ul {
-    list-style: none;
-    padding: 0;
-}
-nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.2em;
-    font-weight: bold;
-}
-
-/* Secciones */
-section {
-    max-width: 900px;
-    margin: 40px auto;
+    background: linear-gradient(90deg, rgba(10, 25, 47, 1) 0%, rgba(15, 32, 60, 1) 100%);
     padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px var(--shadow-color);
+    border-bottom: 2px solid var(--secondary-color);
 }
 
-section h2 {
-    color: #007BFF;
-    border-bottom: 3px solid #007BFF;
-    padding-bottom: 5px;
+h1 {
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    text-shadow: 0 0 10px var(--shadow-color);
 }
 
-/* Lista de servicios */
-section ul {
-    list-style: none;
-    padding: 0;
-}
-section ul li {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-    font-size: 1.1em;
+/* Sección principal */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
 }
 
-/* Contacto */
-section#contacto p a {
-    color: #007BFF;
-    text-decoration: none;
+p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin-bottom: 20px;
+}
+
+/* Botón moderno */
+.button {
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    padding: 12px 24px;
+    border-radius: 5px;
     font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
 }
 
-/* Footer */
-footer {
-    text-align: center;
-    background: #222;
+.button:hover {
+    background: var(--accent-color);
     color: #fff;
-    padding: 15px 0;
+    box-shadow: 0 0 10px var(--shadow-color);
+}
+
+/* Pie de página */
+footer {
     margin-top: 40px;
+    padding: 10px;
+    border-top: 2px solid var(--secondary-color);
+    font-size: 0.9rem;
 }
