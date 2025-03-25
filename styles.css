@@ -11,7 +11,7 @@ body {
 /* Encabezado */
 header {
     padding: 20px;
-    background: linear-gradient(90deg, #1a1a1a, #333333);
+    background: linear-gradient(90deg, #ffffff, #333333);
 }
 
 .logo {
@@ -26,7 +26,7 @@ h1 {
 
 .slogan {
     font-style: italic;
-    color: #aaaaaa;
+    color: #ffffff;
 }
 
 /* Menú de navegación */
@@ -41,13 +41,13 @@ nav ul li {
 }
 
 nav a {
-    color: #00aaff;
+    color: #ffffff;
     text-decoration: none;
     font-weight: bold;
 }
 
 nav a:hover {
-    color: #ffaa00;
+    color: #ffffff;
 }
 
 /* Sección de Proyectos */
