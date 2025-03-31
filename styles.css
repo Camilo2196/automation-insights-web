@@ -1,99 +1,77 @@
-/* Importar la tipografía futurista */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-
-/* Estilos generales */
 body {
-    font-family: 'Orbitron', sans-serif;
-    background-color: #0a0a0a;
-    color: #ffffff;
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: white;
     margin: 0;
     padding: 0;
     text-align: center;
 }
 
-/* Estilos del encabezado */
 header {
     padding: 20px;
-    background: linear-gradient(90deg, #1a1a1a, #333333);
-    box-shadow: 0px 4px 10px rgba(0, 170, 255, 0.3);
+    background-color: #1E1E1E;
 }
 
 .logo {
-    width: 120px;
-    height: auto;
+    width: 150px;
+    display: block;
+    margin: 0 auto;
 }
 
 h1 {
-    font-size: 2em;
     margin: 10px 0;
 }
 
 .slogan {
     font-size: 1.2em;
-    color: #00aaff;
+    color: white;
 }
 
-/* Estilos de la barra de navegación */
 nav ul {
-    list-style: none;
+    list-style-type: none;
     padding: 0;
-    margin: 20px 0;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+    background-color: #222;
+    overflow: hidden;
 }
 
 nav ul li {
     display: inline;
+    padding: 15px;
 }
 
 nav ul li a {
     text-decoration: none;
-    color: #ffffff;
-    font-weight: bold;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: background 0.3s, color 0.3s;
+    color: white;
+    font-size: 1.2em;
 }
 
-nav ul li a:hover {
-    background: #00aaff;
-    color: #0a0a0a;
-}
-
-/* Sección de proyectos */
 .video-container {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    align-items: center;
+    margin: 20px 0;
+    border: 2px solid white;
+    padding: 10px;
+    background-color: #000;
 }
 
 video {
     width: 80%;
-    max-width: 600px;
-    border: 2px solid #00aaff;
-    border-radius: 8px;
-    box-shadow: 0px 4px 15px rgba(0, 170, 255, 0.5);
+    max-width: 800px;
+    height: auto;
+    border-radius: 10px;
 }
 
-/* Sección del curso en Hotmart */
 .curso-imagen {
     width: 80%;
-    max-width: 400px;
+    max-width: 600px;
     border-radius: 10px;
-    transition: transform 0.3s;
-    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.3);
+    margin: 20px 0;
 }
 
-.curso-imagen:hover {
-    transform: scale(1.05);
-}
-
-/* Footer y redes sociales */
 footer {
+    background-color: #1E1E1E;
     padding: 20px;
-    background: linear-gradient(90deg, #1a1a1a, #333333);
-    box-shadow: 0px -4px 10px rgba(0, 170, 255, 0.3);
     margin-top: 20px;
 }
 
@@ -101,17 +79,7 @@ footer {
     margin-top: 10px;
 }
 
-.social-links a {
-    margin: 0 10px;
-    transition: transform 0.3s;
-}
-
 .social-links img {
     width: 40px;
-    height: 40px;
-    filter: drop-shadow(0px 2px 5px rgba(0, 170, 255, 0.5));
-}
-
-.social-links a:hover {
-    transform: scale(1.2);
+    margin: 0 10px;
 }
