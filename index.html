@@ -4,73 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Automation Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-    <!-- Header Section -->
     <header>
-        <img src="automation-insights-logo.png" alt="Automation Insights Logo">
-        <h1>Automation Insights</h1>
-        <p>"Automatización que Inspira, Conocimiento que Eleva"</p>
+        <div class="logo-container">
+            <img src="automation-insights-logo.png" alt="Logo de Automation Insights" class="logo">
+            <h1>Automation Insights</h1>
+            <p class="eslogan">Automatización que Inspira, Conocimiento que Eleva</p>
+        </div>
     </header>
 
-    <!-- Navigation -->
     <nav>
         <ul>
             <li><a href="#portfolio">Portafolio</a></li>
-            <li><a href="#projects">Proyectos</a></li>
-            <li><a href="#course">Curso</a></li>
-            <li><a href="#contact">Contacto</a></li>
+            <li><a href="#proyectos">Proyectos</a></li>
+            <li><a href="#curso">Curso</a></li>
+            <li><a href="#contacto">Contacto</a></li>
         </ul>
     </nav>
 
-    <!-- Portafolio Section -->
     <section id="portfolio">
         <h2>Portafolio de Servicios</h2>
         <div class="video-container">
-            <video controls>
-                <source src="Portafolio_1.mp4" type="video/mp4">
-                Tu navegador no soporta el video.
-            </video>
+            <video controls class="video" src="Portafolio_1.mp4"></video>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects">
+    <section id="proyectos">
         <h2>Proyectos Realizados</h2>
         <div class="video-container">
-            <video controls>
-                <source src="company-visit.mp4" type="video/mp4">
-                Tu navegador no soporta el video.
-            </video>
-            <div>
-                <h3>Automatización de Prensa Industrial de Preforma para Jeans</h3>
-                <p>Se utiliza cilindro neumático de doble efecto con electroválvula biestable, para un prensado automático, cuenta con temporización de apertura automática y sensor de temperatura para regulación de calor en la prenda. Se integra, parada de emergencia, se presentaban quemaduras en el personal al hacerlo de manera manual. ⚙️⚡</p>
+            <video controls class="video" src="company-visit.mp4"></video>
+            <div class="descripcion">
+                <p><strong>Automatización de Prensa Industrial de Preforma para Jeans:</strong><br>
+                Se utiliza cilindro neumático de doble efecto con electroválvula biestable, para un prensado automático, cuenta con temporización de apertura automática y sensor de temperatura para regulación de calor en la prenda. Se integra parada de emergencia, se presentaban quemaduras en el personal al hacerlo de manera manual. ⚙️⚡</p>
             </div>
         </div>
     </section>
 
-    <!-- Course Section -->
-    <section id="course">
+    <section id="curso">
         <h2>Curso de Diseño y Automatización de Sistemas Electroneumáticos Industriales</h2>
-        <img src="Diseño y automatización de sistemas electroneumáticos industriales.png" alt="Curso de Automatización">
-        <p><a href="https://hotmart.com/es/marketplace/productos/neumatica-en-la-automatizacion-de-procesos-industriales/Y89270096X" target="_blank">Ir al curso</a></p>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div>
-            <a href="https://youtube.com/@aut_ins_col?si=ys7d4a4Mt-ZRuvgs" target="_blank">
-                <img src="youtube_logo.png" alt="YouTube Logo" style="width: 40px; height: auto;">
-            </a>
-            <a href="https://www.instagram.com/_aut_ind_/" target="_blank">
-                <img src="instagram-logo.png" alt="Instagram Logo" style="width: 40px; height: auto;">
+        <div class="curso-container">
+            <a href="https://hotmart.com/es/marketplace/productos/neumatica-en-la-automatizacion-de-procesos-industriales/Y89270096X" target="_blank">
+                <img src="Diseño y automatización de sistemas electroneumáticos industriales.png" alt="Curso Diseño y Automatización" class="curso-imagen">
             </a>
         </div>
-        <p>Contacto: <a href="mailto:camilo_agudelo@automationinsightscol.com">camilo_agudelo@automationinsightscol.com</a></p>
-    </footer>
+    </section>
 
+    <footer id="contacto">
+        <div class="socials">
+            <a href="https://youtube.com/@aut_ins_col?si=ys7d4a4Mt-ZRuvgs" target="_blank"><img src="youtube_logo.png" alt="YouTube"></a>
+            <a href="https://www.instagram.com/_aut_ind_/" target="_blank"><img src="instagram-logo.png" alt="Instagram"></a>
+        </div>
+        <p><a href="mailto:camilo_agudelo@automationinsightscol.com">camilo_agudelo@automationinsightscol.com</a></p>
+    </footer>
 </body>
 </html>
 
