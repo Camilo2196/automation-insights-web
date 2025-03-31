@@ -1,98 +1,67 @@
-/* Fuentes */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automation Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="automation-insights-logo.png" alt="Logo de Automation Insights" class="logo">
+            <h1>Automation Insights</h1>
+            <p class="eslogan">Automatización que Inspira, Conocimiento que Eleva</p>
+        </div>
+    </header>
 
-/* General */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    <nav>
+        <ul>
+            <li><a href="#portfolio">Portafolio</a></li>
+            <li><a href="#proyectos">Proyectos</a></li>
+            <li><a href="#curso">Curso</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
 
-body {
-    font-family: 'Orbitron', sans-serif;
-    background-color: #0d0d0d;
-    color: white;
-}
+    <section id="portfolio">
+        <h2>Portafolio de Servicios</h2>
+        <div class="video-container">
+            <video controls class="video" src="Portafolio_1.mp4"></video>
+        </div>
+    </section>
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
+    <section id="proyectos">
+        <h2>Proyectos Realizados</h2>
+        <div class="video-container">
+            <video controls class="video" src="company-visit.mp4"></video>
+            <div class="descripcion">
+                <p><strong>Automatización de Prensa Industrial de Preforma para Jeans:</strong><br>
+                Se utiliza cilindro neumático de doble efecto con electroválvula biestable, para un prensado automático, cuenta con temporización de apertura automática y sensor de temperatura para regulación de calor en la prenda. Se integra parada de emergencia, se presentaban quemaduras en el personal al hacerlo de manera manual. ⚙️⚡</p>
+            </div>
+        </div>
+    </section>
 
-/* Header */
-header {
-    text-align: center;
-    margin-top: 20px;
-}
+    <section id="curso">
+        <h2>Curso de Diseño y Automatización de Sistemas Electroneumáticos Industriales</h2>
+        <div class="curso-container">
+            <a href="https://hotmart.com/es/marketplace/productos/neumatica-en-la-automatizacion-de-procesos-industriales/Y89270096X" target="_blank">
+                <img src="Diseño y automatización de sistemas electroneumáticos industriales.png" alt="Curso Diseño y Automatización" class="curso-imagen">
+            </a>
+        </div>
+    </section>
 
-.logo-container h1 {
-    font-size: 3rem;
-    color: white;
-}
-
-.eslogan {
-    font-size: 1.2rem;
-    color: white;
-    margin-top: 10px;
-    font-weight: lighter;
-}
-
-/* Navbar */
-nav {
-    background-color: #333;
-    text-align: center;
-    padding: 10px;
-}
-
-nav ul {
-    list-style: none;
-}
-
-nav ul li {
-    display: inline;
-    margin: 0 20px;
-}
-
-nav ul li a {
-    font-size: 1.2rem;
-    color: white;
-    transition: color 0.3s ease;
-}
-
-nav ul li a:hover {
-    color: #00b3ff;
-}
-
-/* Sección Portafolio */
-#portfolio {
-    margin-top: 40px;
-    text-align: center;
-}
-
-#portfolio h2 {
-    font-size: 2rem;
-    color: white;
-}
-
-.video-container {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-}
-
-.video {
-    width: 80%;
-    max-width: 600px;
-    height: auto;
-    border: 2px solid white;
-    border-radius: 10px;
-}
-
-/* Sección Proyectos */
-#proyectos {
-    margin-top: 40px;
-    text-align: center;
-}
-
-#
-
+    <footer id="contacto">
+        <div class="socials">
+            <a href="https://youtube.com/@aut_ins_col?si=ys7d4a4Mt-ZRuvgs" target="_blank">
+                <img src="youtube_logo.png" alt="YouTube">
+            </a>
+            <a href="https://www.instagram.com/_aut_ind_/" target="_blank">
+                <img src="instagram-logo.png" alt="Instagram">
+            </a>
+        </div>
+        <p><a href="mailto:camilo_agudelo@automationinsightscol.com">camilo_agudelo@automationinsightscol.com</a></p>
+    </footer>
+</body>
+</html>
