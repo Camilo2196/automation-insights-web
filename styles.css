@@ -1,15 +1,15 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #121212;
+    font-family: 'Orbitron', sans-serif;
+    background-color: #0a0a0a;
     color: white;
+    text-align: center;
     margin: 0;
     padding: 0;
-    text-align: center;
 }
 
 header {
     padding: 20px;
-    background-color: #1E1E1E;
+    background: #111;
 }
 
 .logo {
@@ -18,72 +18,61 @@ header {
     margin: 0 auto;
 }
 
-h1 {
-    margin: 10px 0;
-}
-
-.slogan {
-    font-size: 1.2em;
-    color: white;
-}
-
 nav ul {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
-    background-color: #222;
-    overflow: hidden;
 }
 
 nav ul li {
     display: inline;
-    padding: 15px;
+    margin: 0 15px;
 }
 
 nav ul li a {
-    text-decoration: none;
     color: white;
-    font-size: 1.2em;
+    text-decoration: none;
+    transition: color 0.3s;
 }
 
-.video-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    margin: 20px 0;
+nav ul li a:hover {
+    color: cyan;
 }
 
-.video-container {
-    flex: 1;
-    border: 2px solid white;
-    padding: 10px;
-    background-color: #000;
+.section {
+    margin: 50px 0;
+    padding: 20px;
+}
+
+h2 {
+    font-size: 24px;
+    color: cyan;
 }
 
 video {
-    width: 100%;
+    width: 50%;
+    max-width: 600px;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+img {
+    max-width: 50%;
     height: auto;
     border-radius: 10px;
 }
 
-.curso-imagen {
-    width: 80%;
-    max-width: 600px;
-    border-radius: 10px;
-    margin: 20px 0;
-}
-
 footer {
-    background-color: #1E1E1E;
+    background: #111;
     padding: 20px;
-    margin-top: 20px;
-}
-
-.social-links {
-    margin-top: 10px;
 }
 
 .social-links img {
     width: 40px;
-    margin: 0 10px;
+    margin: 10px;
+    transition: transform 0.3s;
 }
+
+.social-links img:hover {
+    transform: scale(1.2);
+}
+
