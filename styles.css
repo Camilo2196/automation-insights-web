@@ -37,6 +37,12 @@ header {
     font-weight: lighter;
 }
 
+/* Tamaño del logo: volvemos al tamaño anterior */
+.logo {
+    width: 150px;
+    height: auto;
+}
+
 /* Navbar */
 nav {
     background-color: #333;
@@ -94,5 +100,70 @@ nav ul li a:hover {
     text-align: center;
 }
 
-#
+#proyectos h2 {
+    font-size: 2rem;
+    color: white;
+}
 
+.descripcion {
+    margin-top: 20px;
+    font-size: 1rem;
+    color: white;
+}
+
+.descripcion strong {
+    font-size: 1.2rem;
+}
+
+/* Sección Curso */
+#curso {
+    margin-top: 40px;
+    text-align: center;
+}
+
+#curso h2 {
+    font-size: 2rem;
+    color: white;
+}
+
+.curso-container {
+    margin-top: 20px;
+}
+
+.curso-imagen {
+    width: 80%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    text-align: center;
+    padding: 20px;
+}
+
+footer p {
+    font-size: 1rem;
+    color: white;
+    margin-top: 10px;
+}
+
+footer .socials {
+    margin-bottom: 20px;
+}
+
+footer .socials a {
+    margin: 0 10px;
+}
+
+footer .socials img {
+    width: 30px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+footer .socials img:hover {
+    transform: scale(1.1);
+}
