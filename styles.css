@@ -1,86 +1,120 @@
-/* Estilos generales */
+/* General Styles */
 body {
     font-family: 'Orbitron', sans-serif;
     background-color: #121212;
     color: white;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
+/* Header */
 header {
     text-align: center;
     padding: 20px;
 }
 
 header img {
-    width: 150px;
+    max-width: 200px;
+    height: auto;
 }
 
-nav {
-    text-align: center;
-    padding: 10px;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 18px;
-}
-
-nav a:hover {
-    color: cyan;
-}
-
-.section {
-    text-align: center;
-    padding: 40px 20px;
-}
-
-h2 {
-    color: white;
-}
-
-.video-container {
+/* Navigation */
+nav ul {
+    list-style: none;
     display: flex;
     justify-content: center;
-    gap: 20px;
+    padding: 10px;
+    margin: 0;
+    background-color: #1f1f1f;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #00FFFF;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #00FF00;
+}
+
+/* Main Content */
+main {
+    padding: 20px;
+}
+
+/* Video Container */
+.video-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
     flex-wrap: wrap;
 }
 
+/* Video Styles */
 .video-container video {
-    width: 45%;
-    max-width: 480px;
+    width: 48%; /* Ensures videos are side by side */
+    height: auto;
     border: 2px solid white;
     border-radius: 10px;
+    margin-bottom: 20px;
 }
 
-.course-container {
+/* Course Section */
+#course {
     text-align: center;
-    margin: 20px;
+    margin: 40px 0;
 }
 
-.course-container img {
-    width: 50%;
-    max-width: 400px;
-    border-radius: 10px;
+#course img {
+    max-width: 50%;
+    height: auto;
+    margin-bottom: 20px;
 }
 
+/* Footer */
 footer {
-    text-align: center;
+    background-color: #1f1f1f;
+    color: white;
     padding: 20px;
-    background-color: #1a1a1a;
+    text-align: center;
 }
 
 footer a {
-    color: cyan;
+    color: #00FFFF;
     text-decoration: none;
     margin: 0 10px;
+    font-size: 20px;
 }
 
-footer img {
-    width: 40px;
-    margin: 0 10px;
+footer a:hover {
+    color: #00FF00;
+}
+
+footer p {
+    margin-top: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .video-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .video-container video {
+        width: 90%;
+    }
+
+    #course img {
+        max-width: 80%;
+    }
 }
 
 
