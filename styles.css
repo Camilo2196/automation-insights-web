@@ -1,55 +1,84 @@
-/* Estilos generales */
 body {
     font-family: 'Orbitron', sans-serif;
-    background-color: #0a0a0a;
+    background-color: #121212;
     color: white;
     margin: 0;
     padding: 0;
     text-align: center;
 }
 
-/* Encabezado */
 header {
     padding: 20px;
 }
 
-h1, h2, h3 {
+.logo {
+    width: 150px;
+}
+
+h1 {
+    font-size: 2rem;
+    margin: 10px 0;
+}
+
+.eslogan {
+    font-size: 1.2rem;
     color: white;
 }
 
-/* Videos alineados en fila */
-.video-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
+nav ul {
+    list-style: none;
+    padding: 0;
 }
 
-.video-container video {
-    width: 45%; /* Ajusta el tamaño de los videos */
-    max-width: 500px;
-    border: 2px solid white;
-    border-radius: 10px;
+nav ul li {
+    display: inline;
+    margin: 0 15px;
 }
 
-/* Cursos */
-.course-section img {
-    width: 300px;
-    height: auto;
-}
-
-/* Redes sociales */
-.social-links img {
-    width: 40px;
-    margin: 10px;
-}
-
-/* Contacto */
-.contact-info a {
+nav ul li a {
     color: white;
     text-decoration: none;
 }
 
-.contact-info a:hover {
-    text-decoration: underline;
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    max-width: 800px;
 }
+
+.video-container video {
+    width: 100%;
+    max-width: 600px;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+.curso-imagen {
+    width: 80%;
+    max-width: 500px;
+    border: 2px solid white;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+footer {
+    padding: 20px;
+}
+
+.social-links img {
+    width: 40px;
+    margin: 10px;
+    transition: transform 0.3s ease;
+}
+
+.social-links img:hover {
+    transform: scale(1.2);
+}
+
+.correo {
+    color: white;
+    text-decoration: none;
+}
+
