@@ -5,101 +5,51 @@ body {
     color: white;
     margin: 0;
     padding: 0;
+    text-align: center;
 }
 
+/* Encabezado */
 header {
-    text-align: center;
     padding: 20px;
 }
 
-header img {
-    width: 150px;
-}
-
-h1, h2 {
-    text-align: center;
+h1, h2, h3 {
     color: white;
 }
 
-/* Menú de navegación */
-nav {
-    text-align: center;
-    padding: 10px;
-}
-
-nav a {
-    color: cyan;
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 18px;
-    transition: 0.3s;
-}
-
-nav a:hover {
-    color: #00ffff;
-    text-shadow: 0 0 10px cyan;
-}
-
-/* Contenedor de videos */
+/* Videos alineados en fila */
 .video-container {
     display: flex;
     justify-content: center;
-    align-items: center;
     gap: 20px;
     flex-wrap: wrap;
-    padding: 20px;
 }
 
-.video-box {
-    width: 45%; /* Ajuste para que sean más pequeños y en paralelo */
+.video-container video {
+    width: 45%; /* Ajusta el tamaño de los videos */
     max-width: 500px;
     border: 2px solid white;
-    padding: 10px;
-    background-color: #111;
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    border-radius: 10px;
 }
 
-.video-box video {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* Sección del curso */
-.course-section {
-    text-align: center;
-    padding: 20px;
-}
-
+/* Cursos */
 .course-section img {
     width: 300px;
-    border: 2px solid white;
+    height: auto;
 }
 
-.course-section a {
-    display: block;
-    margin-top: 10px;
-    color: cyan;
+/* Redes sociales */
+.social-links img {
+    width: 40px;
+    margin: 10px;
+}
+
+/* Contacto */
+.contact-info a {
+    color: white;
     text-decoration: none;
 }
 
-/* Pie de página */
-footer {
-    text-align: center;
-    padding: 20px;
-}
-
-.social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-}
-
-.social-icons img {
-    width: 40px;
-    transition: 0.3s;
-}
-
-.social-icons img:hover {
-    filter: drop-shadow(0 0 10px cyan);
+.contact-info a:hover {
+    text-decoration: underline;
 }
