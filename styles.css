@@ -45,19 +45,23 @@ nav ul li a {
     font-size: 1.2em;
 }
 
-.video-container {
+.video-section {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 20px;
     margin: 20px 0;
+}
+
+.video-container {
+    flex: 1;
     border: 2px solid white;
     padding: 10px;
     background-color: #000;
 }
 
 video {
-    width: 80%;
-    max-width: 800px;
+    width: 100%;
     height: auto;
     border-radius: 10px;
 }
