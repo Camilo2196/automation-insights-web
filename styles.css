@@ -1,17 +1,21 @@
+/* Importar la tipografía futurista */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
 /* Estilos generales */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Orbitron', sans-serif;
     background-color: #0a0a0a;
     color: #ffffff;
-    text-align: center;
     margin: 0;
     padding: 0;
+    text-align: center;
 }
 
-/* Encabezado */
+/* Estilos del encabezado */
 header {
     padding: 20px;
-    background: linear-gradient(90deg, #ffffff, #333333);
+    background: linear-gradient(90deg, #1a1a1a, #333333);
+    box-shadow: 0px 4px 10px rgba(0, 170, 255, 0.3);
 }
 
 .logo {
@@ -20,72 +24,94 @@ header {
 }
 
 h1 {
-    margin: 10px 0;
     font-size: 2em;
+    margin: 10px 0;
 }
 
 .slogan {
-    font-style: italic;
-    color: #ffffff;
+    font-size: 1.2em;
+    color: #00aaff;
 }
 
-/* Menú de navegación */
+/* Estilos de la barra de navegación */
 nav ul {
     list-style: none;
     padding: 0;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
 nav ul li {
     display: inline;
-    margin: 0 15px;
 }
 
-nav a {
-    color: #ffffff;
+nav ul li a {
     text-decoration: none;
-    font-weight: bold;
-}
-
-nav a:hover {
     color: #ffffff;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background 0.3s, color 0.3s;
 }
 
-/* Sección de Proyectos */
-#proyectos {
-    margin: 40px 0;
+nav ul li a:hover {
+    background: #00aaff;
+    color: #0a0a0a;
 }
 
-.video-container video {
+/* Sección de proyectos */
+.video-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+video {
     width: 80%;
     max-width: 600px;
-    border: 2px solid #ffffff;
+    border: 2px solid #00aaff;
     border-radius: 8px;
+    box-shadow: 0px 4px 15px rgba(0, 170, 255, 0.5);
 }
 
-/* Curso en Hotmart */
-#curso img {
+/* Sección del curso en Hotmart */
+.curso-imagen {
     width: 80%;
     max-width: 400px;
     border-radius: 10px;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s;
+    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.3);
 }
 
-#curso img:hover {
+.curso-imagen:hover {
     transform: scale(1.05);
 }
 
-/* Contacto */
+/* Footer y redes sociales */
 footer {
     padding: 20px;
-    background: linear-gradient(90deg, #ffffff, #333333);
+    background: linear-gradient(90deg, #1a1a1a, #333333);
+    box-shadow: 0px -4px 10px rgba(0, 170, 255, 0.3);
+    margin-top: 20px;
+}
+
+.social-links {
+    margin-top: 10px;
+}
+
+.social-links a {
+    margin: 0 10px;
+    transition: transform 0.3s;
 }
 
 .social-links img {
     width: 40px;
-    margin: 10px;
-    transition: transform 0.3s;
+    height: 40px;
+    filter: drop-shadow(0px 2px 5px rgba(0, 170, 255, 0.5));
 }
 
-.social-links img:hover {
+.social-links a:hover {
     transform: scale(1.2);
 }
