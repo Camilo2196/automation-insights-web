@@ -3,171 +3,167 @@
 
 /* General */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: 'Orbitron', sans-serif;
-  background-color: #0d0d0d;
-  color: white;
+    font-family: 'Orbitron', sans-serif;
+    background-color: #0d0d0d;
+    color: white;
 }
 
 a {
-  text-decoration: none;
-  color: inherit;
+    text-decoration: none;
+    color: inherit;
 }
 
 /* Header */
 header {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.logo-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    text-align: center;
+    margin-top: 20px;
 }
 
 .logo-container h1 {
-  font-size: 3rem;
-  color: white;
+    font-size: 3rem;
+    color: white;
 }
 
 .eslogan {
-  font-size: 1.2rem;
-  margin-top: 10px;
-  font-weight: lighter;
-  color: white;
+    font-size: 1.2rem;
+    color: white;
+    margin-top: 10px;
+    font-weight: lighter;
+}
+
+/* Tamaño del logo: volvemos al tamaño anterior */
+.logo {
+    width: 150px;
+    height: auto;
 }
 
 /* Navbar */
 nav {
-  background-color: #333;
-  text-align: center;
-  padding: 10px;
+    background-color: #333;
+    text-align: center;
+    padding: 10px;
 }
 
 nav ul {
-  list-style: none;
-  display: inline-block;
+    list-style: none;
 }
 
 nav ul li {
-  display: inline;
-  margin: 0 20px;
+    display: inline;
+    margin: 0 20px;
 }
 
 nav ul li a {
-  font-size: 1.2rem;
-  color: white;
-  transition: color 0.3s ease;
+    font-size: 1.2rem;
+    color: white;
+    transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
-  color: #00b3ff;
+    color: #00b3ff;
 }
 
 /* Sección Portafolio */
 #portfolio {
-  margin-top: 40px;
-  text-align: center;
+    margin-top: 40px;
+    text-align: center;
 }
 
 #portfolio h2 {
-  font-size: 2rem;
-  color: white;
+    font-size: 2rem;
+    color: white;
 }
 
 .video-container {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
 }
 
-/* Ajuste: Agrandar el contenedor del video en la sección Portafolio */
-.video-container .video {
-  width: 90%;
-  max-width: 800px;
-  height: auto;
-  border: 2px solid white;
-  border-radius: 10px;
+.video {
+    width: 80%;
+    max-width: 600px;
+    height: auto;
+    border: 2px solid white;
+    border-radius: 10px;
 }
 
 /* Sección Proyectos */
 #proyectos {
-  margin-top: 40px;
-  text-align: center;
+    margin-top: 40px;
+    text-align: center;
 }
 
 #proyectos h2 {
-  font-size: 2rem;
-  color: white;
+    font-size: 2rem;
+    color: white;
 }
 
 .descripcion {
-  margin-top: 20px;
-  font-size: 1rem;
-  color: white;
+    margin-top: 20px;
+    font-size: 1rem;
+    color: white;
 }
 
 .descripcion strong {
-  font-size: 1.2rem;
+    font-size: 1.2rem;
 }
 
 /* Sección Curso */
 #curso {
-  margin-top: 40px;
-  text-align: center;
+    margin-top: 40px;
+    text-align: center;
 }
 
 #curso h2 {
-  font-size: 2rem;
-  color: white;
+    font-size: 2rem;
+    color: white;
 }
 
 .curso-container {
-  margin-top: 20px;
+    margin-top: 20px;
 }
 
 .curso-imagen {
-  width: 80%;
-  max-width: 500px;
-  height: auto;
-  border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 10px;
 }
 
 /* Footer */
 footer {
-  background-color: #333;
-  text-align: center;
-  padding: 20px;
+    background-color: #333;
+    text-align: center;
+    padding: 20px;
 }
 
 footer p {
-  font-size: 1rem;
-  color: white;
-  margin-top: 10px;
+    font-size: 1rem;
+    color: white;
+    margin-top: 10px;
 }
 
 footer .socials {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 footer .socials a {
-  margin: 0 10px;
+    margin: 0 10px;
 }
 
 footer .socials img {
-  width: 30px;
-  height: auto;
-  transition: transform 0.3s ease;
+    width: 30px;
+    height: auto;
+    transition: transform 0.3s ease;
 }
 
 footer .socials img:hover {
-  transform: scale(1.1);
+    transform: scale(1.1);
 }
-
