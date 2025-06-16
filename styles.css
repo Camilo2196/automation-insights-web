@@ -172,7 +172,8 @@ a:hover {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     text-align: center;
-    width: 100%; /* Aseguramos que la grid ocupe todo el ancho de la sección */
+    width: 100%;
+    margin-top: 4rem; /* AÑADIDO: Espacio entre el video y las tarjetas */
 }
 
 .service-item {
@@ -221,6 +222,7 @@ a:hover {
     margin: 0 auto;
     font-size: 1.2rem;
     color: var(--text-main);
+    margin-bottom: 4rem; /* AÑADIDO: Espacio entre el texto y el video */
 }
 
 /* 7. Capacitación */
@@ -308,6 +310,31 @@ a:hover {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+/* ======================================= */
+/* NUEVO: Estilos para Video Responsivo   */
+/* ======================================= */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* Proporción 16:9 */
+    height: 0;
+    overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+    background: #000;
+    border: 1px solid var(--bg-element);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.video-wrapper iframe,
+.video-wrapper video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
 
 /* 10. Media Queries para Responsividad */
 @media (max-width: 768px) {
