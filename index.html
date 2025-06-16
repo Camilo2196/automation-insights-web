@@ -3,61 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Automation Insights S.A.S.</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <title>Automation Insights S.A.S. | Ingeniería para la Industria 4.0</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <div class="logo-container">
-            <img src="Logo_Blanco.png" alt="Logo de Automation Insights" class="logo">
-            <h1>Automation Insights S.A.S.</h1>
-            <p class="eslogan">Automatización que Inspira, Conocimiento que Eleva</p>
+
+    <header class="main-header">
+        <div class="header-container">
+            <a href="#hero" class="logo">Automation Insights</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#proyectos">Proyectos</a></li>
+                    <li><a href="#capacitacion">Capacitación</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="#portfolio">Portafolio</a></li>
-            <li><a href="#proyectos">Proyectos</a></li>
-            <li><a href="#curso">Curso</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-        </ul>
-    </nav>
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <img src="Logo_Blanco.png" alt="Logo de Automation Insights" class="hero-logo fade-in">
+                <h1 class="fade-in delay-1">Automatización que Inspira, Conocimiento que Eleva</h1>
+                <h2 class="fade-in delay-2">Ingeniería y diseño para la industria del futuro.</h2>
+                <a href="#servicios" class="cta-button fade-in delay-3">Conoce lo que hacemos</a>
+            </div>
+        </section>
 
-    <section id="portfolio">
-        <h2>Portafolio de Servicios</h2>
-        <div class="video-container">
-            <iframe class="video" src="https://www.youtube.com/embed/sMTpMp-zoNQ" frameborder="0" allowfullscreen></iframe>
-        </div>
-    </section>
+        <section id="servicios" class="content-section">
+            <h2 class="section-title hidden">Portafolio de Servicios</h2>
+            <div class="services-grid hidden">
+                <div class="service-item">
+                    <div class="service-icon">🤖</div>
+                    <h3>Integración Robótica</h3>
+                    <p>Implementamos soluciones robóticas para optimizar la producción y reducir costos operativos.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">💻</div>
+                    <h3>Sistemas SCADA & HMI</h3>
+                    <p>Desarrollamos interfaces hombre-máquina intuitivas y sistemas de supervisión y control de datos.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🔧</div>
+                    <h3>Diseño de Control y PLC</h3>
+                    <p>Programación y diseño de sistemas de control lógico programable para cualquier aplicación industrial.</p>
+                </div>
+            </div>
+        </section>
 
-    <section id="proyectos">
-        <h2>Proyectos</h2>
-        <div class="video-container">
-            <video controls class="video" src="company-visit.mp4"></video>            
-        </div>
-    </section>
+        <section id="proyectos" class="content-section">
+            <h2 class="section-title hidden">Proyectos Destacados</h2>
+             <div class="project-description hidden">
+                <p>Cada proyecto es una oportunidad para demostrar cómo la ingeniería de precisión y la automatización inteligente pueden transformar un desafío en una ventaja competitiva.</p>
+            </div>
+        </section>
 
-    <section id="curso">
-        <h2>Cursos Y Capacitaciones</h2>
-        <div class="curso-container">
-            <a href="https://hotmart.com/es/marketplace/productos/neumatica-en-la-automatizacion-de-procesos-industriales/Y89270096X" target="_blank">
-                <img src="Diseño de Sistemas Electroneumáticos.png" alt="Curso Diseño y Automatización" class="curso-imagen">
-            </a>
-        </div>
-    </section>
+        <section id="capacitacion" class="content-section">
+            <h2 class="section-title hidden">Cursos y Capacitaciones</h2>
+            <div class="course-card hidden">
+                <div class="course-image-placeholder">
+                     <img src="Diseño de Sistemas Electroneumáticos.png" alt="Curso Diseño y Automatización" class="course-image">
+                </div>
+                <div class="course-info">
+                    <h3>Neumática en la Automatización de Procesos Industriales</h3>
+                    <p>Domina los fundamentos y las aplicaciones avanzadas de la electroneumática. Un curso diseñado para potenciar tus habilidades en la automatización industrial.</p>
+                    <a href="https://hotmart.com/es/marketplace/productos/neumatica-en-la-automatizacion-de-procesos-industriales/Y89270096X" class="cta-button" target="_blank">Ver Curso en Hotmart</a>
+                </div>
+            </div>
+        </section>
 
-    <footer id="contacto">
-        <div class="socials">
-            <a href="https://youtube.com/@aut_ins_col?si=ys7d4a4Mt-ZRuvgs" target="_blank">
-                <img src="youtube_logo.png" alt="YouTube">
-            </a>
-            <a href="https://www.instagram.com/_aut_ind_/" target="_blank">
-                <img src="instagram-logo.png" alt="Instagram">
-            </a>
+    </main>
+
+    <footer id="contacto" class="main-footer">
+        <h2 class="section-title hidden">Contacto</h2>
+        <div class="contact-container hidden">
+             <div class="socials">
+                <a href="https://www.youtube.com/@AutomationInsights" target="_blank" title="YouTube">
+                    <img src="youtube_logo.png" alt="YouTube">
+                </a>
+                <a href="https://www.instagram.com/_aut_ind_/" target="_blank" title="Instagram">
+                    <img src="instagram-logo.png" alt="Instagram">
+                </a>
+            </div>
+            <a href="mailto:camilo_agudelo@automationinsightscol.com" class="contact-email">camilo_agudelo@automationinsightscol.com</a>
+            <p class="copyright">© <span id="current-year"></span> Automation Insights S.A.S. | Diseñado con Precisión.</p>
         </div>
-        <p><a href="mailto:camilo_agudelo@automationinsightscol.com">camilo_agudelo@automationinsightscol.com</a></p>
     </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+    </script>
+
 </body>
 </html>
