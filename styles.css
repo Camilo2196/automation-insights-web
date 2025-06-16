@@ -2,7 +2,8 @@
 :root {
     --bg-main: #0A192F;
     --bg-element: #112240;
-    --accent-primary: #64FFDA;
+    --accent-primary: #64FFDA; /* Verde cian */
+    --accent-secondary: #00AEEF; /* Azul eléctrico para el glow */
     --text-main: #EAEAEA;
     --text-secondary: #8892B0;
     --font-title: 'Poppins', sans-serif;
@@ -22,48 +23,60 @@ html {
 }
 
 body {
-    background-color: var(--bg-main);
+    background: linear-gradient(-45deg, #0A192F, #0d0d0d, #0A192F, #112240);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
     color: var(--text-secondary);
     font-family: var(--font-body);
     line-height: 1.6;
 }
 
-/* 2. Estilos Generales y de Texto */
+/* Animación de fondo futurista */
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 2. Estilos Generales y de Texto (con Efecto Glow) */
 h1, h2, h3 {
     font-family: var(--font-title);
     color: var(--text-main);
     font-weight: 700;
     margin-bottom: 1rem;
+    /* Efecto Glow futurista */
+    text-shadow: 0 0 5px rgba(100, 255, 218, 0.4), 0 0 10px rgba(0, 174, 239, 0.3);
 }
 
-h1 { font-size: clamp(2rem, 5vw, 3rem); }
-h2 { font-size: clamp(2rem, 4vw, 2.5rem); }
-h3 { font-size: 1.5rem; }
+h1 { font-size: clamp(2rem, 5vw, 3rem); text-align: center;}
+h2 { font-size: clamp(2rem, 4vw, 2.5rem); text-align: center;}
+h3 { font-size: 1.5rem; text-align: center;}
 
 p {
+    margin-left: auto; /* Centra el párrafo si su max-width se activa */
+    margin-right: auto; /* Centra el párrafo si su max-width se activa */
     margin-bottom: 1rem;
-    max-width: 60ch; /* Mejora la legibilidad */
+    max-width: 60ch; 
 }
 
 a {
     color: var(--text-main);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 a:hover {
     color: var(--accent-primary);
+    text-shadow: 0 0 8px var(--accent-primary);
 }
 
 .content-section {
     padding: 100px 20px;
     max-width: 1100px;
     margin: 0 auto;
-}
-
-.section-title {
-    text-align: center;
-    margin-bottom: 4rem;
+    display: flex; /* Usamos flex para centrar contenido */
+    flex-direction: column;
+    align-items: center; /* Centramos todo horizontalmente */
 }
 
 /* 3. Barra de Navegación */
@@ -90,7 +103,23 @@ a:hover {
     font-family: var(--font-title);
     font-size: 1.5rem;
     font-weight: 700;
+    transition: transform 0.3s ease;
 }
+
+/* Efecto Glitch al pasar el cursor */
+.logo:hover {
+    animation: glitch 0.2s linear infinite;
+}
+
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
 
 .main-nav ul {
     list-style: none;
@@ -117,6 +146,7 @@ a:hover {
     font-family: var(--font-body);
     font-size: 1.2rem;
     margin-bottom: 2rem;
+    text-shadow: none; /* Quitamos el glow del subtitulo para dar contraste */
 }
 
 .cta-button {
@@ -128,19 +158,21 @@ a:hover {
     font-family: var(--font-body);
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .cta-button:hover {
     background-color: rgba(100, 255, 218, 0.1);
+    box-shadow: 0 0 15px rgba(100, 255, 218, 0.5);
 }
 
-/* 5. Servicios */
+/* 5. Servicios y Tarjetas con Bordes Futuristas */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     text-align: center;
+    width: 100%; /* Aseguramos que la grid ocupe todo el ancho de la sección */
 }
 
 .service-item {
@@ -148,9 +180,33 @@ a:hover {
     padding: 2rem;
     border-radius: 8px;
     transition: transform 0.3s ease;
+    position: relative; /* Necesario para los bordes */
 }
-.service-item:hover {
-    transform: translateY(-5px);
+
+/* Estilo futurista para las esquinas de las tarjetas */
+.service-item::before,
+.service-item::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    transition: all 0.3s ease-in-out;
+}
+.service-item::before {
+    top: -5px;
+    left: -5px;
+    border-top: 2px solid var(--accent-primary);
+    border-left: 2px solid var(--accent-primary);
+}
+.service-item::after {
+    bottom: -5px;
+    right: -5px;
+    border-bottom: 2px solid var(--accent-primary);
+    border-right: 2px solid var(--accent-primary);
+}
+.service-item:hover::before, .service-item:hover::after {
+    width: calc(100% + 10px);
+    height: calc(100% + 10px);
 }
 
 .service-icon {
@@ -176,6 +232,7 @@ a:hover {
     padding: 2rem;
     border-radius: 8px;
     align-items: center;
+    width: 100%;
 }
 
 .course-image-placeholder {
@@ -187,8 +244,15 @@ a:hover {
     width: 100%;
     border-radius: 4px;
 }
+.course-info {
+    text-align: left; /* Alineamos el texto de la descripción a la izquierda para mejor lectura */
+}
 .course-info h3 {
-    margin-top: 0;
+    text-align: left;
+}
+.course-info p {
+    margin-left: 0; /* Reiniciamos margen para este párrafo */
+    margin-right: 0;
 }
 
 /* 8. Footer y Contacto */
@@ -203,10 +267,11 @@ a:hover {
     width: 30px;
     height: auto;
     margin: 0 1rem;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
 .socials img:hover {
     transform: scale(1.1);
+    filter: drop-shadow(0 0 5px var(--accent-primary));
 }
 .contact-email {
     display: inline-block;
@@ -257,10 +322,12 @@ a:hover {
         grid-template-columns: 1fr;
         text-align: center;
     }
-    .course-info {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    .course-info, .course-info h3 {
+        text-align: center;
+    }
+    .course-info p {
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
