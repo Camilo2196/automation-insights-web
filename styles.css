@@ -38,7 +38,7 @@ h1, h2, h3 {
 
 h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); }
 h2 { font-size: clamp(2rem, 5vw, 3rem); text-align: center; }
-h3 { font-size: 1.5rem; }
+h3 { font-size: 1.5rem; text-align: center; }
 
 p {
     max-width: 65ch;
@@ -96,7 +96,7 @@ p {
     color: var(--text-light);
 }
 .logo-img {
-    width: 40px;
+    width: 50px;
     height: auto;
 }
 
@@ -190,10 +190,12 @@ p {
     transform: scaleX(1);
 }
 
-/* 5. Video Wrapper */
+/* 5. Video Wrapper (Tamaño Ajustado) */
 .video-wrapper {
     position: relative;
     width: 100%;
+    max-width: 900px;
+    margin-bottom: 4rem;
     padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
     height: 0;
     border-radius: 10px;
@@ -210,7 +212,71 @@ p {
     height: 100%;
 }
 
-/* 6. Tarjeta de Capacitación */
+/* 6. Tarjetas de Servicios */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+}
+.service-item {
+    background: var(--bg-card);
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--border-color);
+    padding: 2rem;
+    border-radius: 8px;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+.service-item:hover {
+    background: rgba(30, 30, 30, 0.8);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+.service-item h3 {
+    margin-bottom: 0.5rem;
+}
+
+/* 7. Galería de Proyectos */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+}
+.gallery-item {
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--border-color);
+    transition: border-color 0.3s ease;
+}
+.gallery-item:hover {
+    border-color: var(--text-light);
+}
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+.gallery-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.03) 50%, transparent 50%);
+    background-size: 100% 4px;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+
+/* 8. Tarjeta de Capacitación */
 .course-card {
     display: grid;
     grid-template-columns: 1fr 1.5fr;
@@ -243,7 +309,7 @@ p {
     margin-bottom: 2rem;
 }
 
-/* 7. Footer */
+/* 9. Footer */
 .main-footer {
     padding: 80px 20px 40px;
     text-align: center;
@@ -278,9 +344,10 @@ p {
 }
 .copyright {
     font-size: 0.9rem;
+    white-space: nowrap;
 }
 
-/* 8. Animaciones de Scroll */
+/* 10. Animaciones de Scroll */
 .hidden {
     opacity: 0;
     transform: translateY(30px);
@@ -302,7 +369,7 @@ p {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* 9. Media Queries para Responsividad */
+/* 11. Media Queries para Responsividad */
 @media (max-width: 768px) {
     .main-header {
         padding: 0;
