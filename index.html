@@ -3,19 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Automation Insights S.A.S. | Ingeniería para la Industria 4.0</title>
+    <title>Automation Insights S.A.S. | Ingeniería del Futuro</title>
     
+    <!-- Google Fonts: Space Grotesk para un look técnico -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
     
+    <!-- Hoja de Estilos Actualizada -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
+    <!-- Header Fijo con efecto de vidrio -->
     <header class="main-header">
         <div class="header-container">
-            <a href="#hero" class="logo">Automation Insights S.A.S.</a>
+            <a href="#hero" class="logo">
+                <img src="Logo_Blanco.png" alt="Logo de Automation Insights" class="logo-img">
+                <span>Automation Insights</span>
+            </a>
             <nav class="main-nav">
                 <ul>
                     <li><a href="#servicios">Servicios</a></li>
@@ -28,97 +34,99 @@
     </header>
 
     <main>
+        <!-- Sección Hero con fondo animado -->
         <section id="hero" class="hero-section">
+            <div class="hero-grid-background"></div>
             <div class="hero-content">
-                <img src="Logo_Blanco.png" alt="Logo de Automation Insights" class="hero-logo fade-in">
-                <h1 class="fade-in delay-1">Automatización que Inspira, Conocimiento que Eleva</h1>
-                <h2 class="fade-in delay-2">Ingeniería y diseño para la industria del futuro.</h2>
-                <a href="#servicios" class="cta-button fade-in delay-3">Conoce lo que hacemos</a>
+                <h1 class="hero-title fade-in">Ingeniería para la Industria 4.0</h1>
+                <p class="hero-subtitle fade-in delay-1">Diseñamos y automatizamos los procesos del futuro con precisión, inteligencia y robustez.</p>
+                <a href="#servicios" class="cta-button fade-in delay-2">Explorar Soluciones</a>
             </div>
         </section>
 
+        <!-- Sección Servicios -->
         <section id="servicios" class="content-section">
             <h2 class="section-title hidden">Portafolio de Servicios</h2>
-            
             <div class="video-wrapper hidden">
-                <iframe 
-                    src="https://www.youtube.com/embed/sMTpMp-zoNQ" 
-                    title="YouTube video player" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-             </div>
-
+                <iframe src="https://www.youtube.com/embed/sMTpMp-zoNQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
             <div class="services-grid hidden">
                 <div class="service-item">
-                    <div class="service-icon">🌬️⚙️⚡️</div>
-                    <h3>Diseño de Sistemas Eléctroneumáticos</h3>
-                    <p>Implementamos soluciones electroneumáticas para optimizar la producción y reducir costos operativos.</p>
+                    <h3>Integración Robótica</h3>
+                    <p>Soluciones robóticas para optimizar la producción y reducir costos operativos.</p>
                 </div>
                 <div class="service-item">
-                    <div class="service-icon">💻🏭</div>
                     <h3>Sistemas SCADA & HMI</h3>
-                    <p>Desarrollamos interfaces hombre-máquina intuitivas y sistemas de supervisión y control de datos.</p>
+                    <p>Interfaces intuitivas y sistemas de supervisión y control de datos.</p>
                 </div>
                 <div class="service-item">
-                    <div class="service-icon">🔧🏭</div>
                     <h3>Diseño de Control y PLC</h3>
-                    <p>Programación y diseño de sistemas de control lógico programable para cualquier aplicación industrial.</p>
+                    <p>Programación y diseño de sistemas de control para cualquier aplicación industrial.</p>
                 </div>
             </div>
         </section>
 
+        <!-- Sección Proyectos -->
         <section id="proyectos" class="content-section">
             <h2 class="section-title hidden">Proyectos Destacados</h2>
-            <div class="project-description hidden">
-                <p>Cada proyecto es una oportunidad para demostrar cómo la ingeniería de precisión y la automatización inteligente pueden transformar un desafío en una ventaja competitiva.</p>
-            </div>
-
-           <div class="video-wrapper hidden">
-                <video 
-                    controls 
-                    src="company-visit.mp4" 
-                    poster="https://via.placeholder.com/1920x1080/112240/64FFDA?text=Vista+Previa+del+Video"
-                    title="Visita a la Compañía">
+            <p class="section-description hidden">Cada proyecto es una oportunidad para demostrar cómo la ingeniería de precisión puede transformar un desafío en una ventaja competitiva.</p>
+            <div class="video-wrapper hidden">
+                <video controls src="company-visit.mp4" poster="https://placehold.co/1920x1080/0d0d0d/FFFFFF?text=Proyecto+Destacado" title="Visita a la Compañía">
                     Tu navegador no soporta el tag de video.
                 </video>
             </div>
-
         </section>
 
+        <!-- ======================================= -->
+        <!--   NUEVO: Galería de Imágenes de Proyectos   -->
+        <!-- ======================================= -->
+        <section id="galeria" class="content-section">
+             <h2 class="section-title hidden">Galería de Proyectos</h2>
+             <div class="gallery-grid hidden">
+                <!-- Reemplaza los 'src' con las rutas a tus imágenes -->
+                <div class="gallery-item"><img src="https://placehold.co/600x400/1a1a1a/f5f5f5?text=Proyecto+1" alt="Imagen del Proyecto 1"></div>
+                <div class="gallery-item"><img src="https://placehold.co/600x400/1a1a1a/f5f5f5?text=Proyecto+2" alt="Imagen del Proyecto 2"></div>
+                <div class="gallery-item"><img src="https://placehold.co/600x400/1a1a1a/f5f5f5?text=Proyecto+3" alt="Imagen del Proyecto 3"></div>
+                <div class="gallery-item"><img src="https://placehold.co/600x400/1a1a1a/f5f5f5?text=Proyecto+4" alt="Imagen del Proyecto 4"></div>
+             </div>
+        </section>
+
+        <!-- Sección Capacitación -->
         <section id="capacitacion" class="content-section">
             <h2 class="section-title hidden">Cursos y Capacitaciones</h2>
             <div class="course-card hidden">
-                <div class="course-image-placeholder">
+                <div class="course-image-container">
                      <img src="Diseño de Sistemas Electroneumáticos.png" alt="Curso Diseño y Automatización" class="course-image">
                 </div>
                 <div class="course-info">
-                    <h3>Neumática en la Automatización de Procesos Industriales</h3>
+                    <h3>Neumática en la Automatización</h3>
                     <p>Domina los fundamentos y las aplicaciones avanzadas de la electroneumática. Un curso diseñado para potenciar tus habilidades en la automatización industrial.</p>
-                    <a href="https://hotmart.com/es/marketplace/productos/neumatica-en-la-automatizacion-de-procesos-industriales/Y89270096X" class="cta-button" target="_blank">Ver Curso en Hotmart</a>
+                    <a href="https://hotmart.com/es/marketplace/productos/neumatica-en-la-automatizacion-de-procesos-industriales/Y89270096X" class="cta-button" target="_blank">Ver Curso</a>
                 </div>
             </div>
         </section>
 
     </main>
 
+    <!-- Footer y Contacto -->
     <footer id="contacto" class="main-footer">
         <h2 class="section-title hidden">Contacto</h2>
         <div class="contact-container hidden">
+            <p class="contact-prompt">¿Listo para transformar tu operación?</p>
              <div class="socials">
-                <a href="https://www.youtube.com/@aut_ins_col" target="_blank" title="YouTube">
+                <a href="https://youtube.com/@aut_ins_col?si=ys7d4a4Mt-ZRuvgs" target="_blank" title="YouTube">
                     <img src="youtube_logo.png" alt="YouTube">
                 </a>
                 <a href="https://www.instagram.com/_aut_ind_/" target="_blank" title="Instagram">
                     <img src="instagram-logo.png" alt="Instagram">
                 </a>
             </div>
-            <a href="mailto:gerencia@automationinsightscol.com" class="contact-email">gerencia@automationinsightscol.com</a>
-            <p class="copyright">© <span id="current-year"></span> Automation Insights S.A.S. | Automatizamos tu presente, para que disfrutes tu futuro.</p>
+            <a href="mailto:camilo_agudelo@automationinsightscol.com" class="contact-email">camilo_agudelo@automationinsightscol.com</a>
+            <p class="copyright">© <span id="current-year"></span> Automation Insights S.A.S.</p>
         </div>
     </footer>
 
+    <!-- Script para animaciones y año -->
     <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
