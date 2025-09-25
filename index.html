@@ -5,18 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Automation Insights S.A.S. | Ingeniería del Futuro</title>
     
-    <!-- Tipografía de Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
     
-    <!-- Enlace a tu hoja de estilos -->
     <link rel="stylesheet" href="styles.css">
 
+    <!-- Estilos en línea para el contenedor de botones CTA para asegurar el espaciado -->
+    <style>
+        .cta-container {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+    </style>
 </head>
 <body>
     
-    <!-- Elemento Canvas para el fondo animado -->
+    <!-- Canvas para el fondo de partículas animado -->
     <canvas id="background-grid"></canvas>
 
     <header class="main-header">
@@ -41,9 +49,13 @@
     <main>
         <section id="hero" class="hero-section">
             <div class="hero-content">
-                <h1 class="fade-in">Automatización qué Inspira <br><span class="highlight">Conocimiento qué Eleva.</span></h1>
+                <h1 class="fade-in">Ingeniería que <br><span class="highlight">impulsa el futuro.</span></h1>
                 <p class="fade-in delay-1">Diseñamos y ejecutamos proyectos de automatización industrial y sistemas mecatrónicos que redefinen la eficiencia y la productividad.</p>
-                <a href="#contacto" class="cta-button fade-in delay-2">Inicia tu Proyecto</a>
+                <div class="cta-container fade-in delay-2">
+                    <a href="#contacto" class="cta-button">Inicia tu Proyecto</a>
+                    <!-- Reemplaza '#' con tu enlace de YouTube -->
+                    <a href="#" class="cta-button" target="_blank">▶ Ver Portafolio en Acción</a>
+                </div>
             </div>
         </section>
 
@@ -73,10 +85,10 @@
             <h2 class="section-title hidden">Proyectos Destacados</h2>
             <div class="project-grid hidden">
                 <div class="project-card">
-                    <img src="PLC_1.png" alt="Sistema de control de procesos on PLC">
+                    <img src="Proyecto_1.png" alt="Sistema de control de procesos químicos">
                     <div class="project-info">
-                        <h3>Control de Procesos Industriales con PLC</h3>
-                        <p>Implementación de programación en PLC's y diseño de tableros de contorl para la automatización de procesos.</p>
+                        <h3>Control de Procesos Químicos</h3>
+                        <p>Implementación de un sistema de control distribuido (DCS) para la optimización de reactores en la industria farmacéutica.</p>
                     </div>
                 </div>
                 <div class="project-card">
@@ -118,9 +130,18 @@
                     <p>La teoría es fundamental, pero la verdadera comprensión viene con la práctica. Utiliza nuestro simulador para visualizar el efecto de cada componente del PID.</p>
                     <div class="interactive-placeholder">
                         <p>Incrusta aquí tu simulador interactivo</p>
-                        <!-- INSTRUCCIÓN: Usa un <iframe> para incrustar tu archivo "interactive_pid_controller.html" -->
                         <!-- <iframe src="interactive_pid_controller.html" style="width:100%; height:800px; border:none; border-radius: 8px;"></iframe> -->
                     </div>
+                </article>
+
+                <article class="blog-article">
+                    <div class="article-header">
+                        <span class="article-icon">🌐</span>
+                        <h3>Explora Más en Nuestro Blog Externo</h3>
+                    </div>
+                    <p>Para análisis más profundos, tutoriales paso a paso y noticias del sector, visita nuestro blog principal. ¡Conocimiento técnico actualizado a tu alcance!</p>
+                    <!-- Reemplaza '#' con tu enlace de Blogger -->
+                    <a href="#" class="cta-button" target="_blank" style="margin-top: 1rem;">Visitar Blog en Blogger</a>
                 </article>
 
             </div>
@@ -139,6 +160,16 @@
                     <p>Asegura que ninguna etapa crítica se pase por alto durante el arranque de un nuevo sistema automatizado.</p>
                     <a href="#" class="download-btn">Descargar PDF</a>
                 </div>
+                 <div class="resource-card">
+                    <h4>Playlist: Tutoriales TIA Portal</h4>
+                    <p>Accede a nuestra lista de reproducción curada con los mejores tutoriales para dominar Siemens TIA Portal desde cero.</p>
+                    <a href="#" class="download-btn">Ir a YouTube</a>
+                </div>
+                 <div class="resource-card">
+                    <h4>Playlist: Neumática Industrial</h4>
+                    <p>Conceptos, componentes y circuitos fundamentales de la neumática aplicada a la automatización de procesos.</p>
+                    <a href="#" class="download-btn">Ir a YouTube</a>
+                </div>
             </div>
         </section>
 
@@ -148,10 +179,12 @@
                 <div class="training-card">
                     <h3>Programación de PLC's - Nivel 1</h3>
                     <p>Curso práctico de 40 horas enfocado en los fundamentos de LADDER, configuración de hardware y diagnóstico básico.</p>
+                    <span class="training-level">Nivel: Básico</span>
                 </div>
                 <div class="training-card">
                     <h3>Control de Procesos con PID</h3>
                     <p>Seminario intensivo de 16 horas sobre la teoría, implementación y sintonía de lazos de control PID en Siemens TIA Portal.</p>
+                    <span class="training-level">Nivel: Intermedio</span>
                 </div>
             </div>
         </section>
@@ -175,7 +208,6 @@
 
     <script>
         // --- Script para la animación de la rejilla de fondo ---
-        // Este script crea el efecto de partículas y líneas interconectadas.
         const canvas = document.getElementById('background-grid');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -184,8 +216,8 @@
         function resizeCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
+            init(); // Re-inicializa las partículas para el nuevo tamaño
         }
-        resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
         window.addEventListener('mousemove', (e) => {
@@ -218,7 +250,6 @@
                 this.x += this.speedX;
                 this.y += this.speedY;
 
-                // Interacción de repulsión con el mouse
                 if(mouse.x){
                     let dx = mouse.x - this.x;
                     let dy = mouse.y - this.y;
@@ -274,7 +305,7 @@
             requestAnimationFrame(animate);
         }
 
-        init();
+        resizeCanvas();
         animate();
 
         // --- Script para animaciones de scroll y año ---
