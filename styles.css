@@ -29,7 +29,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Canvas para el fondo animado */
 #background-grid {
     position: fixed;
     top: 0;
@@ -152,7 +151,6 @@ p {
     border-radius: 50px;
     font-weight: 500;
     transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-    margin-top: 2rem;
 }
 
 .cta-button:hover {
@@ -182,14 +180,14 @@ p {
 }
 
 /* 7. Estilos de Tarjetas */
-.service-card, .project-card, .resource-card, .training-card {
+.service-card, .project-card, .resource-card, .training-card, .blog-article {
     background: var(--bg-card);
     border-radius: 12px;
     border: 1px solid var(--border-color);
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-.service-card:hover, .project-card:hover, .resource-card:hover, .training-card:hover {
+.service-card:hover, .project-card:hover, .resource-card:hover, .training-card:hover, .blog-article:hover {
     transform: translateY(-10px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     border-color: var(--accent-glow);
@@ -198,6 +196,7 @@ p {
 .service-card { padding: 2rem; }
 .project-card { overflow: hidden; }
 .resource-card, .training-card { padding: 2rem; display: flex; flex-direction: column; justify-content: space-between; }
+.blog-article { padding: 2.5rem; margin-bottom: 2rem; }
 
 
 .service-card h3 {
@@ -263,15 +262,6 @@ footer {
 }
 
 /* 10. Estilos para Blog "Aprende Aquí" */
-.blog-article {
-    background: var(--bg-card);
-    padding: 2.5rem;
-    margin-bottom: 2rem;
-    border-radius: 12px;
-    border: 1px solid var(--border-color);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-}
-.blog-article:hover { border-color: rgba(59, 130, 246, 0.5); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); }
 .article-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
 .article-icon { font-size: 2rem; }
 .blog-article h3 { font-size: clamp(1.5rem, 4vw, 2rem); margin: 0; }
@@ -287,11 +277,4 @@ footer {
     .main-nav { display: none; }
     h1 { font-size: 2.2rem; }
     h2 { font-size: 1.8rem; }
-}
-
-
-.interactive-placeholder p::before {
-    content: '▶';
-    margin-right: 0.5rem;
-    color: var(--accent-glow);
 }
