@@ -5,17 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Automation Insights S.A.S. | Ingeniería del Futuro</title>
     
-    <!-- Google Fonts: Space Grotesk para un look técnico -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
     
-    <!-- Hoja de Estilos Actualizada -->
+    <!-- Hoja de Estilos actualizada -->
     <link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
 
-    <!-- Header Fijo con efecto de vidrio -->
     <header class="main-header">
         <div class="header-container">
             <a href="#hero" class="logo">
@@ -26,144 +25,157 @@
                 <ul>
                     <li><a href="#servicios">Servicios</a></li>
                     <li><a href="#proyectos">Proyectos</a></li>
-                    <!-- ======================================= -->
-                    <!-- LÍNEA AÑADIDA (Aprox. línea 28) -->
-                    <!-- ======================================= -->
+                    <li><a href="#aprende-aqui">Aprende Aquí</a></li>
                     <li><a href="#recursos">Recursos</a></li>
-                    <li><a href="#capacitacion">Capacitación</a></li>
+                    <li><a href="#capacitaciones">Capacitaciones</a></li>
                     <li><a href="#contacto">Contacto</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main>
-        <!-- Sección Hero con fondo animado -->
-        <section id="hero" class="hero-section">
-            <div class="hero-grid-background"></div>
-            <div class="hero-content">
-                <h1 class="hero-title fade-in">Automation Insights S.A.S.</h1>
-                <p class="hero-subtitle fade-in delay-1">Automatización E Ingeniería Industrial</p>
-                <a href="#servicios" class="cta-button fade-in delay-2">Explorar Soluciones</a>
-            </div>
-        </section>
+    <section id="hero" class="hero-section">
+        <div class="hero-content">
+            <h1 class="fade-in">Ingeniería que <br><span class="highlight">impulsa el futuro.</span></h1>
+            <p class="fade-in delay-1">Diseñamos y ejecutamos proyectos de automatización industrial y sistemas mecatrónicos que redefinen la eficiencia y la productividad.</p>
+            <a href="#contacto" class="cta-button fade-in delay-2">Inicia tu Proyecto</a>
+        </div>
+    </section>
 
-        <!-- Sección Servicios -->
-        <section id="servicios" class="content-section">
-            <h2 class="section-title hidden">Portafolio de Servicios</h2>
-            <div class="video-wrapper hidden">
-                <iframe src="https://www.youtube.com/embed/sMTpMp-zoNQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <section id="servicios" class="content-section">
+        <h2 class="section-title hidden">Nuestros Servicios</h2>
+        <div class="service-grid hidden">
+            <div class="service-card">
+                <h3><span class="service-icon">⚙️</span>Diseño y Simulación</h3>
+                <p>Conceptualizamos y validamos soluciones de automatización a medida, utilizando software de vanguardia para garantizar el éxito antes de la implementación.</p>
             </div>
-            <div class="services-grid hidden">
-                <div class="service-item">
-                    <h3>Integración de Sistemas Electroneumáticos</h3>
-                    <p>Soluciones neumáticas y electroneumáticas para optimizar la producción y reducir costos operativos.</p>
-                </div>
-                <div class="service-item">
-                    <h3>Sistemas SCADA & HMI</h3>
-                    <p>Interfaces intuitivas y sistemas de supervisión y control de datos.</p>
-                </div>
-                <div class="service-item">
-                    <h3>Diseño de Control y PLC</h3>
-                    <p>Programación y diseño de sistemas de control para cualquier aplicación industrial.</p>
-                </div>
+            <div class="service-card">
+                <h3><span class="service-icon">💻</span>Programación de PLC y HMI</h3>
+                <p>Desarrollamos lógica de control robusta e interfaces hombre-máquina intuitivas para un control total y una operación simplificada de tus procesos.</p>
             </div>
-        </section>
-
-        <!-- Sección Proyectos -->
-        <section id="proyectos" class="content-section">
-            <h2 class="section-title hidden">Proyectos Destacados</h2>
-            <p class="section-description hidden">Cada proyecto es una oportunidad para demostrar cómo la ingeniería de precisión puede transformar un desafío en una ventaja competitiva.</p>
-            <div class="video-wrapper hidden">
-                <video controls src="company-visit.mp4" poster="https://placehold.co/1920x1080/0d0d0d/FFFFFF?text=Proyecto+Destacado" title="Visita a la Compañía">
-                    Tu navegador no soporta el tag de video.
-                </video>
+            <div class="service-card">
+                <h3><span class="service-icon">🚀</span>Puesta en Marcha</h3>
+                <p>Llevamos los diseños del plano a la realidad, realizando la instalación, configuración y arranque de sistemas con los más altos estándares de calidad y seguridad.</p>
             </div>
-        </section>
-
-        <!-- Galería de Imágenes de Proyectos -->
-        <section id="galeria" class="content-section">
-             <h2 class="section-title hidden">Galería</h2>
-             <div class="gallery-grid hidden">
-                <!-- Reemplaza los 'src' con las rutas a tus imágenes -->
-                <div class="gallery-item"><img src="TABLERO_1.jpg" alt="Imagen del Proyecto 1"></div>
-                <div class="gallery-item"><img src="PLC_1.png" alt="Imagen del Proyecto 2"></div>
-                <div class="gallery-item"><img src="https://placehold.co/600x400/1a1a1a/f5f5f5?text=Proyecto+3" alt="Imagen del Proyecto 3"></div>
-                <div class="gallery-item"><img src="https://placehold.co/600x400/1a1a1a/f5f5f5?text=Proyecto+4" alt="Imagen del Proyecto 4"></div>
-             </div>
-        </section>
-
-        <!-- ================================================================== -->
-        <!--   NUEVA SECCIÓN AÑADIDA (Aprox. a partir de la línea 119)        -->
-        <!-- ================================================================== -->
-        <section id="recursos" class="content-section">
-            <h2 class="section-title hidden">Recursos Digitales</h2>
-            <p class="section-description hidden">Explora nuestras listas de reproducción con contenido técnico, tutoriales y demostraciones de proyectos.</p>
-            <div class="playlists-grid hidden">
-                <!-- Playlist 1 -->
-                <div class="playlist-card">
-                    <h3>Neumática Y Electroneumática Industrial</h3>
-                    <div class="playlist-wrapper">
-                        <iframe src="https://www.youtube.com/embed/videoseries?list=PLET5slV3kQZTylLlrblpSX5OqDvJQNV16" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                </div>
-                <!-- Playlist 2 -->
-                <div class="playlist-card">
-                    <h3>Control de Motores</h3>
-                    <div class="playlist-wrapper">
-                        <iframe src="https://youtube.com/playlist?list=PLET5slV3kQZRPSEnnu1M4pTFLBfSlhprI&si=BWl8u6d8OLLHT_4p" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                </div>
-                <!-- Playlist 3 -->
-                <div class="playlist-card">
-                    <h3>Control Industrial Con PLC</h3>
-                    <div class="playlist-wrapper">
-                        <iframe src="https://www.youtube.com/embed/videoseries?list=PLET5slV3kQZS4JpLM0OEThI6sa_a7Kln6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                </div>
-                <!-- Playlist 4 -->
-                <div class="playlist-card">
-                    <h3>Programación en TIA Portal</h3>
-                    <div class="playlist-wrapper">
-                        <iframe src="https://youtube.com/playlist?list=PLET5slV3kQZSX2G7DED897bdmrC3Dkn3S&si=zuzLAODAtyNSAP_g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                </div>
-                <!-- Playlist 5 -->
-                <div class="playlist-card">
-                    <h3>Hidráulica Industrial</h3>
-                    <div class="playlist-wrapper">
-                        <iframe src="https://youtube.com/playlist?list=PLET5slV3kQZRMFQ84nQzaFeJUsSi092Cy&si=jjkvkmNffM6NzT_O" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                </div>
-                <!-- Playlist 6 -->
-                <div class="playlist-card">
-                    <h3>Programación en Python</h3>
-                    <div class="playlist-wrapper">
-                        <iframe src="https://youtube.com/playlist?list=PLET5slV3kQZT7K4yOA1PMNGzdb-SHfWvj&si=JK8YG7uRIAeBPVm1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
+             <div class="service-card">
+                <h3><span class="service-icon">🎓</span>Capacitación Especializada</h3>
+                <p>Empoderamos a tu equipo con el conocimiento técnico necesario para operar y mantener los nuevos sistemas, asegurando una transición fluida y sostenible.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="proyectos" class="content-section">
+        <h2 class="section-title hidden">Proyectos Destacados</h2>
+        <div class="project-grid hidden">
+            <div class="project-card">
+                <img src="Proyecto_1.png" alt="Sistema de control de procesos químicos">
+                <div class="project-info">
+                    <h3>Control de Procesos Químicos</h3>
+                    <p>Implementación de un sistema de control distribuido (DCS) para la optimización de reactores en la industria farmacéutica.</p>
                 </div>
             </div>
-        </section>
-
-        <!-- Sección Capacitación -->
-        <section id="capacitacion" class="content-section">
-            <h2 class="section-title hidden">Cursos y Capacitaciones</h2>
-            <div class="course-card hidden">
-                <div class="course-image-container">
-                     <img src="Diseño de Sistemas Electroneumáticos.png" alt="Curso Diseño y Automatización de Sistemas Electroneumáticos" class="course-image">
-                </div>
-                <div class="course-info">
-                    <h3>Neumática en la Automatización</h3>
-                    <p>Domina los fundamentos y las aplicaciones avanzadas de la electroneumática. Un curso diseñado para potenciar tus habilidades en la automatización industrial.</p>
-                    <a href="https://hotmart.com/es/marketplace/productos/neumatica-en-la-automatizacion-de-procesos-industriales/Y89270096X" class="cta-button" target="_blank">Ver Curso</a>
+            <div class="project-card">
+                <img src="Proyecto_2.png" alt="Automatización de línea de empaque">
+                <div class="project-info">
+                    <h3>Línea de Empaque Robotizada</h3>
+                    <p>Integración de brazos robóticos y sistemas de visión artificial para una línea de empaque de alta velocidad en el sector alimenticio.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-    </main>
+    <section id="aprende-aqui" class="content-section">
+        <h2 class="section-title hidden">Aprende Aquí: Blog Técnico</h2>
+        <div class="hidden">
+            
+            <article class="blog-article">
+                <div class="article-header">
+                    <span class="article-icon">🧠</span>
+                    <h3>El Cerebro del Proceso: Fundamentos del Control PID</h3>
+                </div>
+                <p>El controlador <strong>Proporcional-Integral-Derivativo (PID)</strong> es el algoritmo más crucial y extendido en la automatización. Es el cerebro que permite a un sistema no solo medir una variable, sino mantenerla estable en un punto deseado (Setpoint). Para entenderlo, debemos analizar a los tres "expertos" que lo componen.</p>
 
-    <!-- Footer y Contacto -->
-    <footer id="contacto" class="main-footer">
+                <h4>1. El Experto Proporcional (P) - "El Impulsivo"</h4>
+                <p>Es la acción principal y más intuitiva. Su lógica es simple: <strong>"La fuerza de mi respuesta es proporcional al tamaño del error actual"</strong>. Un error grande (estar muy lejos del Setpoint) provoca una acción fuerte, y un error pequeño, una acción suave. Su gran defecto es el "Offset": para mantener una acción correctiva, necesita que siempre exista un pequeño error, por lo que nunca llega a la perfección.</p>
+                <div class="formula">Salida_P = Kp * Error(t)</div>
+                
+                <h4>2. El Experto Integral (I) - "El Perfeccionista con Memoria"</h4>
+                <p>Este experto existe para corregir la imperfección del Proporcional. Su misión es <strong>acumular el error a lo largo del tiempo</strong>. Mientras exista ese pequeño "Offset", el Integral irá sumando fuerza de manera paulatina hasta que el error sea exactamente cero. Es el responsable de la <strong>precisión</strong> del sistema.</p>
+                <div class="formula">Salida_I = (Kp / τi) * ∫Error(t)dt</div>
+
+                <h4>3. El Experto Derivativo (D) - "El Visionario Predictivo"</h4>
+                <p>No le importa el error actual ni el pasado, sino el futuro. Analiza la <strong>velocidad de cambio del error</strong>. Si la variable se acerca demasiado rápido al Setpoint, el Derivativo actúa como un freno para evitar pasarse de largo (overshoot). Aporta <strong>estabilidad y suavidad</strong>, amortiguando las oscilaciones.</p>
+                <div class="formula">Salida_D = Kp * τd * d(Error(t))/dt</div>
+            </article>
+
+            <article class="blog-article">
+                <div class="article-header">
+                    <span class="article-icon">🕹️</span>
+                    <h3>Experimenta en Tiempo Real: Simulador Interactivo PID</h3>
+                </div>
+                <p>La teoría es fundamental, pero la verdadera comprensión viene con la práctica. Utiliza nuestro simulador interactivo para visualizar el efecto de cada componente del PID. Ajusta la Ganancia (Kp), el Tiempo Integral (Ti) y el Tiempo Derivativo (Td) y observa cómo cambia la respuesta del sistema. ¡La mejor forma de aprender es haciendo!</p>
+                
+                <div class="interactive-placeholder">
+                    <p>Insertar aquí el código del Simulador Interactivo PID</p>
+                    <!-- INSTRUCCIÓN: Usa un <iframe> para incrustar tu archivo "interactive_pid_controller.html" -->
+                    <!-- <iframe src="interactive_pid_controller.html" style="width:100%; height:800px; border:none; border-radius: 8px;"></iframe> -->
+                </div>
+            </article>
+
+            <article class="blog-article">
+                <div class="article-header">
+                    <span class="article-icon">🔌</span>
+                    <h3>El Puente al Mundo Real: Tratamiento de Señales Análogas</h3>
+                </div>
+                <p>Antes de que un controlador PID pueda actuar, debe entender lo que ocurre en el proceso. Esto se logra a través del escalado y la normalización de señales análogas (como las de un sensor de temperatura). Aprende cómo traducir una señal eléctrica (ej. 4-20mA) a una variable de ingeniería comprensible (°C, Bares, etc.).</p>
+                
+                <div class="interactive-placeholder">
+                    <p>Insertar aquí la Interfaz de Tratamiento de Señales</p>
+                    <!-- INSTRUCCIÓN: Usa un <iframe> para incrustar tu archivo de tratamiento de señales -->
+                    <!-- <iframe src="tu_archivo_de_variables_analogas.html" style="width:100%; height:600px; border:none; border-radius: 8px;"></iframe> -->
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <section id="recursos" class="content-section">
+        <h2 class="section-title hidden">Recursos y Descargas</h2>
+        <div class="resource-grid hidden">
+            <div class="resource-card">
+                <h4>Guía de Buenas Prácticas en Lógica de PLC</h4>
+                <p>Un documento con estándares y recomendaciones para un código de PLC limpio, eficiente y mantenible.</p>
+                <a href="#" class="download-btn">Descargar PDF</a>
+            </div>
+            <div class="resource-card">
+                <h4>Checklist de Puesta en Marcha</h4>
+                <p>Asegura que ninguna etapa crítica se pase por alto durante el arranque de un nuevo sistema automatizado.</p>
+                <a href="#" class="download-btn">Descargar PDF</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="capacitaciones" class="content-section">
+         <h2 class="section-title hidden">Capacitaciones</h2>
+         <div class="training-container hidden">
+            <div class="training-card">
+                <div class="training-content">
+                    <h3>Programación de PLC's - Nivel 1</h3>
+                    <p>Curso práctico de 40 horas enfocado en los fundamentos de la programación en LADDER, configuración de hardware y diagnóstico básico.</p>
+                    <span class="training-level">Nivel: Básico</span>
+                </div>
+            </div>
+            <div class="training-card">
+                <div class="training-content">
+                    <h3>Control de Procesos con PID</h3>
+                    <p>Seminario intensivo de 16 horas sobre la teoría, implementación y sintonía de lazos de control PID en plataformas Siemens TIA Portal.</p>
+                    <span class="training-level">Nivel: Intermedio</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contacto">
         <h2 class="section-title hidden">Contacto</h2>
         <div class="contact-container hidden">
             <p class="contact-prompt">¿Listo para transformar tu operación?</p>
@@ -180,7 +192,6 @@
         </div>
     </footer>
 
-    <!-- Script para animaciones y año -->
     <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
