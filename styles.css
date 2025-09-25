@@ -29,14 +29,14 @@ body {
     overflow-x: hidden;
 }
 
-/* ESTILO AÑADIDO: Canvas para el fondo animado */
+/* Canvas para el fondo animado */
 #background-grid {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Lo pone detrás de todo el contenido */
+    z-index: -1;
 }
 
 /* 2. Estilos Generales y de Texto */
@@ -136,11 +136,11 @@ p {
     justify-content: center;
     text-align: center;
     padding: 0 2rem;
-    position: relative; /* Necesario para el z-index del contenido */
+    position: relative;
 }
 
 .hero-content {
-    z-index: 1; /* Pone el contenido por delante del canvas */
+    z-index: 1;
 }
 
 .cta-button {
@@ -166,34 +166,39 @@ p {
     padding: 6rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
-    position: relative; /* Asegura que el contenido esté por encima del fondo */
+    position: relative;
     z-index: 1;
-    background: rgba(10, 10, 10, 0.6); /* Fondo semi-transparente para mejorar legibilidad sobre la rejilla */
+    background: rgba(10, 10, 10, 0.6);
     backdrop-filter: blur(5px);
     border-radius: 16px;
     margin-bottom: 4rem;
 }
 
-/* 6. CORRECCIÓN DE GRIDS */
+/* 6. Layout de Cuadrícula Responsive */
 .service-grid, .project-grid, .resource-grid, .training-container {
     display: grid;
     gap: 2rem;
-    /* Esta línea es la clave para la responsividad de las tarjetas */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
-.service-card {
+/* 7. Estilos de Tarjetas */
+.service-card, .project-card, .resource-card, .training-card {
     background: var(--bg-card);
-    padding: 2rem;
     border-radius: 12px;
     border: 1px solid var(--border-color);
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-.service-card:hover {
+.service-card:hover, .project-card:hover, .resource-card:hover, .training-card:hover {
     transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     border-color: var(--accent-glow);
 }
+
+.service-card { padding: 2rem; }
+.project-card { overflow: hidden; }
+.resource-card, .training-card { padding: 2rem; display: flex; flex-direction: column; justify-content: space-between; }
+
 
 .service-card h3 {
     margin-bottom: 1rem;
@@ -204,20 +209,6 @@ p {
 
 .service-icon {
     font-size: 1.5rem;
-    color: var(--accent-glow);
-}
-
-.project-card {
-    background: var(--bg-card);
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid var(--border-color);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
 .project-card img {
@@ -229,16 +220,6 @@ p {
 
 .project-info {
     padding: 1.5rem;
-}
-
-.resource-card, .training-card {
-    background: var(--bg-card);
-    padding: 2rem;
-    border-radius: 12px;
-    border: 1px solid var(--border-color);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 }
 
 .download-btn {
@@ -253,7 +234,7 @@ p {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* 9. Footer y Contacto */
+/* 8. Footer y Contacto */
 footer {
     padding: 4rem 2rem;
     text-align: center;
@@ -262,52 +243,18 @@ footer {
     position: relative;
     z-index: 1;
 }
-.contact-prompt {
-    font-size: 1.2rem;
-    color: var(--text-light);
-    margin-bottom: 2rem;
-}
-.socials {
-    margin-bottom: 2rem;
-}
-.socials img {
-    width: 30px;
-    margin: 0 1rem;
-    opacity: 0.7;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-.socials img:hover {
-    opacity: 1;
-    transform: scale(1.1);
-}
-.contact-email {
-    display: block;
-    margin-bottom: 2rem;
-    font-size: 1.1rem;
-    color: var(--text-dark);
-}
-.contact-email:hover {
-    color: var(--text-light);
-}
-.copyright {
-    font-size: 0.9rem;
-    white-space: nowrap;
-}
 
-/* 10. Animaciones de Scroll */
-.hidden {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-.fade-in {
-    opacity: 0;
-    animation: fadeInAnimation 1s ease-out forwards;
-}
+.contact-prompt { font-size: 1.2rem; color: var(--text-light); margin-bottom: 2rem; }
+.socials { margin-bottom: 2rem; }
+.socials img { width: 30px; margin: 0 1rem; opacity: 0.7; transition: opacity 0.3s ease, transform 0.3s ease; }
+.socials img:hover { opacity: 1; transform: scale(1.1); }
+.contact-email { display: block; margin-bottom: 2rem; font-size: 1.1rem; }
+.copyright { font-size: 0.9rem; }
+
+/* 9. Animaciones de Scroll */
+.hidden { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+.visible { opacity: 1; transform: translateY(0); }
+.fade-in { opacity: 0; animation: fadeInAnimation 1s ease-out forwards; }
 .delay-1 { animation-delay: 0.2s; }
 .delay-2 { animation-delay: 0.4s; }
 
@@ -315,14 +262,7 @@ footer {
     to { opacity: 1; }
 }
 
-/* 11. Estilos específicos para Responsive */
-@media (max-width: 768px) {
-    .main-nav { display: none; }
-    h1 { font-size: 2.2rem; }
-    h2 { font-size: 1.8rem; }
-}
-
-/* 12. Estilos para Blog "Aprende Aquí" */
+/* 10. Estilos para Blog "Aprende Aquí" */
 .blog-article {
     background: var(--bg-card);
     padding: 2.5rem;
@@ -331,65 +271,25 @@ footer {
     border: 1px solid var(--border-color);
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
-.blog-article:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    border-color: rgba(59, 130, 246, 0.5);
+.blog-article:hover { border-color: rgba(59, 130, 246, 0.5); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); }
+.article-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+.article-icon { font-size: 2rem; }
+.blog-article h3 { font-size: clamp(1.5rem, 4vw, 2rem); margin: 0; }
+.blog-article h4 { color: var(--text-light); margin-top: 2rem; margin-bottom: 0.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; }
+.blog-article .formula { background-color: #0D0D0D; padding: 1rem; border-radius: 8px; font-family: 'Courier New', Courier, monospace; text-align: center; margin: 1.5rem 0; border: 1px solid var(--border-color); overflow-x: auto; }
+.blog-article strong { color: var(--text-light); }
+.interactive-placeholder { border: 1px dashed var(--border-color); padding: 3rem; text-align: center; border-radius: 8px; background: linear-gradient(45deg, rgba(13,13,13,0.5), rgba(26,26,26,0.8)); margin-top: 2rem; }
+.interactive-placeholder p { font-style: italic; color: var(--text-dark); }
+.interactive-placeholder p::before { content: '▶'; margin-right: 0.5rem; color: var(--accent-glow); }
+
+/* 11. Media Queries para Responsive */
+@media (max-width: 768px) {
+    .main-nav { display: none; }
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.8rem; }
 }
-.article-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-}
-.article-icon {
-    font-size: 2rem;
-    color: var(--accent-glow);
-}
-.blog-article h3 {
-    font-size: clamp(1.5rem, 4vw, 2rem);
-    margin: 0;
-}
-.blog-article h4 {
-    color: var(--text-light);
-    margin-top: 2rem;
-    margin-bottom: 0.5rem;
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 0.5rem;
-}
-.blog-article p, .blog-article li {
-    color: var(--text-dark);
-    margin-bottom: 1rem;
-    max-w: 800px;
-}
-.blog-article .formula {
-    background-color: #0D0D0D;
-    padding: 1rem;
-    border-radius: 8px;
-    font-family: 'Courier New', Courier, monospace;
-    color: #F5F5F5;
-    text-align: center;
-    margin: 1.5rem 0;
-    border: 1px solid var(--border-color);
-    overflow-x: auto;
-}
-.blog-article strong {
-    color: var(--text-light);
-    font-weight: 700;
-}
-.interactive-placeholder {
-    border: 1px dashed var(--border-color);
-    padding: 3rem;
-    text-align: center;
-    border-radius: 8px;
-    background: linear-gradient(45deg, rgba(13,13,13,0.5), rgba(26,26,26,0.8));
-    margin-top: 2rem;
-}
-.interactive-placeholder p {
-    font-style: italic;
-    color: var(--text-dark);
-    font-size: 1.1rem;
-}
+
+
 .interactive-placeholder p::before {
     content: '▶';
     margin-right: 0.5rem;
