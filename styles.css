@@ -1,11 +1,11 @@
 /* 1. Configuración de Variables y Estilos Globales */
 :root {
-    --bg-dark: #0A0A0A; /* Un negro ligeramente más profundo */
+    --bg-dark: #0A0A0A;
     --bg-card: rgba(26, 26, 26, 0.75);
     --text-light: #F5F5F5;
     --text-dark: #A3A3A3;
     --border-color: rgba(255, 255, 255, 0.1);
-    --accent-glow: rgba(59, 130, 246, 0.8); /* Un brillo azul más vívido */
+    --accent-glow: rgba(59, 130, 246, 0.8);
     --font-main: 'Space Grotesk', sans-serif;
 }
 
@@ -22,13 +22,21 @@ html {
 }
 
 body {
-    /* EFECTO AÑADIDO: Gradiente sutil para un fondo menos plano */
     background-color: var(--bg-dark);
-    background-image: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.1), transparent 40%);
     color: var(--text-dark);
     font-family: var(--font-main);
     line-height: 1.6;
     overflow-x: hidden;
+}
+
+/* ESTILO AÑADIDO: Canvas para el fondo animado */
+#background-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Lo pone detrás de todo el contenido */
 }
 
 /* 2. Estilos Generales y de Texto */
@@ -53,7 +61,6 @@ p {
 
 .highlight {
     color: var(--text-light);
-    /* EFECTO MEJORADO: Brillo de texto más pronunciado */
     text-shadow: 0 0 15px var(--accent-glow);
 }
 
@@ -65,7 +72,6 @@ p {
     width: 100%;
     z-index: 1000;
     padding: 1rem 0;
-    /* EFECTO MEJORADO: Glassmorphism más refinado */
     background: rgba(13, 13, 13, 0.8);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-color);
@@ -130,6 +136,11 @@ p {
     justify-content: center;
     text-align: center;
     padding: 0 2rem;
+    position: relative; /* Necesario para el z-index del contenido */
+}
+
+.hero-content {
+    z-index: 1; /* Pone el contenido por delante del canvas */
 }
 
 .cta-button {
@@ -155,13 +166,20 @@ p {
     padding: 6rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
+    position: relative; /* Asegura que el contenido esté por encima del fondo */
+    z-index: 1;
+    background: rgba(10, 10, 10, 0.6); /* Fondo semi-transparente para mejorar legibilidad sobre la rejilla */
+    backdrop-filter: blur(5px);
+    border-radius: 16px;
+    margin-bottom: 4rem;
 }
 
-/* 6. Grid de Servicios */
-.service-grid {
+/* 6. CORRECCIÓN DE GRIDS */
+.service-grid, .project-grid, .resource-grid, .training-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
+    /* Esta línea es la clave para la responsividad de las tarjetas */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .service-card {
@@ -184,17 +202,9 @@ p {
     gap: 0.75rem;
 }
 
-/* NUEVO ESTILO: Iconos para las tarjetas de servicio */
 .service-icon {
     font-size: 1.5rem;
     color: var(--accent-glow);
-}
-
-/* 7. Grid de Proyectos */
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
 }
 
 .project-card {
@@ -219,13 +229,6 @@ p {
 
 .project-info {
     padding: 1.5rem;
-}
-
-/* 8. Recursos y Capacitaciones */
-.resource-grid, .training-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
 }
 
 .resource-card, .training-card {
@@ -255,6 +258,9 @@ footer {
     padding: 4rem 2rem;
     text-align: center;
     border-top: 1px solid var(--border-color);
+    background: var(--bg-dark);
+    position: relative;
+    z-index: 1;
 }
 .contact-prompt {
     font-size: 1.2rem;
@@ -311,13 +317,12 @@ footer {
 
 /* 11. Estilos específicos para Responsive */
 @media (max-width: 768px) {
-    .main-nav { display: none; } /* Simplificación para el ejemplo, se podría implementar un menú hamburguesa */
+    .main-nav { display: none; }
     h1 { font-size: 2.2rem; }
     h2 { font-size: 1.8rem; }
-    .resource-grid, .training-container { grid-template-columns: 1fr; }
 }
 
-/* NUEVOS ESTILOS: Para la sección de Blog "Aprende Aquí" */
+/* 12. Estilos para Blog "Aprende Aquí" */
 .blog-article {
     background: var(--bg-card);
     padding: 2.5rem;
@@ -355,7 +360,7 @@ footer {
 .blog-article p, .blog-article li {
     color: var(--text-dark);
     margin-bottom: 1rem;
-    max-width: 800px;
+    max-w: 800px;
 }
 .blog-article .formula {
     background-color: #0D0D0D;
@@ -372,7 +377,6 @@ footer {
     color: var(--text-light);
     font-weight: 700;
 }
-/* Estilo mejorado para el placeholder */
 .interactive-placeholder {
     border: 1px dashed var(--border-color);
     padding: 3rem;
