@@ -11,7 +11,6 @@
     
     <link rel="stylesheet" href="styles.css">
 
-    <!-- Estilos en línea para el contenedor de botones CTA para asegurar el espaciado -->
     <style>
         .cta-container {
             margin-top: 2rem;
@@ -20,28 +19,29 @@
             gap: 1.5rem;
             flex-wrap: wrap;
         }
-        /* Estilo añadido para que la nueva imagen se vea bien dentro de la tarjeta de servicio */
-        .service-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-top: 1rem;
-            margin-bottom: 1rem;
-            border: 1px solid var(--border-color);
+
+        /* =================================================================== */
+        /* ESTILO AÑADIDO: Para controlar el tamaño de las imágenes en tarjetas */
+        /* =================================================================== */
+        .card-header-image {
+            width: 100%; /* La imagen ocupa todo el ancho de la tarjeta */
+            height: 180px; /* Altura fija para todas las imágenes de este tipo */
+            object-fit: cover; /* Evita que la imagen se deforme, la recorta para ajustar */
+            border-radius: 8px; /* Mantiene los bordes redondeados */
+            margin-bottom: 1.5rem; /* Espacio entre la imagen y el texto inferior */
+            border: 1px solid var(--border-color); /* Mantiene el borde futurista */
         }
     </style>
 </head>
 <body>
     
-    <!-- Canvas para el fondo de partículas animado -->
     <canvas id="background-grid"></canvas>
 
     <header class="main-header">
         <div class="header-container">
             <a href="#hero" class="logo">
                 <img src="Logo_Blanco.png" alt="Logo de Automation Insights" class="logo-img">
-                <span>Automation Insights S.A.S.</span>
+                <span>Automation Insights</span>
             </a>
             <nav class="main-nav">
                 <ul>
@@ -59,12 +59,11 @@
     <main>
         <section id="hero" class="hero-section">
             <div class="hero-content">
-                <h1 class="fade-in">Automatizacion qué Inspira <br><span class="highlight">Conocimiento qué Eleva.</span></h1>
-                <p class="fade-in delay-1">Diseñamos y ejecutamos proyectos de automatización industrial y sistemas mecatrónicos que redefinen la eficiencia y la productividad de las industrias.</p>
+                <h1 class="fade-in">Ingeniería que <br><span class="highlight">impulsa el futuro.</span></h1>
+                <p class="fade-in delay-1">Diseñamos y ejecutamos proyectos de automatización industrial y sistemas mecatrónicos que redefinen la eficiencia y la productividad.</p>
                 <div class="cta-container fade-in delay-2">
                     <a href="#contacto" class="cta-button">Inicia tu Proyecto</a>
-                    <!-- Reemplaza '#' con tu enlace de YouTube -->
-                    <a href="https://youtu.be/sMTpMp-zoNQ?si=6hOp0PQrz-J5Yuhm" class="cta-button" target="_blank">▶ Ver Portafolio de Servicios</a>
+                    <a href="https://www.youtube.com/@aut_ins_col" class="cta-button" target="_blank">▶ Ver Portafolio en Acción</a>
                 </div>
             </div>
         </section>
@@ -86,7 +85,8 @@
                 </div>
                  <div class="service-card">
                     <h3><span class="service-icon">🎓</span>Capacitación Especializada</h3>
-                    <img src="coca_cola.jpeg" alt="Capacitación en Coca-Cola">
+                    <!-- La imagen de Coca-Cola ahora también usa la clase para mantener consistencia -->
+                    <img src="coca_cola.jpeg" alt="Capacitación en Coca-Cola" class="card-header-image">
                     <p>Empoderamos a tu equipo con el conocimiento técnico necesario para operar y mantener los nuevos sistemas, asegurando una transición fluida.</p>
                 </div>
             </div>
@@ -115,63 +115,87 @@
         <section id="aprende-aqui" class="content-section">
             <h2 class="section-title hidden">Aprende Aquí: Blog Técnico</h2>
             <div class="hidden">
-                                
+                <article class="blog-article">
+                    <div class="article-header">
+                        <span class="article-icon">🧠</span>
+                        <h3>El Cerebro del Proceso: Fundamentos del Control PID</h3>
+                    </div>
+                    <p>El controlador <strong>Proporcional-Integral-Derivativo (PID)</strong> es el algoritmo más crucial y extendido en la automatización.</p>
+                </article>
+                <article class="blog-article">
+                    <div class="article-header">
+                        <span class="article-icon">🕹️</span>
+                        <h3>Experimenta en Tiempo Real: Simulador Interactivo PID</h3>
+                    </div>
+                    <p>La teoría es fundamental, pero la verdadera comprensión viene con la práctica. Utiliza nuestro simulador para visualizar el efecto de cada componente del PID.</p>
+                    <div class="interactive-placeholder">
+                        <p>Incrusta aquí tu simulador interactivo</p>
+                    </div>
+                </article>
                 <article class="blog-article">
                     <div class="article-header">
                         <span class="article-icon">🌐</span>
                         <h3>Explora Más en Nuestro Blog Externo</h3>
                     </div>
-                    <p>Para análisis más profundos, tutoriales paso a paso y noticias del sector, visita nuestro blog principal. ¡Conocimiento técnico actualizado a tu alcance!</p>
-                    <!-- Reemplaza '#' con tu enlace de Blogger -->
-                    <a href="https://teayudoconingenieria.blogspot.com/" class="cta-button" target="_blank" style="margin-top: 1rem;">Visitar Blog en Blogger</a>
+                    <p>Para análisis más profundos, tutoriales paso a paso y noticias del sector, visita nuestro blog principal en Blogger.</p>
+                    <a href="#" class="cta-button" target="_blank" style="margin-top: 1rem;">Visitar Blog en Blogger</a>
                 </article>
-
             </div>
         </section>
 
         <section id="recursos" class="content-section">
             <h2 class="section-title hidden">Recursos y Descargas</h2>
             <div class="resource-grid hidden">
+                <!-- =================================================================== -->
+                <!-- Lista de Reproducción: Python -->
+                <!-- =================================================================== -->
                 <div class="resource-card">
-                    <img src="TIA_playlist.png" alt="Lista de Reproducción - TIAPortal">
+                     <img src="Python_playlist.png" alt="Python" class="card-header-image">
+                    <h4>Playlist: Programación en Python</h4>
+                    <p>Accede a nuestra lista de reproducción de programación en Python, aplicado a la Automatización de Procesos Industriales.</p>
+                    <a href="https://www.youtube.com/playlist?list=PLET5slV3kQZT7K4yOA1PMNGzdb-SHfWvj" class="download-btn">Ir a YouTube</a>
+                </div>
+                <!-- =================================================================== -->
+                <!-- Lista de Reproducción: TIA Portal -->
+                <!-- =================================================================== -->
+                <div class="resource-card">
+                     <img src="TIA_playlist.png" alt="TIAPortal" class="card-header-image">
                     <h4>Playlist: Tutoriales TIA Portal</h4>
                     <p>Accede a nuestra lista de reproducción curada con los mejores tutoriales para dominar Siemens TIA Portal desde cero.</p>
-                    <a href="https://youtube.com/playlist?list=PLET5slV3kQZSX2G7DED897bdmrC3Dkn3S&si=NYh30vQS6CLChYqN" class="download-btn">Ir a YouTube</a>
+                    <a href="https://www.youtube.com/playlist?list=PLET5slV3kQZSX2G7DED897bdmrC3Dkn3S" class="download-btn">Ir a YouTube</a>
                 </div>
-                 <div class="resource-card">
-                     <img src="neu_playlist.png" alt="Lista de Reproducción - Tecnología Neumática">
+                <!-- =================================================================== -->
+                <!-- Lista de Reproducción: Electroneumática -->
+                <!-- =================================================================== -->
+                <div class="resource-card">
+                    <img src="neu_playlist.png" alt="Circuito de electroneumática industrial" class="card-header-image">
                     <h4>Playlist: Neumática Industrial</h4>
                     <p>Conceptos, componentes y circuitos fundamentales de la neumática aplicada a la automatización de procesos.</p>
-                    <a href="https://youtube.com/playlist?list=PLET5slV3kQZTylLlrblpSX5OqDvJQNV16&si=RSA_NahLAQed9GPC" class="download-btn">Ir a YouTube</a>
-                </div>
-                 <div class="resource-card">
-                     <img src="Python_playlist.png" alt="Lista de Reproducción - Python">
-                    <h4>Playlist: Programación en Python</h4>
-                    <p>Conceptos, componentes y estruturas de programación en Python, aplicada a la automatización de procesos industriales.</p>
-                    <a href="https://youtube.com/playlist?list=PLET5slV3kQZT7K4yOA1PMNGzdb-SHfWvj&si=7yCyaO0quZiyVZIf" class="download-btn">Ir a YouTube</a>
+                    <a href="https://www.youtube.com/playlist?list=PLET5slV3kQZTylLlrblpSX5OqDvJQNV16" class="download-btn">Ir a YouTube</a>
                 </div>
             </div>
         </section>
 
         <section id="capacitaciones" class="content-section">
              <h2 class="section-title hidden">Capacitaciones</h2>
+             <!-- =================================================================== -->
+             <!-- SECCIÓN MODIFICADA: Imágenes añadidas a las tarjetas de capacitación -->
+             <!-- =================================================================== -->
              <div class="training-container hidden">
                 <div class="training-card">
-                    <h3>Programación de PLC's - Nivel 1</h3>
-                    <p>Curso práctico de 40 horas enfocado en los fundamentos de LADDER, configuración de hardware y diagnóstico básico.</p>
-                    <span class="training-level">Nivel: Básico</span>
+                    <h3>Programación de Sistemas Automatizados con PLC's en TIAPortal</h3>
+                    <!-- INSTRUCCIÓN: Cambia "capacitacion_plc.jpg" por el nombre de tu imagen Y CAMBIAR ENLACE DEL CURSO -->
+                    <img src="capacitacion_plc.png" alt="Capacitación en programación de PLC" class="card-header-image">
+                    <p>Curso práctico enfocado a los conceptos de programación de los PLC's con Software TIAPortal de SIEMENS - Plataforma Hortmart.</p>
+                    <span class="training-level">Nivel: Básico a Intermedio</span>
+                    <a href="#" class="cta-button" target="_blank">Ver Curso</a>
                 </div>
                 <div class="training-card">
-                    <h3>Control de Procesos con PID</h3>
-                    <p>Seminario intensivo de 16 horas sobre la teoría, implementación y sintonía de lazos de control PID en Siemens TIA Portal.</p>
-                    <span class="training-level">Nivel: Intermedio</span>
-                </div>
-                 <div class="course-image-container">
-                     <img src="Diseño de Sistemas Electroneumáticos.png" alt="Curso Diseño y Automatización de Sistemas Electroneumáticos" class="course-image">
-                </div>
-                <div class="course-info">
-                    <h3>Neumática en la Automatización</h3>
-                    <p>Domina los fundamentos y las aplicaciones avanzadas de la electroneumática. Un curso diseñado para potenciar tus habilidades en la automatización industrial.</p>
+                    <h3>Diseño y Automatización de Sistemas Electroneumáticos Industriales</h3>
+                    <!-- INSTRUCCIÓN: Cambia "capacitacion_pid.jpg" por el nombre de tu imagen -->
+                    <img src="Diseño de Sistemas Electroneumáticos.png" alt="Capacitación en Diseño de Sistemas Electroneumáticos Industriales" class="card-header-image">
+                    <p>Curso desarrollado en Lógica Cableada y Lógica Programda para Sistemas Electroneumáticos Industriales - Plataforma Hotmart</p>
+                    <span class="training-level">Nivel: Básico a Intermedio</span>
                     <a href="https://hotmart.com/es/marketplace/productos/neumatica-en-la-automatizacion-de-procesos-industriales/Y89270096X" class="cta-button" target="_blank">Ver Curso</a>
                 </div>
             </div>
@@ -204,7 +228,7 @@
         function resizeCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-            init(); // Re-inicializa las partículas para el nuevo tamaño
+            init();
         }
         window.addEventListener('resize', resizeCanvas);
 
@@ -313,3 +337,5 @@
 
 </body>
 </html>
+
+
