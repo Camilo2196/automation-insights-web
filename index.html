@@ -403,7 +403,7 @@ footer {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Automation Insights S.A.S. | Ingeniería del Futuro</title>
+    <title>Automation Insights S.A.S. | ¡Automatización qué Inspira, Conocimiento qué Eleva!</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -469,10 +469,10 @@ footer {
         <h2 class="section-title hidden">Proyectos Destacados</h2>
         <div class="project-grid hidden">
             <div class="project-card">
-                <img src="Proyecto_1.png" alt="Sistema de control de procesos químicos">
+                <img src="Pneumatics_1.mp4" alt="Automatización de Prensas Textiles">
                 <div class="project-info">
-                    <h3>Control de Procesos Químicos</h3>
-                    <p>Implementación de un sistema de control distribuido (DCS) para la optimización de reactores en la industria farmacéutica.</p>
+                    <h3>Automatización con Sistemas Electroneumáticos</h3>
+                    <p>Implementación de sistemas Electroneumáticos para la actuación en procesos Automatizados y Mecatrónicos.</p>
                 </div>
             </div>
             <div class="project-card">
@@ -513,7 +513,339 @@ footer {
                 </div>
                 <p>La teoría es fundamental, pero la verdadera comprensión viene con la práctica. Utiliza nuestro simulador interactivo para visualizar el efecto de cada componente del PID. ¡La mejor forma de aprender es haciendo!</p>
                 <div class="interactive-placeholder">
-                    <p>Insertar aquí el código del Simulador Interactivo PID</p>
+                    <p><!-- Chosen Palette: Calm Harmony (Slate, Indigo, Amber) -->
+<!-- Application Structure Plan: A four-section, story-telling SPA. It starts with the basic control problem, moves to a central interactive simulator for hands-on learning, explains the PID components with cards, and ends with a conclusion. This structure guides the user from problem to solution, with the simulator as the core learning tool to make abstract concepts tangible. -->
+<!-- Visualization & Content Choices: Main viz is a dynamic line chart (Chart.js) simulating a temperature process. Goal: Demonstrate and compare control strategies. Interaction: Users select controller type (ON/OFF, P, PI, PID) and tune parameters (Kp, Ti, Td) via sliders, seeing the real-time impact on the chart. This active learning is superior to static text. Other content (definitions, explanations) uses interactive cards (HTML/CSS/JS) to chunk information effectively. -->
+<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Interactivo de Control PID</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 450px;
+                max-height: 500px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <header class="bg-white shadow-md sticky top-0 z-10">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-slate-900">
+                <span class="text-indigo-600">PID</span>-Explorer
+            </div>
+            <ul class="flex space-x-4 md:space-x-6 font-medium text-slate-600">
+                <li><a href="#problema" class="hover:text-indigo-600 transition-colors">El Problema</a></li>
+                <li><a href="#simulador" class="hover:text-indigo-600 transition-colors">Simulador</a></li>
+                <li><a href="#expertos" class="hover:text-indigo-600 transition-colors">Los Expertos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="problema" class="mb-20 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">El Arte de Controlar un Proceso</h1>
+            <p class="text-lg text-slate-600 max-w-3xl mx-auto">
+                Imagina que quieres mantener la temperatura de una habitación exactamente a 60°C. Este es el problema fundamental del control: mantener el equilibrio de un sistema de forma inteligente y automática.
+            </p>
+        </section>
+
+        <section id="simulador" class="bg-white p-6 md:p-8 rounded-2xl shadow-xl">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-900">Simulador Interactivo de Controladores</h2>
+                <p class="text-slate-500 mt-2 max-w-2xl mx-auto">Selecciona un tipo de control, ajusta los parámetros y observa cómo responde el sistema en tiempo real.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                <div class="lg:col-span-3">
+                    <div class="chart-container bg-slate-100 rounded-lg p-4">
+                        <canvas id="pidChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="space-y-6 bg-slate-100 p-6 rounded-lg">
+                    <div>
+                        <label for="setpoint" class="block text-sm font-medium text-slate-700">Setpoint (°C)</label>
+                        <input type="number" id="setpoint" value="60" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700">Tipo de Controlador</label>
+                        <div id="controllerType" class="grid grid-cols-2 gap-2 mt-1">
+                             <button data-type="on-off" class="controller-btn bg-white text-slate-700 p-2 rounded-md shadow-sm text-sm font-medium border border-slate-300">ON/OFF</button>
+                             <button data-type="p" class="controller-btn bg-white text-slate-700 p-2 rounded-md shadow-sm text-sm font-medium border border-slate-300">Solo P</button>
+                             <button data-type="pi" class="controller-btn bg-white text-slate-700 p-2 rounded-md shadow-sm text-sm font-medium border border-slate-300">P + I</button>
+                             <button data-type="pid" class="controller-btn bg-indigo-600 text-white p-2 rounded-md shadow-sm text-sm font-medium border border-transparent">P + I + D</button>
+                        </div>
+                    </div>
+
+                    <div id="pid-controls" class="space-y-4">
+                        <div>
+                            <label for="kp" class="flex justify-between text-sm font-medium text-slate-700">Ganancia Proporcional (Kp) <span id="kp-val" class="font-bold text-indigo-600">5</span></label>
+                            <input type="range" id="kp" min="0.1" max="20" value="5" step="0.1" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer">
+                        </div>
+                        <div>
+                            <label for="ti" class="flex justify-between text-sm font-medium text-slate-700">Tiempo Integral (Ti) <span id="ti-val" class="font-bold text-indigo-600">10</span></label>
+                            <input type="range" id="ti" min="0.5" max="50" value="10" step="0.5" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer">
+                        </div>
+                        <div>
+                            <label for="td" class="flex justify-between text-sm font-medium text-slate-700">Tiempo Derivativo (Td) <span id="td-val" class="font-bold text-indigo-600">1</span></label>
+                            <input type="range" id="td" min="0" max="10" value="1" step="0.1" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-4 pt-4 border-t border-slate-200">
+                        <button id="start-sim" class="w-full bg-green-600 text-white font-bold py-2 px-4 rounded-md hover:bg-green-700 transition-colors shadow">Iniciar Simulación</button>
+                         <button id="disturbance-btn" class="w-full bg-amber-500 text-white font-bold py-2 px-4 rounded-md hover:bg-amber-600 transition-colors shadow">Aplicar Perturbación</button>
+                        <button id="reset-sim" class="w-full bg-red-600 text-white font-bold py-2 px-4 rounded-md hover:bg-red-700 transition-colors shadow">Reiniciar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="expertos" class="mt-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900">Los 3 Expertos del Equipo PID</h2>
+                <p class="text-slate-500 mt-2 max-w-2xl mx-auto">Cada componente del PID tiene una personalidad y un trabajo específico. Juntos, logran un control casi perfecto.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-lg text-center transform hover:scale-105 transition-transform">
+                    <div class="text-4xl mb-4">🅿️</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">El Proporcional (P)</h3>
+                    <p class="text-indigo-600 font-semibold mb-3">"El Impulsivo"</p>
+                    <p class="text-slate-600">Reacciona al error del **presente**. Su respuesta es proporcional al tamaño del error. Es el trabajador principal, pero tiende a dejar un pequeño error permanente (offset).</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg text-center transform hover:scale-105 transition-transform">
+                    <div class="text-4xl mb-4">🅸</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">El Integral (I)</h3>
+                     <p class="text-indigo-600 font-semibold mb-3">"El Perfeccionista con Memoria"</p>
+                    <p class="text-slate-600">Observa el error del **pasado**. Acumula el error a lo largo del tiempo y no descansa hasta eliminar el offset por completo, garantizando una precisión perfecta.</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg text-center transform hover:scale-105 transition-transform">
+                    <div class="text-4xl mb-4">🅳</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">El Derivativo (D)</h3>
+                     <p class="text-indigo-600 font-semibold mb-3">"El Visionario Predictivo"</p>
+                    <p class="text-slate-600">Predice el error del **futuro**. Mide la velocidad de cambio del error y actúa como un freno para evitar sobreimpulsos y amortiguar oscilaciones, aportando estabilidad.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-800 text-white mt-20 py-8 text-center">
+        <p>&copy; 2025 PID-Explorer. Un recurso interactivo para el aprendizaje de la automatización.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const ctx = document.getElementById('pidChart').getContext('2d');
+
+            let chartData = {
+                labels: [],
+                datasets: [{
+                    label: 'Variable de Proceso (PV)',
+                    data: [],
+                    borderColor: 'rgb(79, 70, 229)',
+                    backgroundColor: 'rgba(79, 70, 229, 0.1)',
+                    borderWidth: 2,
+                    tension: 0.1,
+                    pointRadius: 0,
+                    fill: true,
+                }, {
+                    label: 'Setpoint (SP)',
+                    data: [],
+                    borderColor: 'rgb(234, 88, 12)',
+                    borderWidth: 2,
+                    borderDash: [5, 5],
+                    pointRadius: 0,
+                }]
+            };
+
+            const chart = new Chart(ctx, {
+                type: 'line',
+                data: chartData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: { display: true, text: 'Temperatura (°C)' }
+                        },
+                        x: {
+                            title: { display: true, text: 'Tiempo (s)' }
+                        }
+                    },
+                    animation: {
+                        duration: 0
+                    }
+                }
+            });
+            
+            let simulationInterval;
+            let time = 0;
+            let pv = 20;
+            let integralTerm = 0;
+            let lastError = 0;
+            let isRunning = false;
+            
+            let activeController = 'pid';
+            
+            const setpointInput = document.getElementById('setpoint');
+            const kpSlider = document.getElementById('kp');
+            const tiSlider = document.getElementById('ti');
+            const tdSlider = document.getElementById('td');
+            const kpVal = document.getElementById('kp-val');
+            const tiVal = document.getElementById('ti-val');
+            const tdVal = document.getElementById('td-val');
+            const pidControls = document.getElementById('pid-controls');
+
+            const updateSliderValue = (slider, display) => {
+                display.textContent = slider.value;
+            };
+
+            kpSlider.addEventListener('input', () => updateSliderValue(kpSlider, kpVal));
+            tiSlider.addEventListener('input', () => updateSliderValue(tiSlider, tiVal));
+            tdSlider.addEventListener('input', () => updateSliderValue(tdSlider, tdVal));
+            
+            const controllerButtons = document.querySelectorAll('.controller-btn');
+            controllerButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    activeController = btn.dataset.type;
+                    controllerButtons.forEach(b => {
+                        b.classList.remove('bg-indigo-600', 'text-white');
+                        b.classList.add('bg-white', 'text-slate-700');
+                    });
+                    btn.classList.add('bg-indigo-600', 'text-white');
+                    btn.classList.remove('bg-white', 'text-slate-700');
+                    
+                    pidControls.style.display = 'block';
+                    if (activeController === 'on-off') {
+                         pidControls.style.display = 'none';
+                    } else if (activeController === 'p') {
+                        tiSlider.parentElement.style.display = 'none';
+                        tdSlider.parentElement.style.display = 'none';
+                    } else if (activeController === 'pi') {
+                         tiSlider.parentElement.style.display = 'block';
+                         tdSlider.parentElement.style.display = 'none';
+                    } else {
+                         tiSlider.parentElement.style.display = 'block';
+                         tdSlider.parentElement.style.display = 'block';
+                    }
+                });
+            });
+
+
+            function resetSimulation() {
+                clearInterval(simulationInterval);
+                time = 0;
+                pv = 20;
+                integralTerm = 0;
+                lastError = 0;
+                isRunning = false;
+                
+                chartData.labels = [];
+                chartData.datasets[0].data = [];
+                chartData.datasets[1].data = [];
+                chart.update();
+                document.getElementById('start-sim').textContent = "Iniciar Simulación";
+            }
+            
+            function startSimulation() {
+                if(isRunning) return;
+                isRunning = true;
+                document.getElementById('start-sim').textContent = "Simulación en Curso...";
+                
+                simulationInterval = setInterval(() => {
+                    const sp = parseFloat(setpointInput.value) || 60;
+                    const kp = parseFloat(kpSlider.value);
+                    const ti = parseFloat(tiSlider.value);
+                    const td = parseFloat(tdSlider.value);
+
+                    const error = sp - pv;
+                    
+                    let output = 0;
+                    
+                    switch (activeController) {
+                        case 'on-off':
+                            output = error > 0 ? 100 : 0;
+                            break;
+                        case 'p':
+                            const p_out = kp * error;
+                            output = Math.max(0, Math.min(100, p_out));
+                            break;
+                        case 'pi':
+                            integralTerm += error * 0.5;
+                            const pi_out = kp * (error + (1/ti) * integralTerm);
+                            output = Math.max(0, Math.min(100, pi_out));
+                            break;
+                        case 'pid':
+                            integralTerm += error * 0.5;
+                            const derivativeTerm = (error - lastError) / 0.5;
+                            const pid_out = kp * (error + (1/ti) * integralTerm + td * derivativeTerm);
+                            output = Math.max(0, Math.min(100, pid_out));
+                            break;
+                    }
+                    
+                    lastError = error;
+
+                    const heatLoss = pv * 0.2; 
+                    pv += (output * 0.1 - heatLoss * 0.1) * 0.5;
+
+                    time += 0.5;
+                    chartData.labels.push(time.toFixed(1));
+                    chartData.datasets[0].data.push(pv);
+                    chartData.datasets[1].data.push(sp);
+
+                    if (chartData.labels.length > 200) {
+                        chartData.labels.shift();
+                        chartData.datasets[0].data.shift();
+                        chartData.datasets[1].data.shift();
+                    }
+                    
+                    chart.update();
+
+                }, 500);
+            }
+            
+            document.getElementById('start-sim').addEventListener('click', startSimulation);
+            document.getElementById('reset-sim').addEventListener('click', resetSimulation);
+            document.getElementById('disturbance-btn').addEventListener('click', () => {
+                if (isRunning) {
+                    pv -= 15;
+                }
+            });
+            
+            document.querySelector('[data-type="pid"]').click();
+        });
+    </script>
+</body>
+</html>
+</p>
                     </div>
             </article>
 
