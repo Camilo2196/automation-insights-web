@@ -1,0 +1,67 @@
+[
+  {
+    "id": "plc-s7-1200-intro",
+    "title": "Introducción a los PLC Siemens S7-1200: Guía Completa",
+    "category": "PLC",
+    "date": "Mar 2025",
+    "author": "Automation Insights",
+    "readTime": 8,
+    "emoji": "🤖",
+    "color": "rgba(37,99,235,0.2)",
+    "tags": ["PLC", "Siemens", "TIA Portal", "S7-1200"],
+    "summary": "Todo lo que necesitas saber para comenzar con la programación del PLC Siemens S7-1200 en TIA Portal, desde la instalación hasta tu primer programa.",
+    "content": "## ¿Qué es el Siemens S7-1200?\n\nEl **Siemens S7-1200** es un controlador lógico programable (PLC) de la familia SIMATIC, diseñado para tareas de automatización pequeñas y medianas. Es uno de los PLCs más utilizados en la industria colombiana y latinoamericana por su versatilidad y facilidad de programación.\n\n## Características principales\n\n- **CPU compacta** con módulos de expansión\n- **Comunicación PROFINET** integrada\n- **Entradas/Salidas digitales y analógicas**\n- Compatible con **TIA Portal** (Totally Integrated Automation)\n\n## Instalación de TIA Portal\n\nPara programar el S7-1200 necesitas instalar **Siemens TIA Portal**. Los pasos son:\n\n1. Descarga TIA Portal desde el sitio oficial de Siemens\n2. Instala como administrador\n3. Activa la licencia correspondiente\n4. Conecta el PLC via cable Ethernet\n\n> Asegúrate de configurar la dirección IP del PLC antes de intentar la comunicación. La dirección por defecto es 192.168.0.1.\n\n## Tu primer programa en Ladder\n\nEl lenguaje Ladder (LD) es el más utilizado para programar PLCs. Un programa básico para encender una salida cuando se activa una entrada:\n\n```\n|---[ I0.0 ]---( Q0.0 )---|\n```\n\nEsto significa: **Si la entrada I0.0 está activa, activa la salida Q0.0**.\n\n## Bloques de organización (OB)\n\nEl S7-1200 usa diferentes tipos de bloques:\n\n- **OB1** — Ciclo principal del programa\n- **OB30** — Interrupción cíclica (temporizador)\n- **OB40** — Interrupción de hardware\n\n## Conclusión\n\nEl Siemens S7-1200 es una excelente opción para iniciarse en la automatización industrial. Con TIA Portal y el lenguaje Ladder, puedes crear sistemas de control robustos en poco tiempo.\n\n¿Quieres aprender más? Revisa nuestra **playlist de TIA Portal en YouTube** o inscríbete en nuestro curso de PLC."
+  },
+  {
+    "id": "python-automatizacion-intro",
+    "title": "Python para Automatización Industrial: Primeros Pasos",
+    "category": "Python",
+    "date": "Feb 2025",
+    "author": "Automation Insights",
+    "readTime": 12,
+    "emoji": "🐍",
+    "color": "rgba(14,165,233,0.2)",
+    "tags": ["Python", "Automatización", "OPC-UA", "Datos"],
+    "summary": "Descubre cómo Python se está convirtiendo en una herramienta esencial para los ingenieros de automatización industrial. Conecta, monitorea y controla sistemas industriales con código.",
+    "content": "## ¿Por qué Python en la Industria?\n\nPython se ha convertido en el lenguaje preferido para la capa de datos e integración en sistemas industriales modernos. Su simplicidad y la gran cantidad de librerías lo hacen ideal para:\n\n- **Adquisición de datos** de PLCs y sensores\n- **Análisis y visualización** de datos de producción\n- **Comunicación OPC-UA** con equipos industriales\n- **Machine Learning** aplicado a mantenimiento predictivo\n\n## Librerías esenciales\n\nEstas son las librerías más utilizadas en automatización industrial:\n\n- `opcua` — Comunicación con servidores OPC-UA\n- `pymodbus` — Protocolo Modbus RTU/TCP\n- `pandas` — Análisis de datos de producción\n- `matplotlib` — Visualización de tendencias\n- `snap7` — Comunicación con PLCs Siemens S7\n\n## Instalación del entorno\n\n```\npip install python-opcua pymodbus pandas matplotlib\n```\n\n## Lectura de datos desde un PLC Siemens\n\nUsando la librería `snap7`, puedes leer variables de un PLC Siemens directamente:\n\n```python\nimport snap7\nfrom snap7.util import get_real\n\nclient = snap7.client.Client()\nclient.connect('192.168.0.1', 0, 1)\n\n# Leer DB1, offset 0, 4 bytes (REAL)\ndata = client.db_read(1, 0, 4)\ntemperatura = get_real(data, 0)\nprint(f'Temperatura: {temperatura:.2f} °C')\n\nclient.disconnect()\n```\n\n> Siempre maneja las excepciones de conexión para sistemas industriales críticos. Una caída no controlada puede afectar la producción.\n\n## Visualización en tiempo real\n\nPuedes crear dashboards simples con matplotlib para monitorear variables en tiempo real durante pruebas y diagnóstico.\n\n## Conclusión\n\nPython no reemplaza al PLC — lo complementa. Mientras el PLC maneja el control en tiempo real, Python gestiona los datos, el análisis y la integración con sistemas de nivel superior (SCADA, MES, ERP).\n\nRevisa nuestra **playlist de Python en YouTube** para ver ejemplos prácticos aplicados a la industria."
+  },
+  {
+    "id": "circuitos-electroneumaticos-basicos",
+    "title": "Circuitos Electroneumáticos: Fundamentos y Aplicaciones",
+    "category": "Neumática",
+    "date": "Ene 2025",
+    "author": "Automation Insights",
+    "readTime": 10,
+    "emoji": "💨",
+    "color": "rgba(16,185,129,0.15)",
+    "tags": ["Neumática", "Electroneumática", "Válvulas", "Cilindros"],
+    "summary": "Comprende los fundamentos de los circuitos electroneumáticos: componentes, simbología, diseño de secuencias y aplicaciones en la industria moderna.",
+    "content": "## ¿Qué es la Electroneumática?\n\nLa **electroneumática** combina el poder del aire comprimido (neumática) con el control eléctrico o electrónico. Es ampliamente utilizada en:\n\n- Líneas de ensamble automotriz\n- Empaque y embalaje\n- Sistemas de transporte industrial\n- Prensas y troqueles\n\n## Componentes principales\n\n### Actuadores\n- **Cilindros de simple efecto** — retorno por resorte\n- **Cilindros de doble efecto** — control bidireccional\n- **Actuadores rotativos** — movimiento angular\n\n### Válvulas de control\n- **5/2** — 5 vías, 2 posiciones (la más común)\n- **5/3** — 5 vías, 3 posiciones (con centro bloqueado o abierto)\n- **3/2** — para circuitos simples\n\n### Sensores y detectores\n- **Reed switches** magnéticos en cilindros\n- **Sensores inductivos** para posición\n- **Presostatos** para control de presión\n\n## Simbología normalizada\n\nLos circuitos electroneumáticos usan simbología **ISO 1219**. Cada componente tiene un símbolo estándar que indica su función y tipo de actuación.\n\n> Dominar la simbología es fundamental antes de diseñar cualquier circuito. Practica leyendo planos de máquinas existentes.\n\n## Diseño de una secuencia A+B+A-B-\n\nEsta es la secuencia más básica con dos cilindros (A y B):\n\n1. **A+** → Cilindro A avanza\n2. **B+** → Cilindro B avanza\n3. **A-** → Cilindro A retrocede\n4. **B-** → Cilindro B retrocede\n\nPara implementarla en lógica cableada se usan relés y contactores. En lógica programada se implementa con un PLC.\n\n## Cálculo de caudal\n\nPara seleccionar correctamente tuberías y válvulas:\n\n**Q = A × v**\n\nDonde:\n- Q = Caudal (litros/min)\n- A = Área del émbolo (cm²)\n- v = Velocidad del émbolo (cm/s)\n\n## Conclusión\n\nLa electroneumática es una tecnología robusta y confiable para automatizar movimientos mecánicos. Combinada con PLCs, permite crear sistemas de control complejos con alta repetibilidad.\n\n¿Quieres profundizar? Nuestro **curso de Electroneumática en Hotmart** cubre todos estos temas con ejercicios prácticos."
+  },
+  {
+    "id": "industry-4-0-colombia",
+    "title": "Industry 4.0 en Colombia: Estado Actual y Oportunidades",
+    "category": "Industry 4.0",
+    "date": "Dic 2024",
+    "author": "Automation Insights",
+    "readTime": 7,
+    "emoji": "🏭",
+    "color": "rgba(245,158,11,0.15)",
+    "tags": ["Industry 4.0", "IoT", "Colombia", "Digitalización"],
+    "summary": "Análisis del panorama de la transformación digital industrial en Colombia: barreras, oportunidades y el rol de la automatización en la competitividad empresarial.",
+    "content": "## ¿Qué es Industry 4.0?\n\n**Industry 4.0** o la Cuarta Revolución Industrial es la integración de tecnologías digitales en los procesos productivos:\n\n- **IoT Industrial (IIoT)** — Sensores conectados\n- **Big Data y Analytics** — Decisiones basadas en datos\n- **Cloud Manufacturing** — Producción en la nube\n- **Robótica colaborativa** — Cobots con IA\n- **Gemelos digitales** — Simulación en tiempo real\n\n## Estado en Colombia\n\nSegún el DANE y el MinCIT, Colombia está en una etapa **temprana de adopción**:\n\n- Solo el **15%** de las industrias manufactureras tiene alta automatización\n- El **60%** usa automatización básica (PLC convencional)\n- El **25%** opera con procesos manuales\n\nSin embargo, sectores como **alimentos y bebidas, petroquímica y textil** muestran un avance significativo.\n\n## Oportunidades para las empresas colombianas\n\n### Reducción de costos operativos\nEmpresas que han implementado Industry 4.0 reportan reducciones de hasta **30% en costos de producción** y **40% en tiempos de parada no planificada**.\n\n### Mejora en calidad\nLos sistemas de visión artificial y control estadístico de proceso (SPC) reducen defectos hasta un **70%**.\n\n> Colombia tiene ventajas competitivas en costos laborales y talento técnico. La automatización no elimina empleos, los transforma en roles de mayor valor.\n\n## Barreras de adopción\n\n1. **Inversión inicial** — Percepción de alto costo\n2. **Brecha de talento** — Falta de técnicos especializados\n3. **Infraestructura** — Conectividad en zonas industriales\n4. **Resistencia al cambio** — Cultural y organizacional\n\n## El rol de Automation Insights\n\nTrabajamos con empresas colombianas para implementar soluciones **escalables y asequibles** de Industry 4.0, desde la automatización básica con PLCs hasta la integración de IIoT y análisis de datos.\n\nContacta a nuestro equipo para una **evaluación gratuita** de madurez tecnológica de tu planta."
+  },
+  {
+    "id": "vision-artificial-inspeccion",
+    "title": "Visión Artificial para Inspección de Calidad Industrial",
+    "category": "Robótica",
+    "date": "Nov 2024",
+    "author": "Automation Insights",
+    "readTime": 9,
+    "emoji": "👁️",
+    "color": "rgba(139,92,246,0.15)",
+    "tags": ["Visión Artificial", "OpenCV", "Calidad", "Inspección"],
+    "summary": "Cómo los sistemas de visión artificial están revolucionando el control de calidad en la industria, reemplazando la inspección manual con mayor precisión y velocidad.",
+    "content": "## ¿Qué es la Visión Artificial Industrial?\n\nLa **visión artificial** (machine vision) es el uso de cámaras y algoritmos de procesamiento de imágenes para automatizar la inspección visual en líneas de producción.\n\n## Aplicaciones típicas\n\n- **Detección de defectos** superficiales (grietas, manchas, deformaciones)\n- **Verificación de ensamble** (componentes presentes y bien posicionados)\n- **Lectura de códigos** (QR, DataMatrix, barcodes)\n- **Medición dimensional** sin contacto\n- **Reconocimiento de patrones** y clasificación\n\n## Componentes del sistema\n\n### Hardware\n- Cámara industrial (GigE, USB3, Camera Link)\n- Iluminación estructurada (LED, difusa, backlight)\n- Frame grabber o procesador\n- Lente telecéntrico o convexa\n\n### Software\n- **OpenCV** (Python/C++) — Open source\n- **Cognex VisionPro** — Solución industrial\n- **Halcon** — Referencia en industria\n- **YOLO** — Detección con IA\n\n## Ejemplo básico con OpenCV\n\n```python\nimport cv2\nimport numpy as np\n\n# Captura desde cámara industrial\ncap = cv2.VideoCapture(0)\nret, frame = cap.read()\n\n# Convertir a escala de grises\ngray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)\n\n# Detección de bordes (Canny)\nedges = cv2.Canny(gray, 50, 150)\n\n# Encontrar contornos\ncontours, _ = cv2.findContours(edges, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)\n\nprint(f'Objetos detectados: {len(contours)}')\n```\n\n> La calidad de la iluminación es el factor más crítico en visión artificial. Un buen sistema de iluminación puede resolver el 80% del problema de inspección.\n\n## ROI de la implementación\n\nUn sistema típico de visión artificial industrial:\n- **Velocidad**: 200-1000 piezas/min (vs 30-60 piezas/min humano)\n- **Precisión**: < 0.1mm de resolución\n- **Disponibilidad**: 24/7 sin fatiga\n- **Recuperación**: 6-18 meses\n\n## Conclusión\n\nLa visión artificial es una de las tecnologías con mayor ROI en Industry 4.0. El avance de las herramientas de IA como YOLO y TensorFlow ha democratizado su acceso, haciéndola viable para PYMEs industriales.\n\n¿Tu empresa tiene retos de calidad que podríamos resolver con visión artificial? **Contáctanos** para evaluar tu caso."
+  }
+]

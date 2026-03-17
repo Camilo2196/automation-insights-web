@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Técnico · Automation Insights S.A.S.</title>
+  <meta name="description" content="Artículos técnicos sobre automatización industrial, PLC, Python, neumática e Industry 4.0.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Blog-specific styles */
+    .blog-hero {
+      padding: 9rem 2rem 4rem;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .blog-hero h1 { margin-bottom: 1rem; }
+    .blog-hero p { max-width: 560px; margin: 0 auto 2.5rem; }
+
+    /* Search & Filter */
+    .blog-controls {
+      max-width: 900px;
+      margin: 0 auto 3rem;
+      padding: 0 2rem;
+    }
+    .search-wrap {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+    .search-icon {
+      position: absolute;
+      left: 1.1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1rem;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+    #blog-search {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 0.9rem 1.5rem 0.9rem 3rem;
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    #blog-search:focus {
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+    }
+    #blog-search::placeholder { color: var(--text-muted); }
+    .filter-tabs {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .filter-tab {
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-secondary);
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-tab:hover { border-color: var(--accent-blue); color: var(--accent-cyan); }
+    .filter-tab.active {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+      border-color: transparent;
+      color: white;
+    }
+
+    /* Posts Grid */
+    .posts-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem 4rem;
+    }
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+    .post-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s var(--ease), border-color 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+    .post-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--border-accent);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+    }
+    .post-emoji-cover {
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+    }
+    .post-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+    .post-tag {
+      display: inline-block;
+      padding: 0.2rem 0.65rem;
+      background: rgba(14,165,233,0.12);
+      border: 1px solid rgba(14,165,233,0.3);
+      border-radius: 50px;
+      font-size: 0.65rem;
+      color: var(--accent-cyan);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+    .post-body h3 { font-size: 1rem; margin-bottom: 0.6rem; line-height: 1.4; }
+    .post-body p { font-size: 0.82rem; color: var(--text-secondary); flex: 1; margin: 0; }
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1rem;
+      font-size: 0.74rem;
+      color: var(--text-muted);
+    }
+    .no-results {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--text-secondary);
+      grid-column: 1 / -1;
+    }
+    .no-results .icon { font-size: 3rem; margin-bottom: 1rem; }
+
+    /* Article Modal */
+    .article-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(6px);
+      z-index: 2000;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 2rem;
+      overflow-y: auto;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s var(--ease);
+    }
+    .article-modal-overlay.open { opacity: 1; pointer-events: all; }
+    .article-modal {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      max-width: 760px;
+      width: 100%;
+      margin: auto;
+      padding: 3rem;
+      position: relative;
+      transform: translateY(20px);
+      transition: transform 0.3s var(--ease);
+    }
+    .article-modal-overlay.open .article-modal { transform: translateY(0); }
+    .modal-close {
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      background: var(--bg-glass);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      width: 38px; height: 38px;
+      color: var(--text-primary);
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .modal-close:hover { background: rgba(239,68,68,0.2); border-color: rgba(239,68,68,0.4); }
+    .article-content h1 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 0.5rem; }
+    .article-content .article-meta { display: flex; gap: 1rem; font-size: 0.78rem; color: var(--text-muted); margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+    .article-content h2 { font-size: 1.3rem; margin: 2rem 0 0.75rem; }
+    .article-content h3 { font-size: 1.1rem; margin: 1.5rem 0 0.5rem; }
+    .article-content p { color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.8; }
+    .article-content ul, .article-content ol { padding-left: 1.5rem; color: var(--text-secondary); margin-bottom: 1rem; }
+    .article-content li { margin-bottom: 0.4rem; line-height: 1.7; }
+    .article-content strong { color: var(--text-primary); }
+    .article-content code {
+      background: rgba(37,99,235,0.1);
+      border: 1px solid var(--border-accent);
+      border-radius: 4px;
+      padding: 0.15rem 0.4rem;
+      font-family: 'Courier New', monospace;
+      font-size: 0.88em;
+      color: var(--accent-cyan);
+    }
+    .article-content pre {
+      background: #0D1117;
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+    .article-content pre code { background: none; border: none; padding: 0; color: #e6edf3; font-size: 0.85rem; }
+    .article-tip {
+      background: rgba(37,99,235,0.08);
+      border: 1px solid var(--border-accent);
+      border-left: 3px solid var(--accent-blue);
+      border-radius: 0 var(--r-sm) var(--r-sm) 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+    }
+    .new-post-btn {
+      position: fixed;
+      bottom: 24px; left: 24px;
+      z-index: 990;
+    }
+    @media (max-width: 640px) {
+      .article-modal { padding: 1.75rem; margin: 0; }
+      .posts-grid { grid-template-columns: 1fr; }
+      .blog-hero { padding: 8rem 1rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Ticker -->
+<div class="ticker-bar" id="ticker-bar">
+  <div class="ticker-wrap">
+    <div class="ticker-content">
+      <span class="ticker-item"><span class="dot"></span>Blog Técnico · Automation Insights</span>
+      <span class="ticker-item"><span class="dot"></span>Artículos sobre PLC · Python · Neumática · Industry 4.0</span>
+      <span class="ticker-item"><span class="dot"></span>Conocimiento gratuito para ingenieros industriales</span>
+      <span class="ticker-item"><span class="dot"></span>Colombia · Automatización Industrial</span>
+    </div>
+    <div class="ticker-content" aria-hidden="true">
+      <span class="ticker-item"><span class="dot"></span>Blog Técnico · Automation Insights</span>
+      <span class="ticker-item"><span class="dot"></span>Artículos sobre PLC · Python · Neumática · Industry 4.0</span>
+      <span class="ticker-item"><span class="dot"></span>Conocimiento gratuito para ingenieros industriales</span>
+      <span class="ticker-item"><span class="dot"></span>Colombia · Automatización Industrial</span>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="main-header with-ticker" id="main-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo-link">
+      <img src="Logo_Blanco.png" alt="Automation Insights" class="logo-img">
+      <span>Automation Insights S.A.S.</span>
+    </a>
+    <div style="display:flex;gap:0.75rem;align-items:center;">
+      <a href="index.html" class="btn btn-outline btn-sm">← Volver al inicio</a>
+      <button class="hamburger" id="hamburger-btn" aria-label="Menú"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="nav-overlay" id="nav-overlay"></div>
+<nav class="nav-drawer" id="nav-drawer" aria-hidden="true">
+  <div class="nav-drawer-header">
+    <span class="logo-link" style="font-size:0.9rem;"><img src="Logo_Blanco.png" style="height:28px;"> Automation Insights</span>
+    <button class="nav-close" id="nav-close-btn">✕</button>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html#quienes-somos"><span class="nav-icon">🏢</span>¿Quiénes Somos?</a></li>
+    <li><a href="index.html#servicios"><span class="nav-icon">⚙️</span>Servicios</a></li>
+    <li><a href="index.html#proyectos"><span class="nav-icon">🚀</span>Proyectos</a></li>
+    <li><a href="index.html#portafolio"><span class="nav-icon">📋</span>Portafolio</a></li>
+    <li><a href="blog.html"><span class="nav-icon">📝</span>Blog Técnico</a></li>
+    <li><a href="index.html#recursos"><span class="nav-icon">▶️</span>Recursos</a></li>
+    <li><a href="index.html#capacitaciones"><span class="nav-icon">🎓</span>Capacitaciones</a></li>
+    <li><a href="index.html#contacto"><span class="nav-icon">✉️</span>Contacto</a></li>
+  </ul>
+</nav>
+
+<main style="position:relative;z-index:1;">
+
+  <div class="blog-hero fade-in">
+    <div class="hero-badge" style="display:inline-flex;">
+      <span class="dot"></span> Conocimiento Técnico Gratuito
+    </div>
+    <h1>Blog Técnico</h1>
+    <p>Artículos, tutoriales y guías sobre automatización industrial, PLCs, Python, neumática e Industry 4.0. Escritos por expertos del sector.</p>
+  </div>
+
+  <!-- Search & Filters -->
+  <div class="blog-controls">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="blog-search" placeholder="Buscar artículos por título, categoría o palabra clave...">
+    </div>
+    <div class="filter-tabs" id="filter-tabs">
+      <button class="filter-tab active" data-cat="todos">Todos</button>
+      <button class="filter-tab" data-cat="PLC">PLC & HMI</button>
+      <button class="filter-tab" data-cat="Python">Python</button>
+      <button class="filter-tab" data-cat="Neumática">Neumática</button>
+      <button class="filter-tab" data-cat="Industry 4.0">Industry 4.0</button>
+      <button class="filter-tab" data-cat="Robótica">Robótica</button>
+    </div>
+  </div>
+
+  <!-- Posts Grid -->
+  <div class="posts-container">
+    <div class="posts-grid" id="posts-grid">
+      <div style="text-align:center;padding:3rem;grid-column:1/-1;color:var(--text-muted);">Cargando artículos…</div>
+    </div>
+  </div>
+
+</main>
+
+<!-- Article Modal -->
+<div class="article-modal-overlay" id="modal-overlay">
+  <div class="article-modal" id="article-modal">
+    <button class="modal-close" id="modal-close">✕</button>
+    <div class="article-content" id="article-content"></div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer style="margin-top:0;">
+  <div class="footer-bottom" style="max-width:1280px;margin:0 auto;padding:1.5rem 2rem;justify-content:space-between;">
+    <span>© <span id="current-year"></span> Automation Insights S.A.S.</span>
+    <a href="index.html" style="color:var(--accent-cyan);font-size:0.85rem;">← Volver al inicio</a>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('current-year').textContent = new Date().getFullYear();
+
+  // Ticker offset
+  const ticker = document.getElementById('ticker-bar');
+  const header = document.getElementById('main-header');
+  function adjustTop() { header.style.top = (ticker?.offsetHeight || 0) + 'px'; }
+  adjustTop(); window.addEventListener('resize', adjustTop);
+
+  // Hamburger
+  const hbg = document.getElementById('hamburger-btn');
+  const drawer = document.getElementById('nav-drawer');
+  const overlay = document.getElementById('nav-overlay');
+  const closeBtn = document.getElementById('nav-close-btn');
+  function openNav() { hbg.classList.add('active'); drawer.classList.add('open'); overlay.classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeNav() { hbg.classList.remove('active'); drawer.classList.remove('open'); overlay.classList.remove('open'); document.body.style.overflow=''; }
+  hbg?.addEventListener('click', () => drawer.classList.contains('open') ? closeNav() : openNav());
+  closeBtn?.addEventListener('click', closeNav);
+  overlay?.addEventListener('click', closeNav);
+
+  // Load & render posts
+  let allPosts = [];
+  let activeFilter = 'todos';
+  let searchQuery = '';
+
+  async function loadPosts() {
+    try {
+      const res = await fetch('blog-posts.json');
+      allPosts = await res.json();
+      renderPosts();
+    } catch(e) {
+      document.getElementById('posts-grid').innerHTML = '<div class="no-results"><div class="icon">📝</div><p>No se pudieron cargar los artículos. Asegúrate de que <code>blog-posts.json</code> esté en el mismo directorio.</p></div>';
+    }
+  }
+
+  function renderPosts() {
+    const grid = document.getElementById('posts-grid');
+    let filtered = allPosts.filter(p => {
+      const matchCat = activeFilter === 'todos' || p.category === activeFilter;
+      const q = searchQuery.toLowerCase();
+      const matchSearch = !q || p.title.toLowerCase().includes(q) || p.summary.toLowerCase().includes(q) || (p.tags && p.tags.join(' ').toLowerCase().includes(q)) || p.category.toLowerCase().includes(q);
+      return matchCat && matchSearch;
+    });
+
+    if (!filtered.length) {
+      grid.innerHTML = '<div class="no-results"><div class="icon">🔍</div><h3 style="color:var(--text-primary)">Sin resultados</h3><p>Intenta con otras palabras clave o cambia el filtro.</p></div>';
+      return;
+    }
+
+    grid.innerHTML = filtered.map(p => `
+      <article class="post-card reveal" onclick="openPost('${p.id}')">
+        <div class="post-emoji-cover" style="background: linear-gradient(135deg, ${p.color || 'rgba(37,99,235,0.15)'}, rgba(14,165,233,0.08));">
+          ${p.emoji || '📄'}
+        </div>
+        <div class="post-body">
+          <span class="post-tag">${p.category}</span>
+          <h3>${p.title}</h3>
+          <p>${p.summary}</p>
+          <div class="post-meta">
+            <span>📅 ${p.date}</span>
+            <span>⏱ ${p.readTime} min</span>
+            ${p.author ? `<span>✍️ ${p.author}</span>` : ''}
+          </div>
+        </div>
+      </article>
+    `).join('');
+
+    // Animate in
+    grid.querySelectorAll('.post-card').forEach((el, i) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      setTimeout(() => {
+        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      }, i * 60);
+    });
+  }
+
+  // Filters
+  document.getElementById('filter-tabs').addEventListener('click', e => {
+    if (e.target.classList.contains('filter-tab')) {
+      document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+      e.target.classList.add('active');
+      activeFilter = e.target.dataset.cat;
+      renderPosts();
+    }
+  });
+
+  // Search
+  let searchTimer;
+  document.getElementById('blog-search').addEventListener('input', e => {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => { searchQuery = e.target.value; renderPosts(); }, 300);
+  });
+
+  // Open post modal
+  function openPost(id) {
+    const post = allPosts.find(p => p.id === id);
+    if (!post) return;
+    const content = document.getElementById('article-content');
+    content.innerHTML = `
+      <span class="post-tag">${post.category}</span>
+      <h1>${post.title}</h1>
+      <div class="article-meta">
+        <span>📅 ${post.date}</span>
+        <span>⏱ ${post.readTime} min de lectura</span>
+        ${post.author ? `<span>✍️ ${post.author}</span>` : ''}
+        ${post.tags ? post.tags.map(t => `<span style="color:var(--accent-cyan)">#${t}</span>`).join('') : ''}
+      </div>
+      <div>${parseMarkdown(post.content)}</div>
+    `;
+    const overlay = document.getElementById('modal-overlay');
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('modal-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  document.getElementById('modal-overlay').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  // Simple Markdown parser
+  function parseMarkdown(md) {
+    if (!md) return '';
+    return md
+      .replace(/^### (.*$)/gm, '<h3>$1</h3>')
+      .replace(/^## (.*$)/gm, '<h2>$1</h2>')
+      .replace(/^# (.*$)/gm, '<h1>$1</h1>')
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.*?)\*/g, '<em>$1</em>')
+      .replace(/`([^`]+)`/g, '<code>$1</code>')
+      .replace(/^```[\w]*\n([\s\S]*?)```/gm, '<pre><code>$1</code></pre>')
+      .replace(/^> (.*$)/gm, '<div class="article-tip">💡 $1</div>')
+      .replace(/^\- (.*$)/gm, '<li>$1</li>')
+      .replace(/(<li>.*<\/li>\n?)+/g, '<ul>$&</ul>')
+      .replace(/^\d+\. (.*$)/gm, '<li>$1</li>')
+      .replace(/\n\n/g, '</p><p>')
+      .replace(/^(?!<[h|u|p|d|l])/gm, '<p>')
+      .replace(/(<p>)+/g, '<p>')
+      .replace(/<p><\/p>/g, '')
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" style="color:var(--accent-cyan)">$1</a>');
+  }
+
+  loadPosts();
+</script>
+</body>
+</html>
