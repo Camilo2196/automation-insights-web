@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automation Insights S.A.S. | Ingeniería del Futuro · Industry 4.0</title>
+  <meta name="description" content="Diseñamos y ejecutamos proyectos de automatización industrial, sistemas mecatrónicos y PLC en Colombia. Expertos en Industry 4.0.">
+  <meta property="og:title" content="Automation Insights S.A.S.">
+  <meta property="og:description" content="Automatización que Inspira. Conocimiento que Eleva. Industry 4.0 en Colombia.">
+  <meta property="og:image" content="Logo_Blanco.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <!-- CRITICAL CSS: structural safety fallback -->
+  <style>
+    html, body { overflow-x: hidden !important; }
+    #bg-canvas { position: fixed !important; top: 0; left: 0; width: 100% !important; height: 100% !important; z-index: 0 !important; pointer-events: none !important; }
+    .nav-drawer { position: fixed !important; top: 0 !important; right: -100% !important; width: min(340px,90vw) !important; height: 100vh !important; z-index: 1001 !important; transition: right 0.35s ease !important; }
+    .nav-drawer.open { right: 0 !important; }
+    .nav-overlay { position: fixed !important; inset: 0 !important; z-index: 999 !important; opacity: 0 !important; pointer-events: none !important; transition: opacity 0.3s ease !important; }
+    .nav-overlay.open { opacity: 1 !important; pointer-events: all !important; }
+    .hero-section { position: relative !important; overflow: hidden !important; }
+    .about-values { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 1rem !important; margin-top: 2rem !important; }
+    .value-card { background: rgba(255,255,255,0.04) !important; border: 1px solid rgba(255,255,255,0.07) !important; border-radius: 14px !important; padding: 1.25rem !important; }
+    .nav-socials img { width: 20px !important; height: 20px !important; object-fit: contain !important; display: block !important; }
+    .field-error { display: none; font-size: 0.75rem; color: #f87171; margin-top: 0.3rem; }
+
+    /* ── B2B Form Components ── */
+    .b2b-guarantee { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem; }
+    .b2b-item { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.875rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; }
+    .b2b-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .b2b-item strong { display: block; font-size: 0.82rem; color: #EDF2FF; font-weight: 600; margin-bottom: 0.15rem; }
+    .b2b-item p { font-size: 0.74rem; color: #7A8BA0; margin: 0; line-height: 1.4; }
+
+    /* Input with icon */
+    .input-wrap { position: relative; }
+    .input-icon { position: absolute; left: 0.9rem; top: 50%; transform: translateY(-50%); width: 15px; height: 15px; color: #3D4F68; pointer-events: none; flex-shrink: 0; }
+    .input-wrap input,
+    .input-wrap select { padding-left: 2.5rem !important; }
+    .input-wrap textarea { padding-left: 1rem !important; }
+
+    /* Select custom arrow */
+    .select-wrap { position: relative; }
+    .select-wrap select { -webkit-appearance: none; appearance: none; padding-right: 2.5rem !important; cursor: pointer; }
+    .select-arrow { position: absolute; right: 0.9rem; top: 50%; transform: translateY(-50%); width: 15px; height: 15px; color: #3D4F68; pointer-events: none; }
+
+    /* Label hint */
+    .label-hint { display: inline-block; font-size: 0.68rem; font-weight: 400; color: #3D4F68; margin-left: 0.4rem; }
+
+    /* Checkbox */
+    .checkbox-label { display: flex; align-items: flex-start; gap: 0.6rem; cursor: pointer; }
+    .checkbox-label input[type="checkbox"] { position: absolute; opacity: 0; width: 0; height: 0; }
+    .checkmark { width: 18px; height: 18px; min-width: 18px; border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; background: rgba(255,255,255,0.04); display: flex; align-items: center; justify-content: center; margin-top: 0.1rem; transition: background 0.2s, border-color 0.2s; }
+    .checkbox-label input:checked + .checkmark { background: linear-gradient(135deg, #2563EB, #0EA5E9); border-color: transparent; }
+    .checkbox-label input:checked + .checkmark::after { content: '✓'; font-size: 0.75rem; color: white; font-weight: 700; }
+
+    /* Security badge */
+    .security-badge { display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 0.9rem; background: rgba(37,99,235,0.06); border: 1px solid rgba(37,99,235,0.15); border-radius: 8px; font-size: 0.72rem; color: #3D4F68; margin-bottom: 1.25rem; }
+
+    /* Submit button */
+    .btn-submit { width: 100%; display: flex; align-items: center; justify-content: center; gap: 0.6rem; padding: 1rem 2rem; background: linear-gradient(135deg, #2563EB, #0EA5E9); color: white; border: none; border-radius: 50px; font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 600; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.2s; box-shadow: 0 4px 20px rgba(37,99,235,0.4); }
+    .btn-submit:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(37,99,235,0.55); }
+    .btn-submit:disabled { cursor: not-allowed; }
+    @keyframes spin-btn { to { transform: rotate(360deg); } }
+
+    /* Responsive B2B */
+    @media (max-width: 640px) {
+      .b2b-guarantee { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ██ TICKER BAR ██ -->
+<div class="ticker-bar" id="ticker-bar">
+  <div class="ticker-wrap">
+    <div class="ticker-content" id="ticker-content">
+      <span class="ticker-item"><span class="dot"></span>Mercado Industry 4.0: USD $165B para 2026</span>
+      <span class="ticker-item"><span class="dot"></span>+40% eficiencia con automatización PLC</span>
+      <span class="ticker-item"><span class="dot"></span>Siemens TIA Portal · Programación en Python · Neumática Industrial</span>
+      <span class="ticker-item"><span class="dot"></span>Proyectos en Sector Alimenticio · Manufactura · Químico</span>
+      <span class="ticker-item"><span class="dot"></span>Reducción de tiempos de parada hasta un 60%</span>
+      <span class="ticker-item"><span class="dot"></span>Capacitaciones in-company disponibles</span>
+      <span class="ticker-item"><span class="dot"></span>Colombia · Transformación Digital Industrial</span>
+    </div>
+    <div class="ticker-content" aria-hidden="true">
+      <span class="ticker-item"><span class="dot"></span>Mercado Industry 4.0: USD $165B para 2026</span>
+      <span class="ticker-item"><span class="dot"></span>+40% eficiencia con automatización PLC</span>
+      <span class="ticker-item"><span class="dot"></span>Siemens TIA Portal · Programación en Python · Neumática Industrial</span>
+      <span class="ticker-item"><span class="dot"></span>Proyectos en Sector Alimenticio · Manufactura · Químico</span>
+      <span class="ticker-item"><span class="dot"></span>Reducción de tiempos de parada hasta un 60%</span>
+      <span class="ticker-item"><span class="dot"></span>Capacitaciones in-company disponibles</span>
+      <span class="ticker-item"><span class="dot"></span>Colombia · Transformación Digital Industrial</span>
+    </div>
+  </div>
+</div>
+
+<!-- ██ HEADER ██ -->
+<header class="main-header with-ticker" id="main-header">
+  <div class="header-inner">
+    <a href="#hero" class="logo-link">
+      <img src="Logo_Blanco.png" alt="Automation Insights" class="logo-img">
+      <span>Automation Insights S.A.S.</span>
+    </a>
+    <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Nav Overlay -->
+<div class="nav-overlay" id="nav-overlay"></div>
+
+<!-- Nav Drawer -->
+<nav class="nav-drawer" id="nav-drawer" aria-hidden="true">
+  <div class="nav-drawer-header">
+    <a href="#hero" class="logo-link" style="font-size:0.95rem;">
+      <img src="Logo_Blanco.png" alt="Logo" class="logo-img" style="height:30px;">
+      <span>Automation Insights</span>
+    </a>
+    <button class="nav-close" id="nav-close-btn" aria-label="Cerrar menú">✕</button>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#quienes-somos"><span class="nav-icon">🏢</span>¿Quiénes Somos?</a></li>
+    <li><a href="#servicios"><span class="nav-icon">⚙️</span>Servicios</a></li>
+    <li><a href="#proyectos"><span class="nav-icon">🚀</span>Proyectos</a></li>
+    <li><a href="#portafolio"><span class="nav-icon">📋</span>Portafolio</a></li>
+    <li><a href="blog.html"><span class="nav-icon">📝</span>Blog Técnico</a></li>
+    <li><a href="#recursos"><span class="nav-icon">▶️</span>Recursos</a></li>
+    <li><a href="#capacitaciones"><span class="nav-icon">🎓</span>Capacitaciones</a></li>
+    <li><a href="#contacto"><span class="nav-icon">✉️</span>Contacto</a></li>
+  </ul>
+  <div class="nav-socials">
+    <a href="https://www.instagram.com/automationinsights.sas/" target="_blank" title="Instagram" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:8px;border:1px solid rgba(255,255,255,0.07);background:rgba(255,255,255,0.04);">
+      <img src="instagram-logo.png" alt="Instagram" width="20" height="20" style="width:20px;height:20px;object-fit:contain;">
+    </a>
+    <a href="https://www.youtube.com/@aut_ins_col" target="_blank" title="YouTube" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:8px;border:1px solid rgba(255,255,255,0.07);background:rgba(255,255,255,0.04);">
+      <img src="youtube_logo.png" alt="YouTube" width="20" height="20" style="width:20px;height:20px;object-fit:contain;">
+    </a>
+    <a href="#contacto" title="Contacto" style="font-size:1.1rem; color: var(--text-secondary);">✉</a>
+  </div>
+</nav>
+
+<!-- Canvas FUERA del hero para evitar overflow horizontal -->
+<canvas id="bg-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
+
+<main>
+
+<!-- ██ HERO ██ -->
+<section id="hero" class="hero-section">
+  <div class="hero-content" style="position:relative;z-index:2;">
+    <div class="hero-badge fade-in d1">
+      <span class="dot"></span> Industry 4.0 · Colombia
+    </div>
+    <h1 class="fade-in d2">
+      Automatización que <span class="highlight">Inspira</span><br>
+      Conocimiento que <span class="highlight">Eleva</span>
+    </h1>
+    <p class="fade-in d2">
+      Diseñamos y ejecutamos proyectos de ingeniería, automatización industrial y sistemas mecatrónicos que redefinen la eficiencia y la productividad.
+    </p>
+    <div class="hero-cta fade-in d3">
+      <a href="#contacto" class="btn btn-primary">Inicia tu Proyecto →</a>
+      <a href="https://www.youtube.com/@aut_ins_col" target="_blank" class="btn btn-outline">▶ Ver Portafolio en Video</a>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
+</section>
+
+<!-- ██ STATS STRIP ██ -->
+<div class="stats-strip reveal">
+  <div class="stat-item">
+    <div class="stat-number" data-target="50">0</div>
+    <div class="stat-label">Proyectos Completados</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number" data-target="8">0</div>
+    <div class="stat-label">Años de Experiencia</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number" data-target="30">0</div>
+    <div class="stat-label">Empresas Atendidas</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number" data-target="95">0</div>
+    <div class="stat-label">% Satisfacción Cliente</div>
+  </div>
+</div>
+
+<!-- ██ QUIÉNES SOMOS ██ -->
+<section id="quienes-somos" class="section">
+  <div class="section-inner reveal">
+    <div class="about-grid">
+      <div>
+        <div class="section-title" style="text-align:left; margin-bottom:2rem;">
+          <span>Nuestra Empresa</span>
+          <h2>¿Quiénes Somos?</h2>
+        </div>
+        <p>Somos <strong style="color:var(--text-primary)">Automation Insights S.A.S.</strong>, una empresa colombiana de ingeniería especializada en automatización industrial e Industry 4.0. Transformamos procesos productivos integrando tecnología de vanguardia, desde la programación de PLCs hasta sistemas de visión artificial.</p>
+        <p>Nuestro diferencial está en combinar la experiencia técnica de campo con la transferencia de conocimiento: no solo automatizamos tu operación, te capacitamos para dominarla.</p>
+        <div class="about-values">
+          <div class="value-card">
+            <div class="v-icon">🎯</div>
+            <h4>Precisión Técnica</h4>
+            <p>Soluciones a medida con los más altos estándares de ingeniería.</p>
+          </div>
+          <div class="value-card">
+            <div class="v-icon">🔗</div>
+            <h4>Integración Total</h4>
+            <p>Conectamos hardware, software y personas en un solo ecosistema.</p>
+          </div>
+          <div class="value-card">
+            <div class="v-icon">📈</div>
+            <h4>Resultados Medibles</h4>
+            <p>KPIs claros antes y después de cada implementación.</p>
+          </div>
+          <div class="value-card">
+            <div class="v-icon">🎓</div>
+            <h4>Transferencia de Saber</h4>
+            <p>Tu equipo aprende a operar y mantener cada sistema.</p>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="about-hexagon">
+          <div class="hex-ring"></div>
+          <div class="hex-ring"></div>
+          <div class="hex-ring"></div>
+          <div class="hex-center">
+            <div class="big-num">4.0</div>
+            <p>Industry Ready</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ██ SERVICIOS ██ -->
+<section id="servicios" class="section">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <span>Lo que hacemos</span>
+      <h2>Nuestros Servicios</h2>
+    </div>
+    <div class="service-grid">
+      <div class="service-card reveal reveal-delay-1">
+        <img src="Circuito_Elect1.jpg" alt="Diseño y Simulación" class="service-img"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="service-img-placeholder" style="display:none">⚙️</div>
+        <div class="service-body">
+          <h3><span class="service-icon">⚙️</span>Diseño y Simulación</h3>
+          <p>Conceptualizamos y validamos soluciones a medida, utilizando software de vanguardia para garantizar el éxito antes de la implementación física.</p>
+        </div>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <img src="PLC_1.png" alt="Programación PLC y HMI" class="service-img"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="service-img-placeholder" style="display:none">💻</div>
+        <div class="service-body">
+          <h3><span class="service-icon">💻</span>Programación de PLC y HMI</h3>
+          <p>Desarrollamos lógica de control robusta e interfaces hombre-máquina intuitivas para un control total y una operación simplificada.</p>
+        </div>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-img-placeholder">🚀</div>
+        <div class="service-body">
+          <h3><span class="service-icon">🚀</span>Puesta en Marcha</h3>
+          <p>Llevamos los diseños del plano a la realidad, realizando la instalación, configuración y arranque de sistemas con los más altos estándares de seguridad y calidad.</p>
+        </div>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-img-placeholder">🎓</div>
+        <div class="service-body">
+          <h3><span class="service-icon">🎓</span>Capacitación Especializada</h3>
+          <p>Empoderamos a tu equipo con el conocimiento técnico necesario para operar y mantener los nuevos sistemas, asegurando una transición fluida y duradera.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ██ PROYECTOS ██ -->
+<section id="proyectos" class="section">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <span>Casos de éxito</span>
+      <h2>Proyectos Destacados</h2>
+    </div>
+    <div class="project-grid">
+      <div class="project-card reveal reveal-delay-1">
+        <img src="PLC_1.png" alt="Control de Procesos Industriales"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="project-img-fallback" style="display:none">🏭</div>
+        <div class="project-body">
+          <span class="project-tag">Manufactura</span>
+          <h3>Control de Procesos Industriales</h3>
+          <p>Implementación de un sistema de control a través de la programación con PLCs para la optimización de procesos industriales, reduciendo tiempos de ciclo en un 35%.</p>
+        </div>
+      </div>
+      <div class="project-card reveal reveal-delay-2">
+        <img src="Proyecto_2.png" alt="Línea de Empaque Robotizada"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="project-img-fallback" style="display:none">🤖</div>
+        <div class="project-body">
+          <span class="project-tag">Sector Alimenticio</span>
+          <h3>Línea de Empaque Robotizada</h3>
+          <p>Integración de brazos robóticos y sistemas de visión artificial para una línea de empaque de alta velocidad, incrementando la producción en un 60%.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ██ PORTAFOLIO NOTION ██ -->
+<section id="portafolio" class="section">
+  <div class="section-inner reveal" style="background: linear-gradient(135deg, rgba(37,99,235,0.1), rgba(14,165,233,0.05));">
+    <div class="portfolio-cta">
+      <div class="portfolio-cta-text">
+        <span style="font-size:0.75rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent-cyan);display:block;margin-bottom:0.75rem;">Documentación Completa</span>
+        <h2>Portafolio de Servicios</h2>
+        <p>Accede a nuestra documentación detallada de servicios, casos de estudio, especificaciones técnicas y propuestas de valor. Todo organizado en nuestra plataforma Notion.</p>
+        <div class="notion-badge">
+          <span>📋</span>
+          <span>Actualizado en Notion · Acceso gratuito</span>
+        </div>
+      </div>
+      <div>
+        <a href="https://TU-LINK-NOTION-AQUI.notion.site" target="_blank" class="btn btn-primary" style="font-size:1rem; padding: 1rem 2.25rem;">
+          Ver Portafolio Completo →
+        </a>
+        <br><br>
+        <a href="https://www.youtube.com/@aut_ins_col" target="_blank" class="btn btn-outline">
+          ▶ Ver Video Portafolio
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ██ BLOG PREVIEW ██ -->
+<section id="blog-preview" class="section">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <span>Conocimiento técnico</span>
+      <h2>Blog Técnico</h2>
+    </div>
+    <div class="blog-grid" id="blog-preview-grid">
+      <!-- Populated by JS from blog-posts.json -->
+      <div class="blog-card reveal reveal-delay-1">
+        <div class="blog-card-img">🤖</div>
+        <div class="blog-card-body">
+          <span class="blog-tag">PLC</span>
+          <h3>Introducción a los PLC Siemens S7-1200</h3>
+          <p>Guía completa para comenzar con la programación en TIA Portal.</p>
+          <div class="blog-meta"><span>📅 Mar 2025</span><span>⏱ 8 min</span></div>
+        </div>
+      </div>
+      <div class="blog-card reveal reveal-delay-2">
+        <div class="blog-card-img">🐍</div>
+        <div class="blog-card-body">
+          <span class="blog-tag">Python</span>
+          <h3>Python para Automatización Industrial</h3>
+          <p>Cómo usar Python para monitorear y controlar procesos industriales.</p>
+          <div class="blog-meta"><span>📅 Feb 2025</span><span>⏱ 12 min</span></div>
+        </div>
+      </div>
+      <div class="blog-card reveal reveal-delay-3">
+        <div class="blog-card-img">💨</div>
+        <div class="blog-card-body">
+          <span class="blog-tag">Neumática</span>
+          <h3>Circuitos Electroneumáticos Básicos</h3>
+          <p>Conceptos fundamentales de la neumática aplicada a procesos industriales.</p>
+          <div class="blog-meta"><span>📅 Ene 2025</span><span>⏱ 10 min</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="blog-center reveal">
+      <a href="blog.html" class="btn btn-outline">Ver todos los artículos →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ██ RECURSOS ██ -->
+<section id="recursos" class="section">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <span>Aprende con nosotros</span>
+      <h2>Recursos y Descargas</h2>
+    </div>
+    <div class="resource-grid">
+      <div class="resource-card reveal reveal-delay-1">
+        <img src="Python_playlist.png" alt="Python Playlist"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="service-img-placeholder" style="display:none;height:165px">🐍</div>
+        <div class="resource-body">
+          <h4>Playlist: Programación en Python</h4>
+          <p>Lista de reproducción de Python aplicado a la Automatización de Procesos Industriales.</p>
+          <a href="https://www.youtube.com/playlist?list=PLET5slV3kQZT7K4yOA1PMNGzdb-SHfWvj" target="_blank" class="btn btn-outline btn-sm">Ir a YouTube ↗</a>
+        </div>
+      </div>
+      <div class="resource-card reveal reveal-delay-2">
+        <img src="TIA_playlist.png" alt="TIA Portal"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="service-img-placeholder" style="display:none;height:165px">💻</div>
+        <div class="resource-body">
+          <h4>Playlist: Tutoriales TIA Portal</h4>
+          <p>Tutoriales para dominar Siemens TIA Portal desde cero hasta nivel avanzado.</p>
+          <a href="https://www.youtube.com/playlist?list=PLET5slV3kQZSX2G7DED897bdmrC3Dkn3S" target="_blank" class="btn btn-outline btn-sm">Ir a YouTube ↗</a>
+        </div>
+      </div>
+      <div class="resource-card reveal reveal-delay-3">
+        <img src="neu_playlist.png" alt="Neumática"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="service-img-placeholder" style="display:none;height:165px">💨</div>
+        <div class="resource-body">
+          <h4>Playlist: Neumática Industrial</h4>
+          <p>Conceptos, componentes y circuitos fundamentales de neumática para la automatización.</p>
+          <a href="https://www.youtube.com/playlist?list=PLET5slV3kQZTylLlrblpSX5OqDvJQNV16" target="_blank" class="btn btn-outline btn-sm">Ir a YouTube ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ██ CAPACITACIONES ██ -->
+<section id="capacitaciones" class="section">
+  <div class="section-inner">
+    <div class="section-title reveal">
+      <span>Formación especializada</span>
+      <h2>Capacitaciones</h2>
+    </div>
+    <div class="training-grid">
+      <div class="training-card reveal reveal-delay-1">
+        <img src="capacitacion_plc.png" alt="Programación PLC TIA Portal"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="service-img-placeholder" style="display:none;height:200px">💻</div>
+        <div class="training-body">
+          <h3>Programación de Sistemas Automatizados con PLC en TIA Portal</h3>
+          <p>Curso práctico enfocado en la programación de PLCs con Software TIA Portal de SIEMENS. Plataforma Hotmart.</p>
+          <span class="training-level">Nivel: Básico a Intermedio</span>
+          <a href="#" class="btn btn-primary btn-sm" style="align-self:flex-start">Ver Curso →</a>
+        </div>
+      </div>
+      <div class="training-card reveal reveal-delay-2">
+        <img src="Diseño de Sistemas Electroneumáticos.png" alt="Sistemas Electroneumáticos"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="service-img-placeholder" style="display:none;height:200px">💨</div>
+        <div class="training-body">
+          <h3>Diseño y Automatización de Sistemas Electroneumáticos Industriales</h3>
+          <p>Curso desarrollado en Lógica Cableada y Lógica Programada para Sistemas Electroneumáticos Industriales. Plataforma Hotmart.</p>
+          <span class="training-level">Nivel: Básico a Intermedio</span>
+          <a href="https://hotmart.com/es/marketplace/productos/neumatica-en-la-automatizacion-de-procesos-industriales/Y89270096X" target="_blank" class="btn btn-primary btn-sm" style="align-self:flex-start">Ver Curso →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ██ CONTACTO ██ -->
+<section id="contacto" class="section">
+  <div class="section-inner">
+    <div class="contact-grid">
+
+      <!-- Info lateral -->
+      <div class="contact-info reveal">
+        <span style="font-size:0.75rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent-cyan);display:block;margin-bottom:0.75rem;">Contacto Corporativo</span>
+        <h2>¿Listo para transformar tu operación?</h2>
+        <p style="margin-bottom:2rem;">Completa el formulario y un ingeniero especialista de nuestro equipo analizará tu requerimiento y te contactará en menos de 24 horas hábiles.</p>
+
+        <!-- Garantías B2B -->
+        <div class="b2b-guarantee">
+          <div class="b2b-item">
+            <div class="b2b-icon">⚡</div>
+            <div>
+              <strong>Respuesta rápida</strong>
+              <p>Menos de 24 horas hábiles</p>
+            </div>
+          </div>
+          <div class="b2b-item">
+            <div class="b2b-icon">🔒</div>
+            <div>
+              <strong>Datos protegidos</strong>
+              <p>Formulario cifrado · Anti-spam activo</p>
+            </div>
+          </div>
+          <div class="b2b-item">
+            <div class="b2b-icon">🎯</div>
+            <div>
+              <strong>Propuesta a medida</strong>
+              <p>Sin plantillas genéricas</p>
+            </div>
+          </div>
+          <div class="b2b-item">
+            <div class="b2b-icon">🤝</div>
+            <div>
+              <strong>Sin compromisos</strong>
+              <p>Primera consulta sin costo</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Redes (sin mailto) -->
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);">
+          <p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:0.75rem;letter-spacing:0.05em;text-transform:uppercase;">Síguenos</p>
+          <div style="display:flex;gap:0.75rem;">
+            <a href="https://www.instagram.com/automationinsights.sas/" target="_blank" class="social-icon" title="Instagram">
+              <img src="instagram-logo.png" alt="Instagram" width="18" height="18" style="width:18px;height:18px;object-fit:contain;">
+            </a>
+            <a href="https://www.youtube.com/@aut_ins_col" target="_blank" class="social-icon" title="YouTube">
+              <img src="youtube_logo.png" alt="YouTube" width="18" height="18" style="width:18px;height:18px;object-fit:contain;">
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formulario B2B -->
+      <div class="contact-form-wrap reveal reveal-delay-2">
+
+        <!-- Encabezado del form -->
+        <div style="margin-bottom:1.75rem;padding-bottom:1.25rem;border-bottom:1px solid var(--border);">
+          <h3 style="font-size:1.1rem;margin-bottom:0.25rem;">Formulario de Contacto Corporativo</h3>
+          <p style="font-size:0.78rem;color:var(--text-muted);margin:0;">Todos los campos marcados con * son obligatorios</p>
+        </div>
+
+        <form id="contact-form" action="https://formspree.io/f/xkoqpwkz" method="POST" novalidate autocomplete="off">
+
+          <!-- ── HONEYPOT: invisible para humanos, trampa para bots ── -->
+          <div style="position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;overflow:hidden;" aria-hidden="true" tabindex="-1">
+            <input type="text" name="_gotcha" id="f-hp" tabindex="-1" autocomplete="off" value="">
+            <input type="text" name="website" id="f-hp2" tabindex="-1" autocomplete="off" value="">
+          </div>
+          <!-- ── Campos ocultos de control ── -->
+          <input type="hidden" name="_timestamp" id="f-timestamp">
+          <input type="hidden" name="_subject" value="[B2B] Nueva consulta corporativa — Automation Insights S.A.S.">
+          <input type="hidden" name="_language" value="es">
+          <!-- Estructura lista para reCAPTCHA v3 — descomentar cuando tengas tu site key -->
+          <!-- <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response"> -->
+
+          <!-- Fila 1: Nombre + Empresa -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f-name">
+                Nombre completo *
+                <span class="label-hint">Persona de contacto</span>
+              </label>
+              <div class="input-wrap">
+                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z"/></svg>
+                <input type="text" id="f-name" name="name" placeholder="Ej: Carlos Rodríguez" required minlength="3" autocomplete="off">
+              </div>
+              <span class="field-error" id="err-name"></span>
+            </div>
+            <div class="form-group">
+              <label for="f-company">
+                Empresa *
+                <span class="label-hint">Nombre legal o comercial</span>
+              </label>
+              <div class="input-wrap">
+                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16M3 21h18M9 21V10h6v11"/></svg>
+                <input type="text" id="f-company" name="company" placeholder="Ej: Industrias Andinas S.A." required minlength="2" autocomplete="off">
+              </div>
+              <span class="field-error" id="err-company"></span>
+            </div>
+          </div>
+
+          <!-- Fila 2: Correo + Teléfono -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f-email">
+                Correo corporativo *
+                <span class="label-hint">No se aceptan correos genéricos</span>
+              </label>
+              <div class="input-wrap">
+                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <input type="email" id="f-email" name="email" placeholder="tu@empresa.com" required autocomplete="off">
+              </div>
+              <span class="field-error" id="err-email"></span>
+            </div>
+            <div class="form-group">
+              <label for="f-phone">
+                Teléfono *
+                <span class="label-hint">Línea directa o extensión</span>
+              </label>
+              <div class="input-wrap">
+                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                <input type="tel" id="f-phone" name="phone" placeholder="+57 (1) 000-0000" required autocomplete="off">
+              </div>
+              <span class="field-error" id="err-phone"></span>
+            </div>
+          </div>
+
+          <!-- Requerimiento -->
+          <div class="form-group">
+            <label for="f-service">
+              Requerimiento *
+              <span class="label-hint">Selecciona el área de tu necesidad</span>
+            </label>
+            <div class="input-wrap select-wrap">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+              <select id="f-service" name="requerimiento" required>
+                <option value="" disabled selected>Selecciona tu requerimiento</option>
+                <option value="Integración de Tableros">⚡ Integración de Tableros</option>
+                <option value="Desarrollo SCADA/DCS">🖥️ Desarrollo SCADA / DCS</option>
+                <option value="Capacitación Técnica">🎓 Capacitación Técnica</option>
+                <option value="Otro">🔧 Otro requerimiento</option>
+              </select>
+              <svg class="select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <span class="field-error" id="err-service"></span>
+          </div>
+
+          <!-- Mensaje -->
+          <div class="form-group">
+            <label for="f-msg">
+              Mensaje *
+              <span class="label-hint">Describe tu proyecto o consulta</span>
+            </label>
+            <textarea id="f-msg" name="message" placeholder="Ej: Necesitamos automatizar una línea de producción de 3 estaciones. Actualmente operamos de forma manual y buscamos integrar PLCs Siemens con un sistema SCADA..." required minlength="30" rows="5"></textarea>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:0.3rem;">
+              <span class="field-error" id="err-msg"></span>
+              <span id="char-counter" style="font-size:0.7rem;color:var(--text-muted);margin-left:auto;">0 / 30 mín.</span>
+            </div>
+          </div>
+
+          <!-- Política de privacidad -->
+          <div class="form-group" style="margin-bottom:1.25rem;">
+            <label class="checkbox-label">
+              <input type="checkbox" id="f-privacy" name="privacy" required>
+              <span class="checkmark"></span>
+              <span style="font-size:0.78rem;color:var(--text-secondary);line-height:1.4;">
+                Acepto que Automation Insights S.A.S. procese mis datos para atender esta consulta corporativa. No compartimos información con terceros.
+              </span>
+            </label>
+            <span class="field-error" id="err-privacy"></span>
+          </div>
+
+          <!-- Seguridad badge -->
+          <div class="security-badge">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>Formulario cifrado · Honeypot activo · Sin almacenamiento de datos sensibles</span>
+            <!-- reCAPTCHA v3 badge aparecerá aquí cuando se active -->
+          </div>
+
+          <!-- Botón submit -->
+          <button type="submit" class="btn-submit" id="submit-btn">
+            <span id="btn-text">Enviar Consulta Corporativa</span>
+            <svg id="btn-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <svg id="btn-spinner" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;animation:spin-btn 1s linear infinite;"><circle cx="12" cy="12" r="10" stroke-dasharray="32" stroke-dashoffset="10"/></svg>
+          </button>
+
+          <!-- Status message -->
+          <div class="form-status" id="form-status"></div>
+
+        </form>
+      </div><!-- /form-wrap -->
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ██ FOOTER ██ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#hero" class="logo-link" style="font-size:1rem;">
+        <img src="Logo_Blanco.png" alt="Automation Insights" class="logo-img" style="height:34px;">
+        <span>Automation Insights S.A.S.</span>
+      </a>
+      <p>Automatizamos tu presente, para que disfrutes tu futuro. Expertos en Industry 4.0 en Colombia.</p>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/automationinsights.sas/" target="_blank" class="social-icon" title="Instagram">
+          <img src="instagram-logo.png" alt="Instagram">
+        </a>
+        <a href="https://www.youtube.com/@aut_ins_col" target="_blank" class="social-icon" title="YouTube">
+          <img src="youtube_logo.png" alt="YouTube">
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Navegación</h5>
+      <ul>
+        <li><a href="#quienes-somos">¿Quiénes Somos?</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#portafolio">Portafolio</a></li>
+        <li><a href="blog.html">Blog Técnico</a></li>
+        <li><a href="#recursos">Recursos</a></li>
+        <li><a href="#capacitaciones">Capacitaciones</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contacto</h5>
+      <ul>
+        <li><a href="#contacto">Formulario Corporativo</a></li>
+        <li><a href="https://www.instagram.com/automationinsights.sas/" target="_blank">Instagram</a></li>
+        <li><a href="https://www.youtube.com/@aut_ins_col" target="_blank">YouTube</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span id="current-year"></span> Automation Insights S.A.S. · Todos los derechos reservados.</span>
+    <span>Colombia 🇨🇴 · Industry 4.0</span>
+  </div>
+</footer>
+
+<!-- ██ FLOATING BUTTONS ██ -->
+<!-- Chatbot Toggle -->
+<button class="chatbot-btn" id="chatbot-btn" aria-label="Abrir asistente" style="bottom:24px;">
+  <span class="chatbot-tooltip">Asistente AI</span>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2C6.477 2 2 6.477 2 12c0 1.82.487 3.53 1.338 5L2 22l5.038-1.327A9.944 9.944 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 01-4.109-1.133l-.291-.173-3.024.795.81-2.96-.19-.305A7.96 7.96 0 014 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8zm4.5-6.5c-.25-.125-1.5-.75-1.75-.875s-.375-.125-.5.125-.625.875-.75 1-.25.125-.5 0a6.14 6.14 0 01-1.875-1.25c-.5-.5-.875-1.125-.875-1.375s.125-.375.25-.5.25-.25.375-.375.125-.25.125-.375V9c0-.125-.125-.375-.25-.625S9.5 7.5 9.25 7.5h-.375c-.125 0-.375 0-.625.25C8 8 7.5 8.625 7.5 9.875s.75 2.5 1 2.75c.125.25 2.125 3.25 5.125 4.375.625.25 1.125.375 1.5.5.625.125 1.25.125 1.75 0 .5-.125 1.5-.625 1.75-1.25s.25-1.125.125-1.25c-.125-.125-.25-.125-.5-.25z"/>
+  </svg>
+</button>
+
+<!-- Chat Window -->
+<div class="chat-window" id="chat-window" role="dialog" aria-label="Asistente virtual" style="bottom:90px;">
+  <div class="chat-header">
+    <div class="chat-avatar">🤖</div>
+    <div class="chat-header-info">
+      <h4>ARIA — Asistente AI</h4>
+      <span>● En línea · Automation Insights</span>
+    </div>
+    <button class="chat-close-btn" id="chat-close" aria-label="Cerrar">✕</button>
+  </div>
+  <div class="chat-messages" id="chat-messages"></div>
+  <div class="chat-input-area">
+    <input type="text" class="chat-input" id="chat-input" placeholder="Escribe tu mensaje..." autocomplete="off">
+    <button class="chat-send" id="chat-send" aria-label="Enviar">
+      <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- ██ SCRIPTS ██ -->
+<script>
+  // ── Year ──
+  document.getElementById('current-year').textContent = new Date().getFullYear();
+
+  // ── Ticker offset (accounts for ticker bar height) ──
+  const ticker = document.getElementById('ticker-bar');
+  const header = document.getElementById('main-header');
+  function adjustHeaderTop() {
+    const th = ticker ? ticker.offsetHeight : 0;
+    header.style.top = th + 'px';
+  }
+  adjustHeaderTop();
+  window.addEventListener('resize', adjustHeaderTop);
+
+  // ── Hamburger Menu ──
+  const hamburger = document.getElementById('hamburger-btn');
+  const drawer = document.getElementById('nav-drawer');
+  const overlay = document.getElementById('nav-overlay');
+  const closeBtn = document.getElementById('nav-close-btn');
+
+  function openNav() {
+    hamburger.classList.add('active');
+    hamburger.setAttribute('aria-expanded', 'true');
+    drawer.classList.add('open');
+    drawer.setAttribute('aria-hidden', 'false');
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeNav() {
+    hamburger.classList.remove('active');
+    hamburger.setAttribute('aria-expanded', 'false');
+    drawer.classList.remove('open');
+    drawer.setAttribute('aria-hidden', 'true');
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  hamburger.addEventListener('click', () => drawer.classList.contains('open') ? closeNav() : openNav());
+  closeBtn.addEventListener('click', closeNav);
+  overlay.addEventListener('click', closeNav);
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+
+  // ── Particle Canvas ──
+  const canvas = document.getElementById('bg-canvas');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  let mouse = { x: null, y: null };
+
+  let resizeTimer;
+  window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(resizeCanvas, 150); });
+  window.addEventListener('mousemove', e => { mouse.x = e.x; mouse.y = e.y; });
+  window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    initParticles();
+  }
+
+  class Particle {
+    constructor() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.size = Math.random() * 1.5 + 0.5;
+      this.sx = (Math.random() * 0.4) - 0.2;
+      this.sy = (Math.random() * 0.4) - 0.2;
+    }
+    update() {
+      if (this.x > canvas.width || this.x < 0) this.sx = -this.sx;
+      if (this.y > canvas.height || this.y < 0) this.sy = -this.sy;
+      this.x += this.sx; this.y += this.sy;
+      if (mouse.x) {
+        const dx = mouse.x - this.x, dy = mouse.y - this.y;
+        if (Math.sqrt(dx*dx+dy*dy) < 150) { this.x -= dx/12; this.y -= dy/12; }
+      }
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(37,99,235,0.55)';
+      ctx.fill();
+    }
+  }
+
+  function initParticles() {
+    particles = [];
+    const count = Math.min((canvas.width * canvas.height) / 10000, 120);
+    for (let i = 0; i < count; i++) particles.push(new Particle());
+  }
+
+  function drawConnections() {
+    for (let a = 0; a < particles.length; a++) {
+      for (let b = a + 1; b < particles.length; b++) {
+        const dx = particles[a].x - particles[b].x;
+        const dy = particles[a].y - particles[b].y;
+        const d = Math.sqrt(dx*dx + dy*dy);
+        if (d < 120) {
+          ctx.strokeStyle = `rgba(37,99,235,${(1 - d/120) * 0.25})`;
+          ctx.lineWidth = 0.5;
+          ctx.beginPath();
+          ctx.moveTo(particles[a].x, particles[a].y);
+          ctx.lineTo(particles[b].x, particles[b].y);
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => { p.update(); p.draw(); });
+    drawConnections();
+    requestAnimationFrame(animate);
+  }
+
+  // Respect reduced motion
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    resizeCanvas(); animate();
+  }
+
+  // ── Scroll Reveal ──
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // ── Counter Animation ──
+  const counters = document.querySelectorAll('.stat-number[data-target]');
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const el = e.target;
+        const target = parseInt(el.dataset.target);
+        let count = 0;
+        const step = Math.ceil(target / 60);
+        const timer = setInterval(() => {
+          count = Math.min(count + step, target);
+          el.textContent = count + (target >= 95 ? '%' : '+');
+          if (count >= target) clearInterval(timer);
+        }, 25);
+        counterObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => counterObserver.observe(c));
+
+  // ══════════════════════════════════════════════
+  // FORMULARIO B2B — Validación + Anti-spam
+  // ══════════════════════════════════════════════
+  const form       = document.getElementById('contact-form');
+  const statusEl   = document.getElementById('form-status');
+  const submitBtn  = document.getElementById('submit-btn');
+  const btnText    = document.getElementById('btn-text');
+  const btnArrow   = document.getElementById('btn-arrow');
+  const btnSpinner = document.getElementById('btn-spinner');
+  const charCounter= document.getElementById('char-counter');
+  const tsField    = document.getElementById('f-timestamp');
+
+  // Registrar timestamp de carga (anti-spam: envíos en <4s = bot)
+  if (tsField) tsField.value = Date.now();
+
+  // Dominios de correo genérico a bloquear (filtro B2B)
+  const BLOCKED_DOMAINS = ['gmail.com','hotmail.com','yahoo.com','outlook.com','live.com','icloud.com','aol.com','protonmail.com'];
+
+  // Reglas de validación por campo
+  const RULES = {
+    'f-name':    v => v.trim().length >= 3   ? '' : 'Ingresa tu nombre completo (mín. 3 caracteres)',
+    'f-company': v => v.trim().length >= 2   ? '' : 'Ingresa el nombre legal o comercial de tu empresa',
+    'f-email':   v => {
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return 'Ingresa un correo electrónico válido';
+      const domain = v.split('@')[1]?.toLowerCase();
+      if (BLOCKED_DOMAINS.includes(domain)) return 'Por favor usa tu correo corporativo (no Gmail, Hotmail, etc.)';
+      return '';
+    },
+    'f-phone':   v => v.trim().replace(/\D/g,'').length >= 7 ? '' : 'Ingresa un teléfono válido (mín. 7 dígitos)',
+    'f-service': v => v ? '' : 'Selecciona el tipo de requerimiento',
+    'f-msg':     v => v.trim().length >= 30  ? '' : `Mensaje muy corto (${v.trim().length}/30 caracteres mínimo)`,
+    'f-privacy': v => v ? '' : 'Debes aceptar el tratamiento de datos para continuar'
+  };
+
+  // Función para mostrar/ocultar error de un campo
+  function setFieldState(id, errorMsg) {
+    const input = document.getElementById(id);
+    const errEl = document.getElementById('err-' + id);
+    if (!input) return;
+    const isOk = !errorMsg;
+    const isCheckbox = input.type === 'checkbox';
+    if (!isCheckbox) {
+      input.style.borderColor = errorMsg
+        ? 'rgba(239,68,68,0.7)'
+        : (input.value ? 'rgba(37,99,235,0.6)' : '');
+    }
+    if (errEl) {
+      errEl.textContent = errorMsg || '';
+      errEl.style.display = errorMsg ? 'block' : 'none';
+    }
+    return isOk;
+  }
+
+  // Validación en tiempo real al salir del campo (blur)
+  Object.keys(RULES).forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const validate = () => {
+      const val = el.type === 'checkbox' ? (el.checked ? 'yes' : '') : el.value;
+      setFieldState(id, RULES[id](val));
+    };
+    el.addEventListener('blur', validate);
+    el.addEventListener('change', validate);
+    el.addEventListener('input', () => {
+      // Solo limpiar error en tiempo real si ya hubo error previo
+      const errEl = document.getElementById('err-' + id);
+      if (errEl && errEl.textContent) validate();
+    });
+  });
+
+  // Contador de caracteres en textarea
+  const msgEl = document.getElementById('f-msg');
+  if (msgEl && charCounter) {
+    msgEl.addEventListener('input', () => {
+      const len = msgEl.value.trim().length;
+      charCounter.textContent = `${len} / 30 mín.`;
+      charCounter.style.color = len >= 30 ? 'rgba(37,99,235,0.8)' : 'var(--text-muted)';
+    });
+  }
+
+  // Submit
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // ── Anti-spam: honeypot ──
+      const hp1 = document.getElementById('f-hp');
+      const hp2 = document.getElementById('f-hp2');
+      if ((hp1 && hp1.value) || (hp2 && hp2.value)) return; // Bot detectado, ignorar silenciosamente
+
+      // ── Anti-spam: velocidad de envío ──
+      const loadTime = parseInt(tsField?.value || 0);
+      if (loadTime && (Date.now() - loadTime) < 4000) return;
+
+      // ── Validar todos los campos ──
+      let hasError = false;
+      Object.keys(RULES).forEach(id => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const val = el.type === 'checkbox' ? (el.checked ? 'yes' : '') : el.value;
+        const err = RULES[id](val);
+        setFieldState(id, err);
+        if (err) hasError = true;
+      });
+
+      if (hasError) {
+        // Scroll al primer error
+        const firstErr = form.querySelector('.field-error[style*="block"]');
+        firstErr?.closest('.form-group')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      // ── Estado: cargando ──
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = '0.8';
+      btnText.textContent = 'Enviando consulta…';
+      btnArrow.style.display = 'none';
+      btnSpinner.style.display = 'block';
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          // ── Estado: éxito ──
+          statusEl.className = 'form-status success';
+          statusEl.innerHTML = `
+            <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:0.75rem;padding:0.5rem 0;">
+              <div style="width:48px;height:48px;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;">✅</div>
+              <div>
+                <strong style="color:#34d399;display:block;margin-bottom:0.25rem;">¡Consulta enviada exitosamente!</strong>
+                <span style="font-size:0.82rem;">Un ingeniero especialista revisará tu requerimiento y te contactará en menos de 24 horas hábiles al correo indicado.</span>
+              </div>
+            </div>`;
+          form.reset();
+          if (charCounter) { charCounter.textContent = '0 / 30 mín.'; charCounter.style.color = ''; }
+          if (tsField) tsField.value = Date.now();
+          // Limpiar bordes de campos
+          Object.keys(RULES).forEach(id => {
+            const el = document.getElementById(id);
+            if (el && el.type !== 'checkbox') el.style.borderColor = '';
+          });
+        } else {
+          throw new Error('Server error');
+        }
+      } catch {
+        statusEl.className = 'form-status error';
+        statusEl.innerHTML = `
+          <strong>Error al enviar el formulario.</strong><br>
+          <span style="font-size:0.82rem;">Por favor intenta nuevamente. Si el problema persiste, contáctanos a través de nuestras redes sociales.</span>`;
+      }
+
+      // Restaurar botón
+      submitBtn.disabled = false;
+      submitBtn.style.opacity = '1';
+      btnText.textContent = 'Enviar Consulta Corporativa';
+      btnArrow.style.display = 'block';
+      btnSpinner.style.display = 'none';
+    });
+  }
+
+  // ── Chatbot ──
+  const chatBtn = document.getElementById('chatbot-btn');
+  const chatWin = document.getElementById('chat-window');
+  const chatClose = document.getElementById('chat-close');
+  const chatInput = document.getElementById('chat-input');
+  const chatSend = document.getElementById('chat-send');
+  const chatMsgs = document.getElementById('chat-messages');
+  let chatOpen = false;
+  let awaitingName = false, awaitingEmail = false, leadName = '';
+
+  const KB = {
+    greet: {
+      t:['hola','hello','buenos','buenas','hi','hey'],
+      r:'¡Hola! 👋 Soy **ARIA**, el asistente virtual de **Automation Insights S.A.S.** Estoy aquí para orientarte sobre nuestros servicios de automatización industrial. ¿En qué puedo ayudarte?',
+      q:['Ver servicios','Solicitar cotización','Info sobre cursos','¿Cómo contactarlos?']
+    },
+    services: {
+      t:['servicio','que hacen','ofrecen','soluciones','automatización','trabajan'],
+      r:'Ofrecemos 4 servicios especializados en automatización industrial:\n\n⚙️ **Diseño y Simulación** — Conceptualización y validación de soluciones\n💻 **Programación PLC y HMI** — Control industrial con Siemens, Allen Bradley\n🚀 **Puesta en Marcha** — Instalación y arranque de sistemas\n🎓 **Capacitación Especializada** — Formación técnica in-company\n\n¿Quieres detalles de alguno?',
+      q:['Diseño y Simulación','Programación PLC y HMI','Puesta en Marcha','Capacitación']
+    },
+    design: {
+      t:['diseño','simulación','simular','diseñar','validar'],
+      r:'⚙️ **Diseño y Simulación**\n\nConceptualizamos y validamos soluciones industriales a medida utilizando software de vanguardia (FluidSIM, EPLAN, CODESYS). Garantizamos el éxito del sistema antes de su implementación física, reduciendo riesgos y costos.\n\n¿Te interesa solicitar una consulta?',
+      q:['Solicitar consulta','Ver otros servicios','¿Cómo contactarlos?']
+    },
+    plc: {
+      t:['plc','hmi','tia portal','siemens','programación','allen','bradley','ladder','scada'],
+      r:'💻 **Programación de PLC y HMI**\n\nDesarrollamos lógica de control robusta para:\n• Siemens S7-1200 / S7-1500 (TIA Portal)\n• Allen Bradley (Studio 5000)\n• Interfaces HMI intuitivas\n• Sistemas SCADA\n\nCreamos soluciones que optimizan la operación y simplifican el trabajo del operario.',
+      q:['Solicitar cotización','Ver cursos de PLC','¿Cómo contactarlos?']
+    },
+    startup: {
+      t:['puesta','marcha','instalación','arranque','comisionamiento'],
+      r:'🚀 **Puesta en Marcha**\n\nLlevamos los diseños del plano a la realidad:\n• Instalación de tableros eléctricos\n• Configuración y parametrización\n• Pruebas de funcionamiento\n• Documentación técnica entregable\n\nTrabajamos con los más altos estándares de seguridad industrial.',
+      q:['Solicitar cotización','Ver otros servicios','¿Cómo contactarlos?']
+    },
+    training: {
+      t:['curso','capacitación','aprender','formación','capacitar','enseñar','entrenar'],
+      r:'🎓 **Capacitación Especializada**\n\nOfrecemos dos modalidades:\n\n📦 **Cursos en línea (Hotmart)**\n• PLC con TIA Portal — Básico a Intermedio\n• Electroneumática Industrial\n\n🏭 **In-company (presencial/virtual)**\n• Diseñamos el programa según tu equipo y procesos\n• Certificación al finalizar\n\n¿Cuál te interesa?',
+      q:['Cursos en línea','Capacitación in-company','Solicitar cotización']
+    },
+    quote: {
+      t:['cotizar','cotización','precio','costo','cuánto','presupuesto','propuesta'],
+      r:'Con gusto preparamos una cotización personalizada para tu proyecto. Para ello necesitamos algunos datos básicos. ¿Me puedes decir tu nombre?',
+      q:[], capture: true
+    },
+    contact: {
+      t:['contacto','email','correo','comunicar','hablar','escribir','asesor'],
+      r:'Puedes contactarnos por:\n\n✉️ **gerencia@automationinsightscol.com**\n📝 Formulario en la sección **Contacto** de esta página\n📸 Instagram: **@automationinsights.sas**\n▶️ YouTube: **@aut_ins_col**\n\nRespondemosen menos de 24 horas hábiles.',
+      q:['Ir al formulario de contacto','Solicitar cotización']
+    },
+    projects: {
+      t:['proyecto','caso','ejemplo','trabajo','logro','resultado','cliente'],
+      r:'Hemos trabajado en proyectos como:\n\n🏭 **Control de Procesos Industriales** — Optimización con PLCs, -35% tiempo de ciclo\n🤖 **Línea de Empaque Robotizada** — Visión artificial + brazos robóticos, +60% producción\n🎓 **Capacitación Coca-Cola** — Formación técnica especializada in-company\n\n¿Quieres conocer más detalles?',
+      q:['Ver portafolio completo','Solicitar cotización','¿Cómo contactarlos?']
+    },
+    industry4: {
+      t:['industry 4','industria 4','iot','iiot','digital','digitalización','transformación'],
+      r:'🌐 **Industry 4.0 con Automation Insights**\n\nTe acompañamos en la transformación digital industrial:\n• Conectividad IIoT (sensores inteligentes)\n• Análisis de datos de producción\n• Integración PLC → SCADA → MES → ERP\n• Mantenimiento predictivo con datos\n\n¡Consulta cómo aplicarlo en tu planta!',
+      q:['Solicitar consulta','Ver servicios','¿Cómo contactarlos?']
+    },
+    blog: {
+      t:['blog','artículo','tutorial','leer','aprender','recurso'],
+      r:'📝 Tenemos un **Blog Técnico** gratuito con artículos sobre:\n• Programación PLC (Siemens, Allen Bradley)\n• Python para automatización industrial\n• Neumática y electroneumática\n• Industry 4.0 en Colombia\n\n¡Visítalo desde el menú!',
+      q:['Ver blog técnico','Ver recursos de YouTube','Ver servicios']
+    },
+    fallback: {
+      r:'Entiendo tu consulta. Para darte la mejor atención, te recomiendo escribirnos directamente a **gerencia@automationinsightscol.com** o llenar nuestro formulario de contacto. Respondemos en menos de 24 horas. ¿Puedo ayudarte con algo más?',
+      q:['Ver servicios','Ir al formulario de contacto','Solicitar cotización']
+    }
+  };
+
+  function addMsg(text, isUser = false) {
+    const div = document.createElement('div');
+    div.className = isUser ? 'msg msg-user' : 'msg msg-bot';
+    div.innerHTML = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+    chatMsgs.appendChild(div);
+    chatMsgs.scrollTop = chatMsgs.scrollHeight;
+  }
+
+  function addQuickReplies(replies) {
+    if (!replies || !replies.length) return;
+    const wrap = document.createElement('div');
+    wrap.className = 'quick-replies';
+    replies.forEach(r => {
+      const btn = document.createElement('button');
+      btn.className = 'qr-btn';
+      btn.textContent = r;
+      btn.addEventListener('click', () => { handleUserMsg(r); wrap.remove(); });
+      wrap.appendChild(btn);
+    });
+    chatMsgs.appendChild(wrap);
+    chatMsgs.scrollTop = chatMsgs.scrollHeight;
+  }
+
+  function showTyping(cb, delay = 900) {
+    const t = document.createElement('div');
+    t.className = 'msg msg-bot typing';
+    t.innerHTML = '<span></span><span></span><span></span>';
+    chatMsgs.appendChild(t);
+    chatMsgs.scrollTop = chatMsgs.scrollHeight;
+    setTimeout(() => { t.remove(); cb(); }, delay);
+  }
+
+  function handleUserMsg(text) {
+    addMsg(text, true);
+    const lower = text.toLowerCase();
+
+    if (awaitingName) {
+      leadName = text;
+      awaitingName = false;
+      awaitingEmail = true;
+      showTyping(() => { addMsg(`Perfecto, **${leadName}**. 😊 ¿Cuál es tu correo electrónico para enviarte la cotización?`); });
+      return;
+    }
+    if (awaitingEmail) {
+      awaitingEmail = false;
+      showTyping(() => {
+        addMsg(`¡Listo **${leadName}**! 🚀 Hemos registrado tu solicitud. Un asesor de Automation Insights te contactará pronto por correo electrónico. También puedes escribirnos directamente a **gerencia@automationinsightscol.com**`);
+        addQuickReplies(['Ver servicios','Ver proyectos','Ver blog técnico']);
+      }, 1100);
+      return;
+    }
+
+    let matched = null;
+    for (const key of Object.keys(KB)) {
+      if (key === 'fallback') continue;
+      if (KB[key].t && KB[key].t.some(kw => lower.includes(kw))) { matched = KB[key]; break; }
+    }
+
+    if (lower.includes('cotizar') || lower.includes('cotización') || lower.includes('presupuesto') || lower.includes('solicitar cotización')) {
+      showTyping(() => { addMsg(KB.quote.r); awaitingName = true; });
+      return;
+    }
+    if (lower.includes('ir al formulario') || lower.includes('formulario') || lower.includes('ir al formulario de contacto')) {
+      showTyping(() => { addMsg('Te llevo al formulario de contacto. 📋 También puedes escribirnos a **gerencia@automationinsightscol.com**'); setTimeout(() => { document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' }); closeChatWindow(); }, 700); });
+      return;
+    }
+    if (lower.includes('ver portafolio') || lower.includes('portafolio completo')) {
+      showTyping(() => { addMsg('Puedes ver el portafolio completo en nuestra página de Notion. 📋 Para solicitar una propuesta personalizada escríbenos a **gerencia@automationinsightscol.com**'); addQuickReplies(['Solicitar cotización','¿Cómo contactarlos?']); });
+      return;
+    }
+    if (lower.includes('ver blog') || lower.includes('blog técnico')) {
+      showTyping(() => { addMsg('¡Genial! Visita nuestro **Blog Técnico** desde el menú. Encontrarás artículos gratuitos sobre PLC, Python, neumática e Industry 4.0. 📝'); addQuickReplies(['Ver recursos de YouTube','Ver servicios']); });
+      return;
+    }
+    if (lower.includes('diseño y simulación') || lower.includes('diseño')) {
+      showTyping(() => { addMsg(KB.design.r); addQuickReplies(KB.design.q); });
+      return;
+    }
+    if (lower.includes('programación plc') || lower.includes('puesta en marcha')) {
+      const key = lower.includes('puesta') ? 'startup' : 'plc';
+      showTyping(() => { addMsg(KB[key].r); addQuickReplies(KB[key].q); });
+      return;
+    }
+    if (lower.includes('capacitación in-company') || lower.includes('in-company')) {
+      showTyping(() => { addMsg('🏭 **Capacitación In-Company**\n\nDiseñamos el programa de formación específicamente para tu equipo y tus procesos. Puede ser presencial o virtual.\n\nPara cotizar una capacitación in-company escríbenos a **gerencia@automationinsightscol.com** indicando:\n• Número de participantes\n• Temática de interés\n• Modalidad preferida'); addQuickReplies(['Solicitar cotización','Ver cursos en línea']); });
+      return;
+    }
+    if (lower.includes('cursos en línea') || lower.includes('hotmart')) {
+      showTyping(() => { addMsg('📦 Nuestros cursos en línea están disponibles en **Hotmart**:\n\n• **PLC con TIA Portal** — Básico a Intermedio\n• **Electroneumática Industrial** — Básico a Intermedio\n\nPuedes verlos en la sección **Capacitaciones** de esta página.'); addQuickReplies(['Solicitar cotización','¿Cómo contactarlos?']); });
+      return;
+    }
+    if (lower.includes('solicitar consulta') || lower.includes('consulta')) {
+      showTyping(() => { addMsg('Con gusto agendamos una consulta técnica gratuita. Escríbenos a **gerencia@automationinsightscol.com** con:\n\n• Tu nombre y empresa\n• Descripción breve del proceso o reto\n• Disponibilidad horaria\n\nTe respondemos en menos de 24 horas hábiles. ✉️'); addQuickReplies(['Ver servicios','Solicitar cotización']); });
+      return;
+    }
+
+    const response = matched || KB.fallback;
+    if (response.capture) { showTyping(() => { addMsg(response.r); awaitingName = true; }); return; }
+    showTyping(() => { addMsg(response.r); addQuickReplies(response.q); });
+  }
+
+  function openChatWindow() {
+    chatOpen = true;
+    chatWin.classList.add('open');
+    chatInput.focus();
+    if (chatMsgs.children.length === 0) {
+      setTimeout(() => {
+        addMsg('¡Hola! 👋 Soy **ARIA**, el asistente virtual de **Automation Insights S.A.S.**\n\nPuedo orientarte sobre nuestros servicios de automatización industrial, proyectos, cursos y más. ¿En qué puedo ayudarte hoy?');
+        addQuickReplies(['Ver servicios','Solicitar cotización','Info sobre cursos','¿Cómo contactarlos?']);
+      }, 400);
+    }
+  }
+  function closeChatWindow() { chatOpen = false; chatWin.classList.remove('open'); }
+
+  chatBtn.addEventListener('click', () => chatOpen ? closeChatWindow() : openChatWindow());
+  chatClose.addEventListener('click', closeChatWindow);
+  chatSend.addEventListener('click', () => { const v = chatInput.value.trim(); if (v) { chatInput.value = ''; handleUserMsg(v); } });
+  chatInput.addEventListener('keydown', e => { if (e.key === 'Enter') { const v = chatInput.value.trim(); if (v) { chatInput.value = ''; handleUserMsg(v); } } });
+</script>
+</body>
+</html>
